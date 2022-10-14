@@ -1,0 +1,2 @@
+la nav bar a include sera celle de la vue_accueil.html
+
