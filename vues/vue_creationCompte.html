@@ -31,25 +31,25 @@
                 <div class="col-2"></div>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Nom">
+                        <input type="text" class="form-control" placeholder="Nom" required>
                         <label for="floatingPassword">Nom</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Prenom">
+                        <input type="text" class="form-control" placeholder="Prenom" required>
                         <label for="floatingPassword">Prenom</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Nom d'utilisateur">
+                        <input type="text" class="form-control" placeholder="Nom d'utilisateur" required>
                         <label for="floatingPassword">Nom d'utilisateur</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="E-Mail">
+                        <input type="email" class="form-control" placeholder="E-Mail" required>
                         <label for="floatingPassword">E-Mail</label>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="col-2"></div>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Adresse">
+                        <input type="text" class="form-control" placeholder="Adresse" required>
                         <label for="floatingPassword">Adresse</label>
                     </div>
                 </div>
@@ -73,13 +73,13 @@
                 </div>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Ville">
+                        <input type="text" class="form-control" placeholder="Ville" required>
                         <label for="floatingPassword">Ville</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-floating">
-                        <input type="number" max="99999" class="form-control" placeholder="Code postal">
+                        <input type="number" min={1} max={99999} class="form-control" placeholder="Code postal" title="Le format d'un code postal est 99999" required>
                         <label for="floatingPassword">Code postal</label>
                     </div>
                 </div>
@@ -91,13 +91,13 @@
                 <div class="col-2"></div>
                 <div class="col-4">
                     <div class="form-floating">
-                        <input type="password" class="form-control" placeholder="Adresse">
+                        <input type="password" class="form-control" placeholder="Mot de passe" required>
                         <label for="floatingPassword">Mot de passe</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-floating">
-                        <input type="password" class="form-control" placeholder="Confirmation du mot de passe">
+                        <input type="password" class="form-control" placeholder="Confirmation du mot de passe" required>
                         <label for="floatingPassword">Confirmation du mot de passe</label>
                     </div>
                 </div>
@@ -106,17 +106,45 @@
             <p class="espace1"></p>
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary btn-lg">S'inscrire</button>
+                    <button class="btn btn-primary btn-lg"  id="btnNotificationCreation">S'inscrire</button>
                 </div>
             </div>
             <p class="espace0"></p>
             <div class="row">
                 <div class="col">
-                    <a class="texteGris" href="../vues/vue_connexion.html">J'ai déjà un compte</a>
+                    <a class="link-secondary" href="../vues/vue_connexion.html">J'ai déjà un compte</a>
                 </div>
             </div>
             <p class="espace1"></p>
         </form>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="notificationCreation" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">CheckYourMood</strong>
+                <small>A l'instant</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body gauche">
+                Votre compte a bien été crée.
+                <br>
+                Un mail de de confirmation vous a été envoyé.
+            </div>
+        </div>
+        </div>
+
+        <script>
+            const notificationTrigger = document.getElementById('btnNotificationCreation')
+            const toastNotificationCreation = document.getElementById('notificationCreation')
+            if (notificationTrigger) {
+                notificationTrigger.addEventListener('click', () => {
+                const toast = new bootstrap.Toast(toastNotificationCreation)
+
+                toast.show()
+            })
+            }
+        </script>
+        
 
     </div>
 </body>
