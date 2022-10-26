@@ -42,8 +42,19 @@ h1 {
     margin-bottom: 120px;
 }
 
+.espace4 {
+    margin-bottom: 160px;
+}
+
 /* Page connexion */
 .cadreConnexion {
+    border-radius: 15px;
+    border-style: solid;
+}
+
+/* Page d'accueil */
+
+.cadreMenu {
     border-radius: 15px;
     border-style: solid;
 }

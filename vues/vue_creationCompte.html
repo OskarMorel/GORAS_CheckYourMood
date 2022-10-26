@@ -26,82 +26,56 @@
         </div>
         <p class="espace2"></p>
         <form>
-            <!-- Ligne du formulaire avec nom, prenom, nom d'utilisateur et email -->
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-2">
+                <div class="col"></div>
+                <div class="col">
                     <div class="form-floating">
                         <input type="text" class="form-control" placeholder="Nom" required>
                         <label for="floatingPassword">Nom</label>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col">
                     <div class="form-floating">
                         <input type="text" class="form-control" placeholder="Prenom" required>
                         <label for="floatingPassword">Prenom</label>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" placeholder="Genre" required>
+                        <label for="floatingPassword">Genre</label>
+                    </div>
+                </div>
+                <div class="col">
                     <div class="form-floating">
                         <input type="text" class="form-control" placeholder="Nom d'utilisateur" required>
                         <label for="floatingPassword">Nom d'utilisateur</label>
                     </div>
                 </div>
-                <div class="col-2">
-                    <div class="form-floating">
-                        <input type="email" class="form-control" placeholder="E-Mail" required>
-                        <label for="floatingPassword">E-Mail</label>
-                    </div>
-                </div>
-                <div class="col-2"></div>
+                <div class="col"></div>
             </div>
-            <p class="espace1"></p>
-            <!-- Ligne du formulaire avec adresse, complement d'adresse, ville, et code postal -->
+            <p class="espace0"></p>
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-2">
+                <div class="col"></div>
+                <div class="col">
                     <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Adresse" required>
-                        <label for="floatingPassword">Adresse</label>
+                        <input type="text" class="form-control" placeholder="Adresse Mailr" required>
+                        <label for="floatingPassword">Adresse Mail</label>
                     </div>
                 </div>
-                <div class="col-2">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Complèment d'adresse">
-                        <label for="floatingPassword">Complèment d'adresse</label>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Ville" required>
-                        <label for="floatingPassword">Ville</label>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="form-floating">
-                        <input type="number" min={1} max={99999} class="form-control" placeholder="Code postal" title="Le format d'un code postal est 99999" required>
-                        <label for="floatingPassword">Code postal</label>
-                    </div>
-                </div>
-                <div class="col-2"></div>
-            </div>
-            <p class="espace1"></p>
-            <!-- Ligne du formulaire avec le mot de passe et la confirmation du mot de passe -->
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-4">
+                <div class="col">
                     <div class="form-floating">
                         <input type="password" class="form-control" placeholder="Mot de passe" required>
                         <label for="floatingPassword">Mot de passe</label>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col">
                     <div class="form-floating">
                         <input type="password" class="form-control" placeholder="Confirmation du mot de passe" required>
                         <label for="floatingPassword">Confirmation du mot de passe</label>
                     </div>
                 </div>
-                <div class="col-2"></div>
+                <div class="col"></div>
             </div>
             <p class="espace1"></p>
             <div class="row">
@@ -123,7 +97,7 @@
             <div class="toast-header">
                 <strong class="me-auto">CheckYourMood</strong>
                 <small>A l'instant</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fermer"></button>
             </div>
             <div class="toast-body gauche">
                 Votre compte a bien été crée.
@@ -139,7 +113,6 @@
             if (notificationTrigger) {
                 notificationTrigger.addEventListener('click', () => {
                 const toast = new bootstrap.Toast(toastNotificationCreation)
-
                 toast.show()
             })
             }
