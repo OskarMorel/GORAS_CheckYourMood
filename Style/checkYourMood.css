@@ -58,3 +58,50 @@ h1 {
     border-radius: 15px;
     border-style: solid;
 }
+
+/* Page saisie humeur */
+input[type="datetime-local"]{
+    padding: 5px;
+    top: 50%;
+    font-family: "Roboto Mono",monospace;
+    color: black;
+    border-width: 0.5px;
+    border-radius: 5px;
+    width:300px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.file-upload{
+
+    height:60px;
+    width:300px;
+    border-radius: 12px;
+    
+    display:flex;
+    justify-content:center;
+    align-items: center;  
+
+    border:1px solid #000000;
+    background-color: whitesmoke ;
+    font-size:45px;
+}
+
+input[type='file']{
+
+    height:200px;
+    width:200px;
+    position:absolute;
+    opacity:0;
+    cursor:pointer;
+
+}
+
+
+
+
+
