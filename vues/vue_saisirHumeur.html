@@ -41,7 +41,7 @@
                 <div class="col-2"></div>
                 <div class="col-5">
                     <label>Humeur</label>
-                    <select class="form-select">
+                    <select name="humeur" class="form-select">
                         <option value="">Saisir une humeur</option>
                         <option value="Colere">Colere</option>
                         <option value="Joie">Joie</option>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-3">
                     <label>Période de l'humeur</label><br>
-                    <input type="datetime-local">
+                    <input name="dateTimeHumeur" type="datetime-local">
                 </div>
                 <div class="col-2"></div>
             </div>
@@ -60,14 +60,14 @@
                 <div class="col-5">
                     <label>Description</label>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Commentaire"></textarea>
+                        <textarea name="commentaire" class="form-control" placeholder="Commentaire"></textarea>
                         <label for="floatingTextarea">Commentaire</label>
                     </div>
                 </div>
                 <div class="col-3">
                     <label>Ajouter un/des fichiers</label><br>
                     <div class="file-upload">
-                        <input type="file" multiple/>
+                        <input name="fichiers" type="file" multiple/>
                         <i class="fa-sharp fa-solid fa-arrow-up-from-bracket"></i>
                     </div>
                 </div>

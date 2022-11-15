@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Icone de l'application -->
-    <link rel="icon" href="../images/smiley.webp" />
+    <link rel="icon" href="../images/smiley.webp"/>
     <!-- Liens vers les feuilles de styles -->
     <link href="../Style/checkYourMood.css" rel="stylesheet">
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -28,64 +28,62 @@
         </div>
         <p class="espace2"></p>
         <form>
+            <!-- Partie nom, prenom, nom d'utilisateur, adresse mail-->
             <div class="row">
-                <div class="col"></div>
-                <div class="col">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Nom" required>
-                        <label for="floatingPassword">Nom</label>
-                    </div>
+                <div class="col-1"></div>
+                <div class="col gauche">
+                    <label class="form-label">Nom</label>
+                    <input name="nom" type="Text" placeholder="Saisissez votre nom" class="form-control">
                 </div>
-                <div class="col">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Prenom" required>
-                        <label for="floatingPassword">Prenom</label>
-                    </div>
+                <div class="col gauche">
+                    <label class="form-label">Prenom</label>
+                    <input name="prenom" type="Text" placeholder="Saisissez votre prenom" class="form-control">
                 </div>
-                <div class="col">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Genre" required>
-                        <label for="floatingPassword">Genre</label>
-                    </div>
+                <div class="col gauche">
+                    <label class="form-label">Nom d'utilisateur</label>
+                    <input name="nomUtilisateur" type="Text" placeholder="Saisissez votre nom d'utilisateur" class="form-control">
                 </div>
-                <div class="col">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Nom d'utilisateur" required>
-                        <label for="floatingPassword">Nom d'utilisateur</label>
-                    </div>
+                <div class="col gauche">
+                    <label class="form-label">Adresse Mail</label>
+                    <input name="adresseMail" type="Text" placeholder="Saisissez votre adresse mail" class="form-control">
                 </div>
-                <div class="col"></div>
+                <div class="col-1"></div>
             </div>
             <p class="espace0"></p>
+             <!-- Partie genre, date de naissance, mot de passe, et confirmation mot de passe -->
             <div class="row">
-                <div class="col"></div>
-                <div class="col">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" placeholder="Adresse Mailr" required>
-                        <label for="floatingPassword">Adresse Mail</label>
-                    </div>
+                <div class="col-1"></div>
+                <div class="col gauche">
+                    <label class="form-label">Genre</label>
+                    <select class="form-select" name="genre" id="">
+                        <option value="homme">Homme</option>
+                        <option value="femme">Femme</option>
+                        <option value="autre">Autre</option>
+                    </select>
                 </div>
-                <div class="col">
-                    <div class="form-floating">
-                        <input type="password" class="form-control" placeholder="Mot de passe" required>
-                        <label for="floatingPassword">Mot de passe</label>
-                    </div>
+                <div class="col gauche">
+                    <label class="form-label">Date de naissance</label>
+                    <input name="dateNaissance" type="date" class="form-control">
                 </div>
-                <div class="col">
-                    <div class="form-floating">
-                        <input type="password" class="form-control" placeholder="Confirmation du mot de passe" required>
-                        <label for="floatingPassword">Confirmation du mot de passe</label>
-                    </div>
+                <div class="col gauche">
+                    <label class="form-label">Mot de passe</label>
+                    <input name="motDePasse1" type="Text" placeholder="Saisissez votre mot de passe" class="form-control">
                 </div>
-                <div class="col"></div>
+                <div class="col gauche">
+                    <label class="form-label">Confirmation de mot de passe</label>
+                    <input name="motDePasse2" type="Text" placeholder="Confirmez votre mot de passe" class="form-control">
+                </div>
+                <div class="col-1"></div>
             </div>
             <p class="espace1"></p>
+            <!-- Bouton s'inscrire -->
             <div class="row">
                 <div class="col">
                     <button class="btn btn-primary btn-lg"  id="btnNotificationCreation">S'inscrire</button>
                 </div>
             </div>
             <p class="espace0"></p>
+            <!-- Bouton pour aller se connecter -->
             <div class="row">
                 <div class="col">
                     <a class="link-secondary" href="../vues/vue_connexion.html">J'ai déjà un compte</a>

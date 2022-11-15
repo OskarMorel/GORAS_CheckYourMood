@@ -52,6 +52,7 @@ a:link {
 }
 
 /* Page connexion */
+
 .cadreConnexion {
     border-radius: 15px;
     border-style: solid;
@@ -66,7 +67,8 @@ a:link {
 }
 
 /* Page saisie humeur */
-input[type="datetime-local"]{
+
+input[type="datetime-local"] {
     padding: 5px;
     top: 50%;
     font-family: "Roboto Mono",monospace;
@@ -75,14 +77,14 @@ input[type="datetime-local"]{
     border-radius: 5px;
     width:300px;
 }
-::-webkit-calendar-picker-indicator{
+::-webkit-calendar-picker-indicator {
     background-color: #ffffff;
     padding: 5px;
     cursor: pointer;
     border-radius: 3px;
 }
 
-.file-upload{
+.file-upload {
 
     height:60px;
     width:300px;
@@ -97,7 +99,7 @@ input[type="datetime-local"]{
     font-size:45px;
 }
 
-input[type='file']{
+input[type='file'] {
 
     height:200px;
     width:200px;
