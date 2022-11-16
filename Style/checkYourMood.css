@@ -12,6 +12,10 @@ h1 {
     color: rgb(100, 82, 82);
 }
 
+.texteNoir {
+    color: #000000;
+}
+
 a:link { 
  text-decoration:none; 
 } 
@@ -65,6 +69,7 @@ a:link {
     border: 1px;
     border-style: solid;
 }
+
 
 /* Page saisie humeur */
 
