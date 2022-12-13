@@ -13,7 +13,7 @@
 
     <meta charset="UTF-8">
     <!-- Icone de l'application -->
-    <link rel="icon" href="../images/smiley.webp" />
+    <link rel="icon" href="../images/smiley.png" />
 
     <!-- Liens vers les feuilles de styles (.css) -->
     <link href="../../pageStylesScripts/checkYourMood.css" rel="stylesheet">
@@ -22,16 +22,11 @@
     <!-- Liens vers les scripts (.js) -->
     <script src="https://kit.fontawesome.com/dbb1bac2bf.js"></script>
     <script src="../../bootstrap/js/boostrap.js"></script>
-    <title>CheckYourMood</title>
+    <title>CheckYourMood - <?php $titrePage ?></title>
 
 </head>
 <?php
-    spl_autoload_extensions(".php");
-    spl_autoload_register();
 
-    // si session_start n'est pas déja lancée alors
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
+//TODO peut etre devoir gerer les sessions
 
     ?>

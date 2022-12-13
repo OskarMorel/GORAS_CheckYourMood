@@ -1,5 +1,5 @@
 <?php
-require 'views/includes/header.php';
+require 'includes/header.php';
 ?>
 <body>
     <div class="container-fluid text-center">
@@ -13,50 +13,44 @@ require 'views/includes/header.php';
         <div class="row">
             <div class="col"></div>
                 <div class="col-4">
+                    <!-- Formulaire de connexion -->
                     <form action="/?controller=connexion&action=connection" method="POST">
                         <div class="cadreConnexion">
                             <p class="espace1"></p>
                             <h5 class="texteGris">Bienvenue, saisissez vos identifiants</h5>
                             <p class="espace1"></p>
+                            
                             <?php
                             if (isset($_GET['err'])) {
-                              $err = htmlspecialchars($_GET['err']);
-
-                              switch ($err) {
-                                case 'valide':
                             ?>
-                            <div class="alert alert-danger">
-                              <strong>valide</strong>
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col alert alert-warning">
+                                <?php
+                                $err = htmlspecialchars($_GET['err']);
+
+                                switch ($err) {
+                                    
+                                    case 'identifiantmdp':
+                                ?>
+                                <strong>Identifiant ou mot de passe incorrect</strong>
+                                <?php
+                                    break;
+
+                                    case 'vide':
+                                ?>
+                                <strong>Veuillez remplir les champs</strong>
+                                <?php
+                                    break;
+                                }
+                                ?>
+                                </div>
+                                <div class="col-1"></div>
                             </div>
                             <?php
-                                break;
-
-                                case 'mdp':
-                            ?>
-                            <div class="alert alert-danger">
-                              <strong>Mot de passe incorrect</strong>
-                            </div>
-                            <?php
-                                break;
-
-                                case 'identifiant':
-                            ?>
-                            <div class="alert alert-danger">
-                              <strong>Identifiant inconnu</strong>
-                            </div>
-                            <?php
-                                break;
-
-                                case 'vide':
-                            ?>
-                            <div class="alert alert-danger">
-                              <strong>Veuillez remplir les champs</strong>
-                            </div>
-                            <?php
-                                break;
-                              }
                             }
                             ?>
+                            
                             <!-- Identifiant -->
                             <div class="row">
                                 <div class="col-1"></div>
@@ -67,7 +61,7 @@ require 'views/includes/header.php';
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col">
-                                    <input name="identifiant" type="text" class="form-control" placeholder="Saisissez votre identifiant" required>
+                                    <input name="identifiant" type="text" class="form-control" placeholder="Saisissez votre identifiant">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -82,7 +76,7 @@ require 'views/includes/header.php';
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col">
-                                    <input name="motDePasse" type="text" class="form-control" placeholder="Saisissez votre mot de passe" required>
+                                    <input name="motDePasse" type="password" class="form-control" placeholder="Saisissez votre mot de passe">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
@@ -91,7 +85,7 @@ require 'views/includes/header.php';
                                 <div class="col-1"></div>
                                 <div class="col">
                                     <div class="d-grid">
-                                        <input type="submit" class="btn btn-primary">Se connecter</input>
+                                        <input type="submit" value="Se connecter" class="btn btn-primary">
                                     </div>
                                 </div>
                                 <div class="col-1"></div>
@@ -102,7 +96,7 @@ require 'views/includes/header.php';
                             </div>
                             <p class="espace0"></p>
                             <div class="row">
-                                <div class="col">Pas encore inscrit ? <a class="rougeClair" href="../vues/vue_creationCompte.html">Cliquez ici !</a></div>
+                                <div class="col">Pas encore inscrit ? <a class="rougeClair" href="/?controller=inscription">Cliquez ici !</a></div>
                             </div>
                             <p class="espace1"></p>
                         </div>

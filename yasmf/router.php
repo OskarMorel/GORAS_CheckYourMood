@@ -27,7 +27,7 @@ class router {
     public function route($dataSource)
     {
         try {
-            $controllerName = httphelper::getParam('controller') ?: 'home';
+            $controllerName = httphelper::getParam('controller') ?: 'index';
 
             $controllerQualifiedName = "controllers\\" . $controllerName . "Controller";
 

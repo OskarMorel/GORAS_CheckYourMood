@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <!-- Icone de l'application -->
-    <link rel="icon" href="../images/smiley.webp" />
-    <!-- Liens vers les feuilles de styles -->
-    <link href="../Style/checkYourMood.css" rel="stylesheet">
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Liens vers les scripts -->
-    <script src="https://kit.fontawesome.com/dbb1bac2bf.js" crossorigin="anonymous"></script>
-    <script src="../bootstrap/js/bootstrap.js" crossorigin="Sources"></script>
-    <title>CheckYourMood - Connexion</title>
-</head>
+<?php
+require 'includes/header.php';
+?>
 <body>
     <div class="container-fluid text-center">
         <p class="espace3"></p>
@@ -74,7 +63,7 @@
                             </div>
                             <p class="espace0"></p>
                             <div class="row">
-                                <div class="col">Pas encore inscrit ? <a class="rougeClair" href="../vues/vue_creationCompte.html">Cliquez ici !</a></div>
+                                <div class="col">Pas encore inscrit ? <a class="rougeClair" href="">Cliquez ici !</a></div>
                             </div>
                             <p class="espace1"></p>
                         </div>

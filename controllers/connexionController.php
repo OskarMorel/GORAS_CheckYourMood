@@ -10,7 +10,7 @@ use yasmf\view;
 use yasmf\controller;
 use yasmf\httphelper;
 use yasmf\config;
-use model\connection;
+use model\connexionservice;
 use model\afficher;
 
 /**
@@ -27,11 +27,10 @@ class connexionController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "views/vue_accueil");
+        $view = new view(config::getRacine() . "views/index");
         $view->setVar('RACINE', config::getRacine());
         return $view;
     }
-
 
     /**
      * Tentative de connexion
@@ -47,6 +46,25 @@ class connexionController implements controller
         $err = "";
         $connect = false;
 
+        if (httphelper::getParam('identifiant') != null && httphelper::getParam('motDePasse') != null) {
+            
+            $identifiant = httphelper::getParam('identifiant');
+            $motDePasse = httphelper::getParam('motDePasse');
+
+            $connect = true;
+            /*
+            if (connexionservice::identifiantExiste($pdo, $identifiant)) {
+                if(connexionservice::identifiantMotDePasseValide($pdo, $identifiant, $motDePasse)) {
+
+                }
+            }*/
+            
+
+        } else {
+            $err = 'vide';
+        }
+
+        /*
         // test valeur
         if (httphelper::getParam('identifiant') != null && httphelper::getParam('motDePasse') != null) {
             $identifiant = httphelper::getParam('identifiant');
@@ -56,29 +74,19 @@ class connexionController implements controller
                 if (connection::motDePasseValide($pdo, $identifiant, $mdp)) {
                     $connect = true;
                 } else {
-                    $err = "mdp";
+                    $err = "identifiantmdp";
                 }
             } else {
-                $err = "identifiant";
+                $err = "identifiantmdp";
             }
         } else {
             $err = 'vide';
         }
-
+*/
         if ($connect) {
-            $user = connection::getUtilisateur($pdo, $identifiant);
-            if ($user != null) {
-
-                $err = "valide";
-
-                $_SESSION['user_id'] = $user['idUtilisateur'];
-                $_SESSION['user_nom'] = $user['nom'];
-                $_SESSION['user_prenom'] = $user['prenom'];
-
-
-                header("Location: /?mode=membre&controller=home");
-
-            }
+            
+            //TODO faire la mise en place des sessions et appeler la methode getUtilisateur 
+            header("Location: /?controller=accueil");
         }
 
         $_GET['err'] = $err;
