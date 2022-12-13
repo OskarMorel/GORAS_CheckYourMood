@@ -4,9 +4,9 @@
 L'application CheckYourMood doit permettre à un utilisateur enregistré sur la plateforme d’indiquer son humeur à différents moments de la journée afin de pouvoir disposer de visualisations sur son humeur au fil du temps en fonction de différents paramètres comme la période, le type d’humeur, etc.
 
 ## Membres de l'équipe
-Sylvestre Franck : Product Owner <br>
+Sylvestre Franck : Client<br>
 Launay Simon : Scrum Master, développeur, concepteur <br>
-Morel Oskar : Développeur, concepteur<br>
+Morel Oskar : Product Owner, Développeur, concepteur<br>
 Gouzy Antoine : Développeur, concepteur<br>
 Jalbaud Gauthier : Développeur, concepteur<br>
 Jauzion Rémi : Développeur, concepteur<br>
