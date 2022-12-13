@@ -22,11 +22,11 @@
     <!-- Liens vers les scripts (.js) -->
     <script src="https://kit.fontawesome.com/dbb1bac2bf.js"></script>
     <script src="../../bootstrap/js/boostrap.js"></script>
-    <title>CheckYourMood - <?php $titrePage ?></title>
+    <title>CheckYourMood</title>
 
 </head>
 <?php
 
 //TODO peut etre devoir gerer les sessions
 
-    ?>
+?>

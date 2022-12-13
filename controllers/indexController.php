@@ -1,7 +1,7 @@
 <?php
 
 /**
- * indexController.php
+ * homeController.php
  */
 
 
@@ -13,7 +13,7 @@ use yasmf\config;
 
 /**
  * Class indexController
- * Page de connexion a l'application
+ * 
  * @package controllers
  */
 class indexController implements controller

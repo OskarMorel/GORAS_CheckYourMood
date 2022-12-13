@@ -14,7 +14,7 @@ require 'includes/header.php';
             <div class="col"></div>
                 <div class="col-4">
                     <!-- Formulaire de connexion -->
-                    <form action="/?controller=connexion&action=connection" method="POST">
+                    <form action="/?controller=connexion&action=connexion" method="POST">
                         <div class="cadreConnexion">
                             <p class="espace1"></p>
                             <h5 class="texteGris">Bienvenue, saisissez vos identifiants</h5>
@@ -23,6 +23,7 @@ require 'includes/header.php';
                             <?php
                             if (isset($_GET['err'])) {
                             ?>
+                            <!-- Affichage des erreurs -->
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col alert alert-warning">
@@ -50,8 +51,7 @@ require 'includes/header.php';
                             <?php
                             }
                             ?>
-                            
-                            <!-- Identifiant -->
+                            <!-- Saisie de l'identifiant -->
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col gauche">
@@ -66,7 +66,7 @@ require 'includes/header.php';
                                 <div class="col-1"></div>
                             </div>
                             <p class="espace1"></p>
-                            <!-- Mot de passe -->
+                            <!-- Saisie du mot de passe -->
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col gauche">
@@ -81,6 +81,7 @@ require 'includes/header.php';
                                 <div class="col-1"></div>
                             </div>
                             <p class="espace1"></p>
+                            <!-- Bouton pour se connecter -->
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col">
@@ -91,10 +92,12 @@ require 'includes/header.php';
                                 <div class="col-1"></div>
                             </div>
                             <p class="espace0"></p>
+                            <!-- Lien pour l'oubli du mot de passe -->
                             <div class="row">
                                 <div class="col">Vous avez oublié votre mot de passe ? <a class="rougeClair" href="../vues/vue_oubliMotDePasse.html">Cliquez ici !</a></div>
                             </div>
                             <p class="espace0"></p>
+                            <!-- Lien pour s'inscrire sur l'application -->
                             <div class="row">
                                 <div class="col">Pas encore inscrit ? <a class="rougeClair" href="/?controller=inscription">Cliquez ici !</a></div>
                             </div>

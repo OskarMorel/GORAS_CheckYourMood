@@ -1,16 +1,19 @@
 <?php
 require 'includes/header.php';
+session_start();
 ?>
 <body>
     <div class="container-fluid text-center">
         <!-- Barre de navigation -->
         <?php
         require 'includes/navbar.php';
+        var_dump($_SESSION);
         ?>
         <p class="espace2"></p>
         <div class="row">
             <div class="col"></div>
             <div class="col">
+                
                 <h3 class="rougeClair">Bonjour Martin,</h3>
             </div>
             <div class="col"></div>

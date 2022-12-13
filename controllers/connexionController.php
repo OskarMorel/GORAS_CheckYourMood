@@ -37,12 +37,8 @@ class connexionController implements controller
      * @param pdo connexion à la base de données
      * @return view appel de la méthode index
      */
-    public function connection($pdo)
+    public function connexion($pdo)
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
         $err = "";
         $connect = false;
 
@@ -51,46 +47,51 @@ class connexionController implements controller
             $identifiant = httphelper::getParam('identifiant');
             $motDePasse = httphelper::getParam('motDePasse');
 
-            $connect = true;
-            /*
             if (connexionservice::identifiantExiste($pdo, $identifiant)) {
-                if(connexionservice::identifiantMotDePasseValide($pdo, $identifiant, $motDePasse)) {
-
-                }
-            }*/
-            
-
-        } else {
-            $err = 'vide';
-        }
-
-        /*
-        // test valeur
-        if (httphelper::getParam('identifiant') != null && httphelper::getParam('motDePasse') != null) {
-            $identifiant = httphelper::getParam('identifiant');
-            $mdp = httphelper::getParam('motDePasse');
-
-            if (connection::identifiantValide($pdo, $identifiant)) {
-                if (connection::motDePasseValide($pdo, $identifiant, $mdp)) {
+                if (connexionservice::motDePasseValide($pdo, $identifiant, $motDePasse)) {
                     $connect = true;
                 } else {
-                    $err = "identifiantmdp";
+                    $err = 'identifiantmdp';
                 }
             } else {
-                $err = "identifiantmdp";
+                $err = 'identifiantmdp';
             }
+
         } else {
             $err = 'vide';
         }
-*/
+
         if ($connect) {
             
             //TODO faire la mise en place des sessions et appeler la methode getUtilisateur 
+            session_start();
+            $user = connexionservice::getUtilisateur($pdo, $identifiant);
+
+            $_SESSION['numeroSession']=session_id();
+            $_SESSION['nom']=$user['NOM'];	
+            $_SESSION['prenom']=$user['PRENOM'];
+            $_SESSION['nom_utilisateur']=$user['NOM_UTILISATEUR'];
+            $_SESSION['mail']=$user['MAIL'];	
+            $_SESSION['genre']=$user['GENRE'];	
+            $_SESSION['date_naissance']=$user['DATE_DE_NAISSANCE'];	
+
             header("Location: /?controller=accueil");
+            exit();
         }
 
         $_GET['err'] = $err;
 
         return $this->index($pdo);
+    }
+
+    /**
+     * Deconnexion
+     * @return view appel de la méthode index
+     */
+    public function deconnexion($pdo) 
+    {
+        session_destroy();
+        header("Location: /?controller=index");
+        exit();
     }
 }
