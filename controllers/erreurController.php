@@ -25,7 +25,6 @@ class erreurController implements controller
     public function index($pdo)
     {
         $view = new view(config::getRacine() . "views/PageErreur");
-        $view->setVar('RACINE', config::getRacine());
 
         $err = httphelper::getParam('err');
         $view->setVar('err', $err);

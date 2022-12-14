@@ -10,7 +10,7 @@ require 'includes/header.php';
         <p class="espace2"></p>
         <div class="row">
             <h4>Une erreur est survenue</h4>
-            <p><?php $err ?></p>
+            <p><?php var_dump($err) ?></p>
         </div>
     </div>
 </body>

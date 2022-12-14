@@ -1,7 +1,7 @@
 <?php
 
 /**
- * creationcontroller.php
+ * inscriptioncontroller.php
  */
 
 namespace controllers;
@@ -10,12 +10,11 @@ use yasmf\view;
 use yasmf\controller;
 use yasmf\httphelper;
 use yasmf\config;
-use model\connexionservice;
-use model\afficher;
+use model\verificationservice;
+use model\inscriptionservice;
 
 /**
- * Class connexioncontroller
- * Page d'accueil de la partie visible
+ * Class inscriptionController
  * @package controllers
  */
 class inscriptionController implements controller
@@ -28,9 +27,29 @@ class inscriptionController implements controller
     public function index($pdo)
     {
         $view = new view(config::getRacine() . "views/vue_inscription");
-        $view->setVar('RACINE', config::getRacine());
+
+        //$view->setVar('msgRetour', httphelper::getParam('msgRetour'));
+
+        $view->setVar('nom', httphelper::getParam('newNom'));
+        $view->setVar('prenom', httphelper::getParam('newPrenom'));
+        $view->setVar('mail', httphelper::getParam('newMail'));
+        $view->setVar('nomUtilisateur', httphelper::getParam('newNomUtilisateur'));
+        $view->setVar('genre', httphelper::getParam('newGenre'));
+        $view->setVar('dateNaissance', httphelper::getParam('newDateNaissance'));
+        $view->setVar('motDePasse1', httphelper::getParam('newMotDePasse1'));
+        $view->setVar('motDePasse2', httphelper::getParam('newMotDePasse2'));
+
+        $view->setVar('nomOK', httphelper::getParam('nomOK'));
+        $view->setVar('prenomOK', httphelper::getParam('prenomOK'));
+        $view->setVar('mailOK', httphelper::getParam('mailOK'));
+        $view->setVar('nomUtilisateurOK', httphelper::getParam('nomUtilisateurOK'));
+        $view->setVar('genreOK', httphelper::getParam('genreOK'));
+        $view->setVar('dateNaissanceOK', httphelper::getParam('dateNaissanceOK'));
+        $view->setVar('motDePasse1OK', httphelper::getParam('motDePasse1OK'));
+        $view->setVar('motDePasse2OK', httphelper::getParam('motDePasse2OK'));
+
         return $view;
-    }
+    }  
 
     /**
      * Tentative de creation d'un utilisateur
@@ -40,14 +59,53 @@ class inscriptionController implements controller
     public function creation($pdo)
     {
 
-        if ($toutOK) {
-            
-            //TODO faire la mise en place des sessions et appeler la methode getUtilisateur 
-            header("Location: /?controller=index");
-        }
+        $_GET['err'] = "";
 
-        $_GET['err'] = $err;
+        if (!empty(httphelper::getParam('affichage'))) {
+
+            // Récupération variable
+            $nom = httphelper::getParam('newNom');
+            $prenom = httphelper::getParam('newPrenom');
+            $mail = httphelper::getParam('newMail');
+            $nomUtilisateur = httphelper::getParam('newNomUtilisateur');
+            $genre = httphelper::getParam('newGenre');
+            $dateNaissance = httphelper::getParam('newDateNaissance');
+            $motDePasse1 = httphelper::getParam('newMotDePasse1');
+            $motDePasse2 = httphelper::getParam('newMotDePasse2');
+
+            // Test des variables
+            $_POST['nomOK'] = $nomOK = verificationservice::testNom($nom);
+            $_POST['prenomOK'] = $prenomOK = verificationservice::testPrenom($prenom);
+            $_POST['mailOK'] = $mailOK = verificationservice::testMail($mail);
+            $_POST['nomUtilisateurOK'] = $nomUtilisateurOK = verificationservice::testNomUtilisateur($nomUtilisateur);
+            $_POST['genreOK'] = $genreOK = verificationservice::testGenre($genre);
+            $_POST['dateNaissanceOK'] = $dateNaissanceOK = verificationservice::testDateNaissance($dateNaissance);
+
+            $_POST['motDePasse1OK'] = $motDePasse1OK = true;
+            $_POST['motDePasse2OK'] = $motDePasse2OK = true;
+            /*
+            $_POST['motDePasse1OK'] = $motDePasse1OK = verificationservice::testMdpCorrespond($motDePasse1, $motDePasse2);
+            $_POST['motDePasse2OK'] = $motDePasse2OK = verificationservice::testMdpCorrespond($motDePasse1, $motDePasse2);
+*/
+            // Si toutes les variables sont valides alors on ajoute à la base de donnée
+            if ($nomOK && $prenomOK && $mailOK && $nomUtilisateurOK && $genreOK && $dateNaissanceOK && $motDePasse1OK && $motDePasse2OK) {
+                inscriptionservice::ajouterUtilisateur($pdo, $nom, $prenom, $mail, $nomUtilisateur, $genre, $dateNaissance, $motDePasse2);
+            }
+
+        } else {
+
+            // Test des variables
+            $_POST['nomOK'] = false;
+            $_POST['prenomOK'] = false;
+            $_POST['mail'] = false;
+            $_POST['nomUtilisateur'] = false;
+            $_POST['genre'] = false;
+            $_POST['dateNaissance'] = false;
+            $_POST['motDePasse1'] = false;
+            $_POST['motDePasse2'] = false;
+        }
 
         return $this->index($pdo);
     }
 }
+
