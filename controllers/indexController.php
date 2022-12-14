@@ -1,7 +1,7 @@
 <?php
 
 /**
- * homeController.php
+ * indexController.php
  */
 
 
@@ -30,12 +30,4 @@ class indexController implements controller
         return $view;
     }
 
-    /**
-     * Déconnecte l'utilisateur
-     */
-    public function deconnexion($pdo)
-    {
-        //TODO gerer les sessions
-        return $this->index($pdo);
-    }
 }

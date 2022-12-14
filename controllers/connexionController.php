@@ -90,7 +90,12 @@ class connexionController implements controller
      */
     public function deconnexion($pdo) 
     {
+        //Récuperation de la session en cour pour la supprimer
+        session_start();
+
+        // suppression de la session en cours et de toutes les variables associées
         session_destroy();
+
         header("Location: /?controller=index");
         exit();
     }

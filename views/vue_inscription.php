@@ -16,7 +16,7 @@ require 'includes/header.php';
             </div>
         </div>
         <p class="espace2"></p>
-        <form>
+        <form action="/?controller=inscription&action=creation" method="POST">
             <!-- Partie nom, prenom, nom d'utilisateur, adresse mail-->
             <div class="row">
                 <div class="col-1"></div>
@@ -47,6 +47,7 @@ require 'includes/header.php';
                     <select class="form-select" name="genre" id="">
                         <option value="homme">Homme</option>
                         <option value="femme">Femme</option>
+                        <option value="femme">Helicoptere de combat</option>
                         <option value="autre">Autre</option>
                     </select>
                 </div>

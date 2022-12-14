@@ -1,7 +1,8 @@
+
 <?php
 
 /**
- * creationcontroller.php
+ * mexprimercontroller.php
  */
 
 namespace controllers;
@@ -18,7 +19,7 @@ use model\afficher;
  * Page d'accueil de la partie visible
  * @package controllers
  */
-class inscriptionController implements controller
+class mexprimerController implements controller
 {
     /**
      * @param $pdo connexion à la base de données
@@ -27,7 +28,7 @@ class inscriptionController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "views/vue_inscription");
+        $view = new view(config::getRacine() . "views/vue_saisirHumeur");
         $view->setVar('RACINE', config::getRacine());
         return $view;
     }
@@ -37,7 +38,7 @@ class inscriptionController implements controller
      * @param pdo connexion à la base de données
      * @return view appel de la méthode index
      */
-    public function creation($pdo)
+    public function exprimer($pdo)
     {
 
         if ($toutOK) {

@@ -13,8 +13,7 @@ session_start();
         <div class="row">
             <div class="col"></div>
             <div class="col">
-                
-                <h3 class="rougeClair">Bonjour Martin,</h3>
+                <h3 class="rougeClair">Bonjour <?php echo$_SESSION['prenom'].' '.$_SESSION['nom'] ?></h3>
             </div>
             <div class="col"></div>
         </div>

@@ -27,7 +27,15 @@ class router {
     public function route($dataSource)
     {
         try {
+            /*
+            if (!isset($_SESSION) || $_SESSION == null) {
+                $controllerName = 'index';
+            } else {
+                $controllerName = httphelper::getParam('controller') ?: 'index';
+            }*/
             $controllerName = httphelper::getParam('controller') ?: 'index';
+
+            
 
             $controllerQualifiedName = "controllers\\" . $controllerName . "Controller";
 
