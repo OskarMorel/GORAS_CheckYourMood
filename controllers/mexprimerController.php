@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -11,8 +10,7 @@ use yasmf\view;
 use yasmf\controller;
 use yasmf\httphelper;
 use yasmf\config;
-use model\connexionservice;
-use model\afficher;
+use model\emotionsservice;
 
 /**
  * Class connexioncontroller
@@ -29,7 +27,16 @@ class mexprimerController implements controller
     public function index($pdo)
     {
         $view = new view(config::getRacine() . "views/vue_saisirHumeur");
-        $view->setVar('RACINE', config::getRacine());
+
+        $view->setVar('tabHumeur', emotionsservice::getEmotions($pdo));
+        $view->setVar('intervalleValide', null);
+        $view->setVar('dateHeure', httphelper::getParam('newDateHeure'));
+        $view->setVar('dateHeure', httphelper::getParam('newDateHeure'));
+
+        $view->setVar('dateHeureOK', httphelper::getParam('dateHeureOK'));
+        $view->setVar('descriptionOK', httphelper::getParam('descriptionOK'));
+        $view->setVar('fichiersOK', httphelper::getParam('fichiersOK'));
+        
         return $view;
     }
 

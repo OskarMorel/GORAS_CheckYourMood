@@ -6,18 +6,23 @@ require 'includes/header.php';
         <!-- Barre de navigation -->
         <?php
         require 'includes/navbar.php';
+        //var_dump($tabHumeur);
         ?>
         <p class="espace3"></p>
-        <form>
+        <form action="/?controller=mexprimer&action=exprimer" method="POST">
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-5">
                     <label>Humeur</label>
                     <select name="humeur" class="form-select">
                         <option value="">Saisir une humeur</option>
-                        <option value="Colere">Colere</option>
-                        <option value="Joie">Joie</option>
-                        <option value="Nostagique">Nostagique</option>
+                        <?php 
+                        foreach ($tabHumeur as $humeur){
+                        ?>
+                        <option value="<?php echo $humeur['ID_EMOTION']?>"><?php echo($humeur['EMOJI'].' - '.$humeur['NOM']) ?></option>
+                        <?php
+                        }  
+                        ?>
                     </select>
                 </div>
                 <div class="col-3">
@@ -37,9 +42,9 @@ require 'includes/header.php';
                     </div>
                 </div>
                 <div class="col-3">
-                    <label>Ajouter un/des fichiers</label><br>
+                    <label>Ajouter un ou des fichiers</label><br>
                     <div class="file-upload">
-                        <input name="fichiers" type="file" multiple/>
+                        <input name="fichiers" type="file[]" multiple/>
                         <i class="fa-sharp fa-solid fa-arrow-up-from-bracket"></i>
                     </div>
                 </div>
