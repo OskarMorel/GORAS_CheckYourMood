@@ -105,7 +105,7 @@ class verificationservice
     public static function testMotDePasse($mdp) {
 
         if ($mdp != null || $mdp != "") {
-                return true;
+            return true;
         } else {
             return false;
         }
@@ -118,16 +118,16 @@ class verificationservice
      */
     public static function testMdpCorrespond($mdp1, $mdp2)
     {
-        if (testMotDePasse($mdp1) && testMotDePasse($mdp2)) {
+        if ($mdp1 != null && $mdp2 != null) {
             if ($mdp1 == $mdp2) {
                 return true;
             } else {
                 return false;
             }
         } else {
-
             return false;
         }
+            
     }
 
 

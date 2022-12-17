@@ -29,10 +29,10 @@ class inscriptionservice
         $data = $stmt->rowCount();
         
         if ($data == 1) {
-            $_GET['msgRetour'] = "creationOk";
+            $_GET['creation'] = true;
             return true;
         } else {
-            $_GET['msgRetour'] = "noCrea";
+            $_GET['creation'] = false;
             return false;
         }
     }

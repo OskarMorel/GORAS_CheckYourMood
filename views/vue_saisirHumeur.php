@@ -44,7 +44,7 @@ require 'includes/header.php';
                 <div class="col-3">
                     <label>Ajouter un ou des fichiers</label><br>
                     <div class="file-upload">
-                        <input name="fichiers" type="file[]" multiple/>
+                        <input name="fichiers" type="file[]"/>
                         <i class="fa-sharp fa-solid fa-arrow-up-from-bracket"></i>
                     </div>
                 </div>
