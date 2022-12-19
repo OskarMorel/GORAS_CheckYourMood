@@ -3,15 +3,14 @@ require 'includes/header.php';
 ?>
 <body>
     <div class="container-fluid text-center">
-        <!-- Barre de navigation -->
         <?php
         require 'includes/navbar.php';
-        var_dump($choixVisualisation);
-        var_dump($_GET);
+        //var_dump($choixVisualisation);
+        //var_dump($humeurs);
         ?>
-        <p class="espace2"></p>
+        <p class="espace1"></p>
         <div class="row">
-            <div class="col"></div>
+            <div class="col-1"></div>
             <div class="col">
             <h5>Choisissez votre type de visualisation</h5>
             <p class="espace0"></p>
@@ -26,7 +25,7 @@ require 'includes/header.php';
                 <input type="submit" value ="OK"class="btn btn-primary">
             </form>
             </div>
-            <div class="col"></div>
+            <div class="col-1"></div>
         </div>
         <p class="espace2"></p>
 
@@ -57,6 +56,62 @@ require 'includes/header.php';
         <?php 
             } else if ($choixVisualisation == 'tout') {
         ?>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                        <th class="col-1">Date et heure</th>
+                        <th class="col-3">Emotion</th>
+                        <th class="col-7">Description</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // On boucle sur toutes les humeurs
+                        foreach($humeurs as $humeur){
+                        ?>
+                            <tr>
+                                <td><?php echo($humeur['DATE_HEURE']) ?></td>
+                                <td><?php echo($humeur['EMOJI'].' - '.$humeur['NOM']) ?></td>
+                                <td><?php echo($humeur['DESCRIPTION']) ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <form action="/?controller=visualisationHumeurs&action=afficher" method="POST">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                            <a class="page-link">Precedent</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                            <a class="page-link" href="#">Suivant</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                </form>
+            </div>
+            <div class="col-1"></div>
+        </div>
 
         <?php 
             }
