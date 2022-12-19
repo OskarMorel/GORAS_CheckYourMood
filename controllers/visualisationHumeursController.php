@@ -27,6 +27,8 @@ class visualisationHumeursController implements controller
     {
         $view = new view(config::getRacine() . "views/vue_visualisationHumeurs");
 
+        $view->setVar('choixVisualisation', httphelper::getParam('choixVisualisation'));
+
         return $view;
     }  
 
@@ -34,18 +36,9 @@ class visualisationHumeursController implements controller
      * @param pdo connexion à la base de données
      * @return view appel de la éthode indexm
      */
-    public function afficherCalendrier($pdo)
+    public function afficher($pdo)
     {
-
-    }
-
-    /**
-     * @param pdo connexion à la base de données
-     * @return view appel de la méthode index
-     */
-    public function afficherTout($pdo)
-    {
-
+        return $this->index($pdo);
     }
 
 }

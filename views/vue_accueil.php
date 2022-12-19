@@ -22,7 +22,7 @@ session_start();
             <div class="col-1"></div>
             <div class="col">
               <p class="espace2"></p>
-              Voir mes humeurs
+              <a href="/?controller=visualisationHumeurs">Voir mes humeurs</a>
               <p class="espace4"></p>
             </div>
             <div class="col alert alert-primary">

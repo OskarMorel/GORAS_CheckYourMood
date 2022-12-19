@@ -85,11 +85,6 @@ class inscriptionController implements controller
             $_POST['motDePasse1OK'] = $motDePasse1OK = verificationservice::testMotDePasse($motDePasse1);
             $_POST['motDePasse2OK'] = $motDePasse2OK = verificationservice::testMdpCorrespond($motDePasse1, $motDePasse2);
 
-            /*
-            $_POST['motDePasse1OK'] = $motDePasse1OK = verificationservice::testMdpCorrespond($motDePasse1, $motDePasse2);
-            $_POST['motDePasse2OK'] = $motDePasse2OK = verificationservice::testMdpCorrespond($motDePasse1, $motDePasse2);
-            */
-
             // Si toutes les variables sont valides alors on ajoute à la base de donnée
             if ($nomOK && $prenomOK && $mailOK && $nomUtilisateurOK && $genreOK && $dateNaissanceOK && $motDePasse1OK && $motDePasse2OK) {
                 inscriptionservice::ajouterUtilisateur($pdo, $nom, $prenom, $mail, $nomUtilisateur, $genre, $dateNaissance, $motDePasse2);
