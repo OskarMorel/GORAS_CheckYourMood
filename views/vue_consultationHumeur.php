@@ -11,7 +11,7 @@ require 'includes/header.php';
         <div class="row">
             <div class="col"></div>
             <div class="col">
-                <h3 class="rougeClair">Martin voici la répartition de vos humeurs,</h3>
+                <h3 class="rougeClair">voici la consultation de vos humeurs avec des graphiues et des filtres..</h3>
             </div>
             <div class="col"></div>
         </div>
