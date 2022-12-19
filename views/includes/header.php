@@ -22,6 +22,20 @@
     <!-- Liens vers les scripts (.js) -->
     <script src="https://kit.fontawesome.com/dbb1bac2bf.js"></script>
     <script src="../../bootstrap/js/boostrap.js"></script>
+
+    <script src='../../fullcalendar6/dist/index.global.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>
+
     <title>CheckYourMood</title>
 
 </head>
