@@ -65,15 +65,28 @@ a:link {
 
 /* Page d'accueil */
 
-.buttonPerso {
-    position: relative;
+.texteBouton {
+    color:  rgb(100, 82, 82);
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 120px;
+    
+    
 }
 
-.buttonPerso :hover {
-    opacity: 1;
+.zoom {
+    padding: 1em;
+    background-color: rgb(177, 238, 251);
+    height: 400px;
+    transition: transform .2s;
+    border-radius: 12px;
 }
-
-
+  
+.zoom:hover {
+-ms-transform: scale(1.1); /* IE 9 */
+-webkit-transform: scale(1.1); /* Safari 3-8 */
+transform: scale(1.1); 
+}
 
 /* Page saisie humeur */
 

@@ -16,7 +16,7 @@ use model\verificationservice;
  * Class de consulterHumeursController
  * @package controllers
  */
-class consulterHumeursController implements controller
+class consultationHumeursController implements controller
 {
     /**
      * @param $pdo connexion à la base de données
