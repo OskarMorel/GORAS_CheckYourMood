@@ -68,6 +68,7 @@ class connexionController implements controller
             $user = connexionservice::getUtilisateur($pdo, $identifiant);
 
             $_SESSION['numeroSession']=session_id();
+            $_SESSION['id']=$user['ID_UTILISATEUR'];	
             $_SESSION['nom']=$user['NOM'];	
             $_SESSION['prenom']=$user['PRENOM'];
             $_SESSION['nom_utilisateur']=$user['NOM_UTILISATEUR'];

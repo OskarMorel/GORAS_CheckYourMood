@@ -22,8 +22,11 @@ class inscriptionservice
             $stmt->execute([$nom, $prenom, $nomUtilisateur, $mdp, $mail,  $genre, $dateNaissance]);
         } catch (Exception $e) {
             $e->getMessage();
+            $_GET['exception'] = $e;
         }
        
+
+
         // On affecte a une variable le nombre de création
         $data = $stmt->fetch();
         $data = $stmt->rowCount();

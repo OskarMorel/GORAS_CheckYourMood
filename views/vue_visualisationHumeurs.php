@@ -6,7 +6,8 @@ require 'includes/header.php';
         <?php
         require 'includes/navbar.php';
         //var_dump($choixVisualisation);
-        //var_dump($humeurs);
+        var_dump($humeurs);
+        //var_dump($_SESSION);
         ?>
         <p class="espace1"></p>
         <div class="row">
@@ -21,6 +22,8 @@ require 'includes/header.php';
 
                 <input name="choixVisualisation" value="calendrier" type="radio" class="btn-check" id="calendrier" <?php if(isset($choixVisualisation)) {if($choixVisualisation == 'calendrier') {echo('checked');}} ?>>
                 <label class="btn btn-outline-secondary" for="calendrier">Calendrier des humeurs</label> 
+
+                <input name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>" hidden>
 
                 <input type="submit" value ="OK"class="btn btn-primary">
             </form>
@@ -58,6 +61,24 @@ require 'includes/header.php';
         ?>
 
         <div class="row">
+            <div class="col">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                        <a class="page-link">Precedent</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">Suivant</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-1"></div>
             <div class="col">
                 <table class="table table-striped">
@@ -81,34 +102,6 @@ require 'includes/header.php';
                         ?>
                     </tbody>
                 </table>
-            </div>
-            <div class="col-1"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col">
-                <form action="/?controller=visualisationHumeurs&action=afficher" method="POST">
-                <div class="row">
-                    <div class="col-1"></div>
-                    <div class="col">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                            <a class="page-link">Precedent</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                            <a class="page-link" href="#">Suivant</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    </div>
-                    <div class="col-1"></div>
-                </div>
-                </form>
             </div>
             <div class="col-1"></div>
         </div>

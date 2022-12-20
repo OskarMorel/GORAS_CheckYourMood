@@ -119,12 +119,13 @@ input[type="datetime-local"] {
     border:1px solid #000000;
     background-color: whitesmoke ;
     font-size:45px;
+
+    margin-left: 25px;
 }
 
 input[type='file'] {
 
-    height:200px;
-    width:200px;
+    width:300px;
     position:absolute;
     opacity:0;
     cursor:pointer;

@@ -1,6 +1,5 @@
 <?php
 require 'includes/header.php';
-session_start();
 ?>
 <body>
     <div class="container-fluid text-center">

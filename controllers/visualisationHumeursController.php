@@ -29,7 +29,7 @@ class visualisationHumeursController implements controller
         $view = new view(config::getRacine() . "views/vue_visualisationHumeurs");
 
         $view->setVar('choixVisualisation', httphelper::getParam('choixVisualisation'));
-        $view->setVar('humeurs', humeurservice::getHumeurs($pdo));
+        $view->setVar('humeurs', httphelper::getParam('humeurs'));
 
 
         return $view;
@@ -37,10 +37,15 @@ class visualisationHumeursController implements controller
 
     /**
      * @param pdo connexion à la base de données
-     * @return view appel de la éthode indexm
+     * @return view appel de la éthode index
      */
     public function afficher($pdo)
     {
+
+        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+
+        $_POST['humeurs'] = humeurservice::getHumeursUtilisateur($pdo, $codeUtilisateur);
+
         return $this->index($pdo);
     }
 

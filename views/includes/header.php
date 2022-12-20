@@ -9,6 +9,9 @@
 <html lang="fr">
 
 <head>
+
+    <?php session_start(); ?>
+
     <meta name="author" content="">
 
     <meta charset="UTF-8">

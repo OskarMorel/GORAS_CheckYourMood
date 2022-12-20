@@ -95,12 +95,12 @@ class inscriptionController implements controller
             // Test des variables
             $_POST['nomOK'] = false;
             $_POST['prenomOK'] = false;
-            $_POST['mail'] = false;
-            $_POST['nomUtilisateur'] = false;
-            $_POST['genre'] = false;
-            $_POST['dateNaissance'] = false;
-            $_POST['motDePasse1'] = false;
-            $_POST['motDePasse2'] = false;
+            $_POST['mailOK'] = false;
+            $_POST['nomUtilisateurOK'] = false;
+            $_POST['genreOK'] = false;
+            $_POST['dateNaissanceOK'] = false;
+            $_POST['motDePasse1OK'] = false;
+            $_POST['motDePasse2OK'] = false;
         }
 
         return $this->index($pdo);

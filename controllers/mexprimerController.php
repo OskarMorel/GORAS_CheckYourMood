@@ -11,6 +11,7 @@ use yasmf\controller;
 use yasmf\httphelper;
 use yasmf\config;
 use model\emotionsservice;
+use model\humeurservice;
 
 /**
  * Class connexioncontroller
@@ -28,33 +29,41 @@ class mexprimerController implements controller
     {
         $view = new view(config::getRacine() . "views/vue_saisirHumeur");
 
-        $view->setVar('tabHumeur', emotionsservice::getEmotions($pdo));
+        $view->setVar('tabEmotions', emotionsservice::getEmotions($pdo));
         $view->setVar('intervalleValide', null);
-        $view->setVar('dateHeure', httphelper::getParam('newDateHeure'));
-        $view->setVar('dateHeure', httphelper::getParam('newDateHeure'));
 
-        $view->setVar('dateHeureOK', httphelper::getParam('dateHeureOK'));
+        $view->setVar('description', httphelper::getParam('newDescription'));
+        $view->setVar('dateHeure', httphelper::getParam('newDateHeure'));
+        $view->setVar('codeEmotion', httphelper::getParam('newCodeEmotion'));
+        $view->setVar('codeUtilisateur', httphelper::getParam('newCodeUtilisateur'));
+
         $view->setVar('descriptionOK', httphelper::getParam('descriptionOK'));
-        $view->setVar('fichiersOK', httphelper::getParam('fichiersOK'));
+        $view->setVar('dateHeureOK', httphelper::getParam('dateHeureOK'));
+        $view->setVar('codeUtilisateurOK', httphelper::getParam('codeUtilisateurOK'));
+        $view->setVar('codeEmotionOK', httphelper::getParam('codeEmotionOK'));
+
+        $view->setVar('creation', httphelper::getParam('creation'));
         
         return $view;
     }
 
     /**
-     * Tentative de creation d'un utilisateur
+     * Ajout de l'humeur
      * @param pdo connexion à la base de données
      * @return view appel de la méthode index
      */
     public function exprimer($pdo)
     {
+        // Récupération variable
+        $description = httphelper::getParam('newDescription');
+        $dateHeure = httphelper::getParam('newDateHeure');
+        $codeEmotion = httphelper::getParam('newCodeEmotion');
+        $codeUtilisateur = httphelper::getParam('newCodeUtilisateur');
 
-        if ($toutOK) {
-            
-            //TODO faire la mise en place des sessions et appeler la methode getUtilisateur 
-            header("Location: /?controller=index");
-        }
 
-        $_GET['err'] = $err;
+        //TODO verifier les variables
+
+        humeurservice::ajoutHumeur($pdo, $description, $dateHeure, $codeUtilisateur, $codeEmotion);
 
         return $this->index($pdo);
     }
