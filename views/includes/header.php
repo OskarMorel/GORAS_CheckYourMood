@@ -34,8 +34,3 @@
     <title>CheckYourMood</title>
 
 </head>
-<?php
-
-//TODO peut etre devoir gerer les sessions
-
-?>

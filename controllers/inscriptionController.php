@@ -11,7 +11,7 @@ use yasmf\controller;
 use yasmf\httphelper;
 use yasmf\config;
 use model\verificationservice;
-use model\inscriptionservice;
+use model\utilisateurservice;
 
 /**
  * Class inscriptionController
@@ -87,7 +87,7 @@ class inscriptionController implements controller
 
             // Si toutes les variables sont valides alors on ajoute à la base de donnée
             if ($nomOK && $prenomOK && $mailOK && $nomUtilisateurOK && $genreOK && $dateNaissanceOK && $motDePasse1OK && $motDePasse2OK) {
-                inscriptionservice::ajouterUtilisateur($pdo, $nom, $prenom, $mail, $nomUtilisateur, $genre, $dateNaissance, $motDePasse2);
+                utilisateurservice::ajouterUtilisateur($pdo, $nom, $prenom, $mail, $nomUtilisateur, $genre, $dateNaissance, $motDePasse2);
             }
 
         } else {

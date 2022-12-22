@@ -37,4 +37,12 @@ class profilController implements controller
         //TODO gerer les sessions
         return $this->index($pdo);
     }
+
+    /**
+     * Supprime le profil de l'utilisateur le deinscrit de l'application
+     */
+    public function supprimerProfil($pdo)
+    {
+        return $this->index($pdo);
+    }
 }

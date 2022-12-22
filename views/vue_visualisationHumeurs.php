@@ -6,7 +6,7 @@ require 'includes/header.php';
         <?php
         require 'includes/navbar.php';
         //var_dump($choixVisualisation);
-        var_dump($humeurs);
+        //var_dump($humeurs);
         //var_dump($_SESSION);
         ?>
         <p class="espace1"></p>
