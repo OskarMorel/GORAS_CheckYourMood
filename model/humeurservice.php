@@ -67,11 +67,15 @@ class humeurservice
 
         try {
 
+            $pdo->beginTransaction();
+
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$codeUtilisateur]);
+
+            $pdo->commit();
             
         } catch (Exception $e) {
-            //$pdo->rollBack();
+            $pdo->rollBack();
             $e -> getMessage();
         }
     }
