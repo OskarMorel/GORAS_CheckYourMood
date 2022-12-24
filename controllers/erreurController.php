@@ -12,7 +12,7 @@ use yasmf\config;
 use yasmf\httphelper;
 
 /**
- * Class homecontroller
+ * Class erreurcontroller
  * Page d'accueil de la partie visible
  * @package controllers
  */

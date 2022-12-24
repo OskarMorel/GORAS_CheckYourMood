@@ -9,6 +9,9 @@ namespace controllers;
 use yasmf\view;
 use yasmf\controller;
 use yasmf\config;
+use yasmf\httphelper;
+use model\humeurservice;
+use model\utilisateurservice;
 
 /**
  * Class profilController
@@ -43,6 +46,17 @@ class profilController implements controller
      */
     public function supprimerProfil($pdo)
     {
-        return $this->index($pdo);
+        //On recupere le code utilisateur
+        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+
+        //Suppression de toutes les humeurs de l'utilisateur
+        humeurservice::suppHumeursUtilisateur($pdo, $codeUtilisateur);
+
+        //Suppression de l'utilisateur
+        utilisateurservice::suppUtilisateur($pdo, $codeUtilisateur);
+
+        sleep(5);
+        header("Location: /?controller=index");
+        exit();
     }
 }

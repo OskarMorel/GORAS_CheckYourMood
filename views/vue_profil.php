@@ -6,9 +6,10 @@ require 'includes/header.php';
     <?php
         require 'includes/navbar.php';
         $edition = false;
-        var_dump($edition);
-        var_dump($_SESSION);
+        //var_dump($edition);
+        //var_dump($_SESSION);
     ?>
+
     
     <div class="container-fluid text-center">
         <p class="espace2"></p>
@@ -76,40 +77,34 @@ require 'includes/header.php';
 
         <!-- Partie de la vue pour se deinscrire de CheckYourMood -->
 
-        <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
+        <!-- Boutton pour afficher le modal contenant le formulaire de deinscription -->
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal1">Me déinscrire</button>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Modal contenant le formulaire de deinscription et qui appelle le controller profil et l'action supprimer profil -->
+        <div class="modal fade" id="modal1">
 
-        <form action="/?controller=profil&action=supprimerProfil" method="POST">
-            <input hidden name="idUtilisateur" value="<?php echo($_SESSION['id']); ?>">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col"><input type="submit" value="Supprimer mon compte" class="btn btn-outline-danger"></div>
-                <div class="col"></div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmation de déinscription </h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Vous etes sur le point de vous déinscrire de CheckYourMood. <br><br>
+                        En cliquant sur <b>me déinscrire de CheckYourMood</b> vous ne pourrez plus acceder au services de CheckYourMood et vos données personnelles seront supprimées.
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <!-- Formulaire avec un input caché qui contient l'id de l'utilisateur -->
+                        <form action="/?controller=profil&action=supprimerProfil" method="POST">
+                            <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id']); ?>">
+                            <input type="submit" value="Me déinscrire de CheckYourMood" data-bs-dismiss="modal" class="btn btn-danger">
+                        </form>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
 
     </div>
 </body>
