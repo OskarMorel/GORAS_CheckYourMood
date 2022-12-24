@@ -55,7 +55,8 @@ class profilController implements controller
         //Suppression de l'utilisateur
         utilisateurservice::suppUtilisateur($pdo, $codeUtilisateur);
 
-        sleep(5);
+        sleep(6);
+        
         header("Location: /?controller=index");
         exit();
     }

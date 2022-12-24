@@ -99,12 +99,38 @@ require 'includes/header.php';
                         <!-- Formulaire avec un input caché qui contient l'id de l'utilisateur -->
                         <form action="/?controller=profil&action=supprimerProfil" method="POST">
                             <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id']); ?>">
-                            <input type="submit" value="Me déinscrire de CheckYourMood" data-bs-dismiss="modal" class="btn btn-danger">
+                            <input id="confirmationSupp" type="submit" value="Me déinscrire de CheckYourMood" data-bs-dismiss="modal" class="btn btn-danger">
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="confirmationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">CheckYourMood</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Vous avez bien été déinscrit de CheckYourMood.
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const toastTrigger = document.getElementById('confirmationSupp');
+            const toastConfirmation = document.getElementById('confirmationToast');
+
+            if (toastTrigger) {
+            toastTrigger.addEventListener('click', () => {
+                const toast = new bootstrap.Toast(toastConfirmation);
+
+                toast.show();
+            })
+            }
+        </script>
+        
 
     </div>
 </body>

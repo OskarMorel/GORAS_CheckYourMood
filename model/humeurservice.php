@@ -66,21 +66,12 @@ class humeurservice
         $sql = "DELETE FROM `humeur` WHERE CODE_UTILISATEUR = ?";
 
         try {
-            $pdo->beginTransaction();
 
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$codeUtilisateur]);
-
-            $count = $stmt->rowCount();
-
-            if ($count == 1) {
-                $pdo->commit();
-            } else {
-                $pdo->rollBack();
-            }
             
         } catch (Exception $e) {
-            $pdo->rollBack();
+            //$pdo->rollBack();
             $e -> getMessage();
         }
     }
