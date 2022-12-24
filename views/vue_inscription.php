@@ -18,10 +18,6 @@ require 'includes/header.php';
         </div>
         <p class="espace2"></p>
         <form action="/?controller=inscription&action=creation" method="POST">
-            <!-- Affichage d'un texte indiquant l'erreur -->
-            <?php 
-                var_dump($_GET);
-            ?>
 
             <?php if($creation) { ?>
             <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
@@ -31,7 +27,7 @@ require 'includes/header.php';
                     <div class="alert alert-success" role="alert">
                         Bienvenue sur CheckYourMood ! Votre compte a bien été enregistré.    
                         <br>                        
-                        <a href="/?controller=index"" class="alert-link">Vous pouvez vous connecter avec vos identifiants</a>
+                        <a href="/?controller=index" class="alert-link">Vous pouvez vous connecter avec vos identifiants</a>
                     </div>
                 </div>
                 <div class="col-1"></div>
@@ -43,10 +39,37 @@ require 'includes/header.php';
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-warning" role="alert">
                         Erreur ! L'identifiant <?php echo ($nomUtilisateur);?> est deja utilisé.
                         <br>                        
                         <a href="/?controller=index"" class="alert-link">Cliquez ici pour vous connecter</a>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <?php } ?>
+
+            <?php if($motDePasse1OK && !$motDePasse2OK) { ?>
+            <!-- Les 2 mots de passes ne correspondent pas -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        Les 2 mots de passes ne correspondent pas.
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <?php } ?>
+
+            <?php if($mail != null && !$mailOK) { ?>
+            <!-- L'email n'est pas valide -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        Le format de l'adresse mail n'est pas valide. <br>
+                        Une adresse mail doit avoir le format suivant : <b>xxxxx@xxxxxx.xx</b>
                     </div>
                 </div>
                 <div class="col-1"></div>
@@ -81,7 +104,7 @@ require 'includes/header.php';
                 <div class="col-1"></div>
                 <div class="col gauche">
                     <label class="form-label">Genre</label>
-                    <select class="form-select <?php if ($genreOK) { echo 'is-valid'; } ?>" name="newGenre" required>
+                    <select class="form-select <?php if ($genreOK) { echo 'is-valid'; } ?>" name="newGenre">
                         <option value="">Veuillez renseigner un genre</option>
                         <option 
                                 <?php if (isset($genre)) {
@@ -108,7 +131,7 @@ require 'includes/header.php';
                 </div>
                 <div class="col gauche">
                     <label class="form-label">Date de naissance</label>
-                    <input name="newDateNaissance" value="<?php if ($dateNaissanceOK) { echo $dateNaissance; } ?>" type="date" class="form-control <?php if ($dateNaissanceOK) { echo 'is-valid'; } ?>" required>
+                    <input name="newDateNaissance" value="<?php if ($dateNaissanceOK) { echo $dateNaissance; } ?>" type="date" class="form-control <?php if ($dateNaissanceOK) { echo 'is-valid'; } ?>">
                 </div>
                 <div class="col gauche">
                     <label class="form-label">Mot de passe</label>

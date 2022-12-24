@@ -47,7 +47,6 @@ class inscriptionController implements controller
         $view->setVar('dateNaissanceOK', httphelper::getParam('dateNaissanceOK'));
         $view->setVar('motDePasse1OK', httphelper::getParam('motDePasse1OK'));
         $view->setVar('motDePasse2OK', httphelper::getParam('motDePasse2OK'));
-
         $view->setVar('creation', httphelper::getParam('creation'));
         $view->setVar('identifiantDejaUtilise', httphelper::getParam('identifiantDejaUtilise'));
 
@@ -84,9 +83,17 @@ class inscriptionController implements controller
 
             $_POST['motDePasse1OK'] = $motDePasse1OK = verificationservice::testMotDePasse($motDePasse1);
             $_POST['motDePasse2OK'] = $motDePasse2OK = verificationservice::testMdpCorrespond($motDePasse1, $motDePasse2);
+            
+            if (!$dateNaissanceOK) {
+                $dateNaissance = null;
+            }
 
+            if (!$genreOK) {
+                $genre = null;
+            }
+            
             // Si toutes les variables sont valides alors on ajoute à la base de donnée
-            if ($nomOK && $prenomOK && $mailOK && $nomUtilisateurOK && $genreOK && $dateNaissanceOK && $motDePasse1OK && $motDePasse2OK) {
+            if ($nomOK && $prenomOK && $mailOK && $nomUtilisateurOK && $motDePasse1OK && $motDePasse2OK) {
                 utilisateurservice::ajouterUtilisateur($pdo, $nom, $prenom, $mail, $nomUtilisateur, $genre, $dateNaissance, $motDePasse2);
             }
 

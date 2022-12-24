@@ -77,8 +77,6 @@ class verificationservice
         if ($genre != null || $genre != "") {
             if (strlen($genre) < 80) {
                 return true;
-            } else {
-                return false;
             }
         } else {
             return false;

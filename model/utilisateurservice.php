@@ -20,24 +20,13 @@ class utilisateurservice
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$nom, $prenom, $nomUtilisateur, $mdp, $mail,  $genre, $dateNaissance]);
+            $_GET['creation'] = true;
         } catch (Exception $e) {
+            $_GET['creation'] = false;
             $e->getMessage();
             $_GET['exception'] = $e;
         }
        
-
-
-        // On affecte a une variable le nombre de création
-        $data = $stmt->fetch();
-        $data = $stmt->rowCount();
-        
-        if ($data == 1) {
-            $_GET['creation'] = true;
-            return true;
-        } else {
-            $_GET['creation'] = false;
-            return false;
-        }
     }
 
     /* Supprimer un utilisateur */
@@ -48,12 +37,8 @@ class utilisateurservice
 
         try {
 
-            $pdo->beginTransaction();
-
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$codeUtilisateur]);
-
-            $pdo->commit();
             
         } catch (Exception $e) {
             $pdo->rollBack();
