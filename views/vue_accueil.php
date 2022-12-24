@@ -21,7 +21,7 @@ require 'includes/header.php';
             <div class="col-1"></div>
             <!-- Lien vers les humeurs de l'utilisateur -->
             <div class="col">
-              <a href="/?controller=visualisationHumeurs">
+              <a href="/?controller=consultationHumeurs">
                 <div class="zoom">
                 <p class="texteBouton">Voir mes humeurs</p>
                 </div>  
@@ -37,7 +37,7 @@ require 'includes/header.php';
             </div>
             <!-- Lien pour voir les statistiques des humeurs de l'utilisateur -->
             <div class="col">
-              <a href="/?controller=consultationHumeurs">
+              <a href="/?controller=visualisationHumeurs">
                 <div class="zoom">
                 <p class="texteBouton">Voir les statistiques sur mes humeurs</p>
                 </div>  

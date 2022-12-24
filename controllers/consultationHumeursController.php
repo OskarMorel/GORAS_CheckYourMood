@@ -11,6 +11,7 @@ use yasmf\controller;
 use yasmf\httphelper;
 use yasmf\config;
 use model\verificationservice;
+use model\humeurservice;
 
 /**
  * Class de consulterHumeursController
@@ -26,6 +27,8 @@ class consultationHumeursController implements controller
     public function index($pdo)
     {
         $view = new view(config::getRacine() . "views/vue_consultationHumeur");
+        $view->setVar('choixConsultation', httphelper::getParam('choixConsultation'));
+        $view->setVar('humeurs', httphelper::getParam('humeurs'));
 
         return $view;
     }  
@@ -37,7 +40,11 @@ class consultationHumeursController implements controller
      */
     public function consulter($pdo)
     {
+        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
 
+        $_POST['humeurs'] = humeurservice::getHumeursUtilisateur($pdo, $codeUtilisateur);
+
+        return $this->index($pdo);
     }
 
 }
