@@ -1,6 +1,6 @@
 <!--
     * Header.php
-    * @author Info2 IUT Rodez Orskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+    * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
     * @CheckYourMood 2022-2023
     * Header present sur toutes les pages de la partie de l'application.
     * Inclut les feuilles de style et la barre de navigation

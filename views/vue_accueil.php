@@ -23,6 +23,7 @@ require 'includes/header.php';
             <div class="col">
               <a href="/?controller=consultationHumeurs">
                 <div class="zoom">
+                <p class="icon-accueil">&#128301;</p>
                 <p class="texteBouton">Voir mes humeurs</p>
                 </div>  
               </a>
@@ -31,6 +32,7 @@ require 'includes/header.php';
             <div class="col">
               <a href="/?controller=mexprimer">
                 <div class="zoom">
+                <p class="icon-accueil">&#128221;</p>
                 <p class="texteBouton">M'exprimer !</p>
                 </div>  
               </a>
@@ -39,6 +41,7 @@ require 'includes/header.php';
             <div class="col">
               <a href="/?controller=visualisationHumeurs">
                 <div class="zoom">
+                <p class="icon-accueil">&#128200;</p>
                 <p class="texteBouton">Voir les statistiques sur mes humeurs</p>
                 </div>  
               </a>

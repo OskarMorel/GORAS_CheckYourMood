@@ -76,16 +76,22 @@ a:link {
 
 .zoom {
     padding: 1em;
-    background-color: rgb(177, 238, 251);
+    border: 5px solid #BFBFBF;
     height: 400px;
-    transition: transform .2s;
+    transition: .3s;
     border-radius: 12px;
 }
   
 .zoom:hover {
--ms-transform: scale(1.1); /* IE 9 */
--webkit-transform: scale(1.1); /* Safari 3-8 */
-transform: scale(1.1); 
+    border: 5px solid #EA454C;
+
+/* -ms-transform: scale(1.1); /* IE 9 */
+/* -webkit-transform: scale(1.1); /* Safari 3-8 */
+/* transform: scale(1.1); */ 
+}
+
+.icon-accueil {
+    font-size: 100px;
 }
 
 /* Page saisie humeur */
