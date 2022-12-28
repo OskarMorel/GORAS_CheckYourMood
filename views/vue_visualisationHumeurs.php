@@ -33,7 +33,7 @@ require 'includes/header.php';
 
         
         <?php 
-            if($choixVisualisation == 'camembert') {
+            if ($choixVisualisation == 'camembert') {
         ?>    
         <div class="row">
 
@@ -43,34 +43,72 @@ require 'includes/header.php';
             </div>
             <div class="col-2"></div>
         </div>
-            <script>
-                new Chart(document.getElementById("camembertChart"), {
-                    type: 'pie',
-                    data: {
-                    labels: ["Admiration", "Adoration", "Appréciation esthétique", "Amusement", "Colère", "Anxiété", 
-                    "Émerveillement", "Malaise", "Ennui", "Calme", "Confusion", "Envie", "Dégoût", "Douleur empathique", 
-                    "étonné", "Excitation", "Peur", "Horreur", "Intérêt", "Joie", "Nostalgie", "Soulagement", 
-                    "Romance", "Tristesse", "Satisfaction", "Désir sexuel", "Surprise", ],
-                    datasets: [{
-                        label: "Ajout",
-                        backgroundColor: ["#d7a7ff", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#a48ce4","#b6d7a8","#8cace4",
-                        "#e48c8c","#f7df7c","#2f90a8","#e32b2b","#351431","#eee7cf","#4b5e20","#c9b9ad","#8700ff","#3e95cd","#f2cfb4","	#fc7a08","#000000","#98d400",
-                        "#f50b86","#1d2564","#05f9e2","#e2f705","#ff6f00"],
-                        data: [100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100]
-                    }]
-                    },
-                    options: {
-                    title: {
-                        display: true,
-                        text: 'Moyenne de vos humeurs'
-                    }
-                    }
-                });
-            </script>
+        <script>
+            new Chart(document.getElementById("camembertChart"), {
+                type: 'pie',
+                data: {
+                labels: ["Admiration", "Adoration", "Appréciation esthétique", "Amusement", "Colère", "Anxiété", 
+                "Émerveillement", "Malaise", "Ennui", "Calme", "Confusion", "Envie", "Dégoût", "Douleur empathique", 
+                "étonné", "Excitation", "Peur", "Horreur", "Intérêt", "Joie", "Nostalgie", "Soulagement", 
+                "Romance", "Tristesse", "Satisfaction", "Désir sexuel", "Surprise", ],
+                datasets: [{
+                    label: "Ajout",
+                    backgroundColor: ["#d7a7ff", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#a48ce4","#b6d7a8","#8cace4",
+                    "#e48c8c","#f7df7c","#2f90a8","#e32b2b","#351431","#eee7cf","#4b5e20","#c9b9ad","#8700ff","#3e95cd","#f2cfb4","	#fc7a08","#000000","#98d400",
+                    "#f50b86","#1d2564","#05f9e2","#e2f705","#ff6f00"],
+                    data: [0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,]
+                }]
+                },
+                options: {
+                title: {
+                    display: true,
+                    text: 'Moyenne de vos humeurs'
+                }
+                }
+            });
+        </script>
         
 
         <?php 
-            } 
+            } else if ($choixVisualisation == 'baton') {
+        ?>
+        <div class="row">
+
+            <div class="col-2"></div>
+            <div class="col">
+                <canvas id="barChart" style="width:1000px;height:500px"></canvas>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <script>
+            new Chart(document.getElementById("barChart"), {
+                type: 'bar',
+                data: {
+                labels: ["Admiration", "Adoration", "Appréciation esthétique", "Amusement", "Colère", "Anxiété", 
+                "Émerveillement", "Malaise", "Ennui", "Calme", "Confusion", "Envie", "Dégoût", "Douleur empathique", 
+                "étonné", "Excitation", "Peur", "Horreur", "Intérêt", "Joie", "Nostalgie", "Soulagement", 
+                "Romance", "Tristesse", "Satisfaction", "Désir sexuel", "Surprise", ],
+                datasets: [
+                    {
+                    label: "Ajout",
+                    backgroundColor: ["#d7a7ff", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#a48ce4","#b6d7a8","#8cace4",
+                    "#e48c8c","#f7df7c","#2f90a8","#e32b2b","#351431","#eee7cf","#4b5e20","#c9b9ad","#8700ff","#3e95cd","#f2cfb4","	#fc7a08","#000000","#98d400",
+                    "#f50b86","#1d2564","#05f9e2","#e2f705","#ff6f00"],
+                    data: [0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,]
+                    }
+                ]
+                },
+                options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Visualisation des humeurs'
+                }
+                }
+            });
+        </script>
+        <?php 
+            }
         ?>
 </body>
 </html>
