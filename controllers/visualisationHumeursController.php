@@ -31,20 +31,19 @@ class visualisationHumeursController implements controller
         $view->setVar('choixVisualisation', httphelper::getParam('choixVisualisation'));
         $view->setVar('humeurs', httphelper::getParam('humeurs'));
 
-
         return $view;
     }  
 
     /**
      * @param pdo connexion à la base de données
-     * @return view appel de la éthode index
+     * @return view appel de la méthode index
      */
     public function afficher($pdo)
     {
 
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
 
-        $_POST['humeurs'] = humeurservice::getHumeursUtilisateur($pdo, $codeUtilisateur);
+        $humeurs = stathumeurservice::getNbEmotion($pdo, $codeUtilisateur);
 
         return $this->index($pdo);
     }

@@ -56,7 +56,7 @@ require 'includes/header.php';
                     backgroundColor: ["#d7a7ff", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#a48ce4","#b6d7a8","#8cace4",
                     "#e48c8c","#f7df7c","#2f90a8","#e32b2b","#351431","#eee7cf","#4b5e20","#c9b9ad","#8700ff","#3e95cd","#f2cfb4","	#fc7a08","#000000","#98d400",
                     "#f50b86","#1d2564","#05f9e2","#e2f705","#ff6f00"],
-                    data: [0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,]
+                    data: <?php var_dump($humeurs); $humeurs; ?>
                 }]
                 },
                 options: {
@@ -94,7 +94,7 @@ require 'includes/header.php';
                     backgroundColor: ["#d7a7ff", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#a48ce4","#b6d7a8","#8cace4",
                     "#e48c8c","#f7df7c","#2f90a8","#e32b2b","#351431","#eee7cf","#4b5e20","#c9b9ad","#8700ff","#3e95cd","#f2cfb4","	#fc7a08","#000000","#98d400",
                     "#f50b86","#1d2564","#05f9e2","#e2f705","#ff6f00"],
-                    data: [0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,]
+                    data: <?php $humeurs; ?>
                     }
                 ]
                 },
