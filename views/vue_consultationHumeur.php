@@ -1,5 +1,9 @@
 <?php
 require 'includes/header.php';
+
+if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
+    header('Location: /?controller=index');
+  }
 ?>
 <body>
 
@@ -94,6 +98,8 @@ require 'includes/header.php';
                                 <td><?php echo($humeur['DATE_HEURE']) ?></td>
                                 <td><?php echo($humeur['EMOJI'].' - '.$humeur['NOM']) ?></td>
                                 <td><?php echo($humeur['DESCRIPTION']) ?></td>
+                                <td><input type="button" value="TODO Modifier" class="btn btn-outline-primary"></td>
+                                <td><input type="button" value="TODO Supprimer" class="btn btn-outline-danger"></td>
                             </tr>
                         <?php
                         }

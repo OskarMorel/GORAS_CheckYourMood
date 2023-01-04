@@ -1,5 +1,9 @@
 <?php
 require 'includes/header.php';
+
+if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
+    header('Location: /?controller=index');
+}
 ?>
 <body>
     <div class="container-fluid text-center">

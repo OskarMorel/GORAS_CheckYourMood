@@ -1,5 +1,9 @@
 <?php
 require 'includes/header.php';
+
+if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
+    header('Location: /?controller=index');
+}
 ?>
 <body>
     <div class="container-fluid text-center">
@@ -20,7 +24,7 @@ require 'includes/header.php';
                 <label class="btn btn-outline-secondary" for="camembert">Camembert</label> 
 
                 <input name="choixVisualisation" value="baton" type="radio" class="btn-check" id="baton" <?php if(isset($choixConsultation)) {if($choixConsultation == 'baton') {echo('checked');}} ?>>
-                <label class="btn btn-outline-secondary" for="baton">Diagramme en baton</label> 
+                <label class="btn btn-outline-secondary btnRed" for="baton">Diagramme en baton</label> 
 
                 <input name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>" hidden>
 
