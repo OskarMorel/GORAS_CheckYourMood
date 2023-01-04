@@ -10,25 +10,27 @@ class stathumeurservice
      */
     public static function getNbEmotion($pdo, $codeUtilisateur)
     {
-        
-
-        
 
         $stmt = $pdo->prepare("SELECT * FROM emotion");
         $stmt->execute();
 
+        $tabNbHumeurs[] = array();
+        $texteFinal = "[";
+
         while ($rowStmt = $stmt->fetch()) {
-            $recupNbHumeur = $pdo->prepare("SELECT SUM(:codeEmotion) FROM 'humeur' WHERE CODE_EMOTION = ':codeEmotion' AND CODE_UTILISATEUR = ':codeUtilisateur'");
-            $recupNbHumeur->bindParam(':codeEmotion', $row['ID_EMOTION']);
+            $recupNbHumeur = $pdo->prepare("SELECT COUNT(CODE_EMOTION) FROM humeur WHERE CODE_EMOTION = :codeEmotion AND CODE_UTILISATEUR = :codeUtilisateur");
+            $recupNbHumeur->bindParam(':codeEmotion', $rowStmt['ID_EMOTION']);
             $recupNbHumeur->bindParam(':codeUtilisateur', $codeUtilisateur);
             $recupNbHumeur->execute();
             $row = $recupNbHumeur->fetch();
-
-            $tabNbHumeurs[] = array(
-                $row
-            );
+            
+            $tabNbHumeurs[] = json_encode(array_values($row));
         }
-        return $tabNbHumeurs;
+        unset($tabNbHumeurs[0]);
+        $texte = implode(',',$tabNbHumeurs);
+        $texteSansCrochets = str_replace(["[", "]"], "",$texte);
+        $texteFinal = $texteFinal.$texteSansCrochets."]";   
+        return $texteFinal;
     }
 
 

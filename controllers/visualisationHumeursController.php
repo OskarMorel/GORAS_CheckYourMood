@@ -11,7 +11,7 @@ use yasmf\controller;
 use yasmf\httphelper;
 use yasmf\config;
 use model\verificationservice;
-use model\humeurservice;
+use model\stathumeurservice;
 
 /**
  * Class de visualisationHumeursController
@@ -29,7 +29,8 @@ class visualisationHumeursController implements controller
         $view = new view(config::getRacine() . "views/vue_visualisationHumeurs");
 
         $view->setVar('choixVisualisation', httphelper::getParam('choixVisualisation'));
-        $view->setVar('humeurs', httphelper::getParam('humeurs'));
+        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+        $view->setVar('humeursStat', stathumeurservice::getNbEmotion($pdo, $codeUtilisateur));
 
         return $view;
     }  
@@ -43,7 +44,7 @@ class visualisationHumeursController implements controller
 
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
 
-        $humeurs = stathumeurservice::getNbEmotion($pdo, $codeUtilisateur);
+        $humeursStat = stathumeurservice::getNbEmotion($pdo, $codeUtilisateur);
 
         return $this->index($pdo);
     }
