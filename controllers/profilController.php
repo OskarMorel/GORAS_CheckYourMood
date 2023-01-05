@@ -28,6 +28,7 @@ class profilController implements controller
     {
         $view = new view(config::getRacine() . "/views/vue_profil");
         $view->setVar('RACINE', config::getRacine());
+        $view->setVar('edition', false);
 
         return $view;
     }
@@ -39,6 +40,7 @@ class profilController implements controller
     {
         //TODO gerer les sessions
         return $this->index($pdo);
+        $edition = $_POST['editionProfil'];
     }
 
     /**
@@ -55,7 +57,7 @@ class profilController implements controller
         //Suppression de l'utilisateur
         utilisateurservice::suppUtilisateur($pdo, $codeUtilisateur);
 
-        sleep(6);
+        sleep(4); //Laisse le temps a l'utilisateur de voir la notification
         
         header("Location: /?controller=index");
         exit();

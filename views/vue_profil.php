@@ -5,9 +5,9 @@ require 'includes/header.php';
     <!-- Barre de navigation -->
     <?php
         require 'includes/navbar.php';
-        $edition = false;
-        //var_dump($edition);
+        var_dump($edition);
         //var_dump($_SESSION);
+        //$edition = true;
     ?>
 
     
@@ -66,9 +66,10 @@ require 'includes/header.php';
             </div>
             <p class="espace1"></p>
             <input hidden name="idUtilisateur" value="<?php echo($_SESSION['id']); ?>">
+            <input hidden name="editionProfil" value="true">
             <div class="row">
                 <div class="col"></div>
-                <div class="col"><input type="submit" value="Modifier mes informations" class="btn btn-outline-primary"></div>
+                <div class="col"><input type="submit" value="Modifier mes informations" class="btn btn-primary"></div>
                 <div class="col"></div>
             </div>
         </form>
@@ -78,11 +79,10 @@ require 'includes/header.php';
         <!-- Partie de la vue pour se deinscrire de CheckYourMood -->
 
         <!-- Boutton pour afficher le modal contenant le formulaire de deinscription -->
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal1">Me déinscrire</button>
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeinscription">Me déinscrire</button>
 
-        <!-- Modal contenant le formulaire de deinscription et qui appelle le controller profil et l'action supprimer profil -->
-        <div class="modal fade" id="modal1">
-
+        <div class="modal fade" id="modalDeinscription">
+            <!-- Modal contenant le formulaire de deinscription et qui appelle le controller profil et l'action supprimer profil -->
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

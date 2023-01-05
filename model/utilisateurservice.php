@@ -32,7 +32,6 @@ class utilisateurservice
     /* Supprimer un utilisateur */
     public static function suppUtilisateur($pdo, $codeUtilisateur)
     {
-
         $sql = "DELETE FROM `utilisateur` WHERE ID_UTILISATEUR = ?";
 
         try {
