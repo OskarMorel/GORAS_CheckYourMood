@@ -47,5 +47,21 @@ class consultationHumeursController implements controller
         return $this->index($pdo);
     }
 
+    /**
+     * Suppression d'une humeur d'un utilisateur
+     * @param pdo connexion à la base de données
+     * @return view appel de la méthode index
+     */
+    public function supprimer($pdo)
+    {
+        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+        $codeEmotion = httphelper::getParam('codeEmotionASuppr');
+        $dateEmotion = httphelper::getParam('dateEmo');
+
+        humeurservice::suppHumeursUtilisateur($pdo, $codeUtilisateur, $codeEmotion, $dateEmotion);
+
+        return $this->index($pdo);
+    }
+
 }
 

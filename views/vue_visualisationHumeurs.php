@@ -1,5 +1,9 @@
 <?php
 require 'includes/header.php';
+
+if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
+    header('Location: /?controller=index');
+}
 ?>
 <body>
     <div class="container-fluid text-center">
@@ -20,7 +24,7 @@ require 'includes/header.php';
                 <label class="btn btn-outline-secondary" for="camembert">Camembert</label> 
 
                 <input name="choixVisualisation" value="baton" type="radio" class="btn-check" id="baton" <?php if(isset($choixConsultation)) {if($choixConsultation == 'baton') {echo('checked');}} ?>>
-                <label class="btn btn-outline-secondary" for="baton">Diagramme en baton</label> 
+                <label class="btn btn-outline-secondary btnRed" for="baton">Diagramme en baton</label> 
 
                 <input name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>" hidden>
 
@@ -33,7 +37,7 @@ require 'includes/header.php';
 
         
         <?php 
-            if ($choixVisualisation == 'camembert') {
+            if ($choixVisualisation == 'camembert') {   
         ?>    
         <div class="row">
 
@@ -56,7 +60,7 @@ require 'includes/header.php';
                     backgroundColor: ["#d7a7ff", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#a48ce4","#b6d7a8","#8cace4",
                     "#e48c8c","#f7df7c","#2f90a8","#e32b2b","#351431","#eee7cf","#4b5e20","#c9b9ad","#8700ff","#3e95cd","#f2cfb4","	#fc7a08","#000000","#98d400",
                     "#f50b86","#1d2564","#05f9e2","#e2f705","#ff6f00"],
-                    data: [0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,]
+                    data: <?php echo $humeursStat ?>
                 }]
                 },
                 options: {
@@ -94,7 +98,7 @@ require 'includes/header.php';
                     backgroundColor: ["#d7a7ff", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#a48ce4","#b6d7a8","#8cace4",
                     "#e48c8c","#f7df7c","#2f90a8","#e32b2b","#351431","#eee7cf","#4b5e20","#c9b9ad","#8700ff","#3e95cd","#f2cfb4","	#fc7a08","#000000","#98d400",
                     "#f50b86","#1d2564","#05f9e2","#e2f705","#ff6f00"],
-                    data: [0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,]
+                    data: <?php echo $humeursStat ?>
                     }
                 ]
                 },
@@ -108,7 +112,7 @@ require 'includes/header.php';
             });
         </script>
         <?php 
-            }
+            } 
         ?>
 </body>
 </html>

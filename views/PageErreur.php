@@ -9,7 +9,10 @@ require 'includes/header.php';
         ?>
         <p class="espace2"></p>
         <div class="row">
-            <h4>Une erreur est survenue</h4>
+            <div>
+                <img src="https://www.photofunky.net/output/image/c/2/1/2/c21293/photofunky.gif" alt="Gif erreur">
+            </div>
+            <h4>Oups une erreur est survenue</h4>
             <p><?php var_dump($err) ?></p>
         </div>
     </div>

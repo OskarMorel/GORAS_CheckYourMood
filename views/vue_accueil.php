@@ -1,5 +1,9 @@
 <?php
 require 'includes/header.php';
+
+if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
+  header('Location: /?controller=index');
+}
 ?>
 <body>
     <div class="container-fluid text-center">
@@ -42,7 +46,7 @@ require 'includes/header.php';
               <a href="/?controller=visualisationHumeurs">
                 <div class="zoom">
                 <p class="icon-accueil">&#128200;</p>
-                <p class="texteBouton">Voir les statistiques sur mes humeurs</p>
+                <p class="texteBouton">Statistiques sur mes humeurs</p>
                 </div>  
               </a>
             </div>

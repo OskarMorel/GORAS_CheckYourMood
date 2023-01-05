@@ -17,7 +17,7 @@ class humeurservice
     /* Recupération des humeurs */
     public static function getHumeursUtilisateur($pdo, $codeUtilisateur)
     {
-        $sql = "SELECT DATE_HEURE, DESCRIPTION, emotion.EMOJI, emotion.NOM
+        $sql = "SELECT DATE_HEURE, DESCRIPTION, emotion.EMOJI, emotion.NOM, humeur.CODE_EMOTION
                 FROM `humeur`
                 JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
                 WHERE humeur.CODE_UTILISATEUR = ?
@@ -30,7 +30,7 @@ class humeurservice
         $tabHumeurs = array();
         while ($row = $stmt->fetch()) {
             $tabHumeurs[] = array(
-                'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION']
+                'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'], 'CODE_EMOTION' => $row['CODE_EMOTION']
             );
         }
         return $tabHumeurs;
@@ -60,19 +60,13 @@ class humeurservice
     }
 
     /* Suppression d'une humeur */
-    public static function suppHumeursUtilisateur($pdo, $codeUtilisateur)
+    public static function suppHumeursUtilisateur($pdo, $codeUtilisateur, $codeEmotion, $dateEmotion)
     {
-
-        $sql = "DELETE FROM `humeur` WHERE CODE_UTILISATEUR = ?";
-
         try {
 
-            $pdo->beginTransaction();
+            $stmt = $pdo->prepare("DELETE FROM humeur WHERE CODE_UTILISATEUR = ? AND CODE_EMOTION = ? AND DATE_HEURE = ?");
 
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$codeUtilisateur]);
-
-            $pdo->commit();
+            $stmt->execute([$codeUtilisateur, $codeEmotion, $dateEmotion]);
             
         } catch (Exception $e) {
             $pdo->rollBack();

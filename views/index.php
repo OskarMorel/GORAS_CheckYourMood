@@ -61,7 +61,7 @@ require 'includes/header.php';
                             <div class="row">
                                 <div class="col-1"></div>
                                 <div class="col">
-                                    <input name="identifiant" type="text" class="form-control" placeholder="Saisissez votre identifiant">
+                                    <input name="identifiant" type="text" class="form-control" placeholder="Saisissez votre identifiant" value="<?php if (isset($_POST['identifiant']) && $_POST['identifiant'] != "") {echo $_POST['identifiant'];} ?>">
                                 </div>
                                 <div class="col-1"></div>
                             </div>
