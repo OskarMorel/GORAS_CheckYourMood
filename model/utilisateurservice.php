@@ -21,13 +21,20 @@ class utilisateurservice
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$nom, $prenom, $nomUtilisateur, $mdp, $mail,  $genre, $dateNaissance]);
             $_GET['creation'] = true;
+        } catch (\PDOException $e) {
+            $code = $e -> getCode();
+            if ($code == 23000) {
+                $_GET['identifiantDejaUtilise'] = true;
+            } else {
+                $e->getMessage();
+                $_GET['exception'] = $e;
+            }
+
         } catch (\Exception $e) {
             $_GET['creation'] = false;
             $e->getMessage();
             $_GET['exception'] = $e;
-            var_dump($e->getMessage());
-            exit();
-            
+            var_dump($e);
         }
        
     }
@@ -42,11 +49,9 @@ class utilisateurservice
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$codeUtilisateur]);
             
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $pdo->rollBack();
             $e -> getMessage();
-            var_dump($e->getMessage());
-            exit();
         }
     }
 

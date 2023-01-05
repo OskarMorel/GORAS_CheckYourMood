@@ -17,9 +17,6 @@ require 'includes/header.php';
             </div>
         </div>
         <p class="espace2"></p>
-        <?php 
-        var_dump($_POST)
-        ?>
         <form action="/?controller=inscription&action=creation" method="POST">
 
             <?php if($creation) { ?>
@@ -38,53 +35,14 @@ require 'includes/header.php';
             <?php } ?>
 
             <?php if(!$creation && $identifiantDejaUtilise) { ?>
-            <!-- Si la création ne s'est pas bien déroulée on affiche un message d'avertissement -->
+            <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-danger" role="alert">
                         Erreur ! L'identifiant <?php echo ($nomUtilisateur);?> est deja utilisé.
                         <br>                        
-                        <a href="/?controller=index"" class="alert-link">Cliquez ici pour vous connecter</a>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-            </div>
-            <?php } ?>
-
-            <?php if(!$creation && !$nomUtilisateurOK) { ?>
-            <!-- Si la création ne s'est pas bien déroulée on affiche un message d'avertissement -->
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col">
-                    <div class="alert alert-warning" role="alert">
-                        Attention ! L'identifiant ne doit pas depasser 80 caractères.                     
-                    </div>
-                </div>
-                <div class="col-1"></div>
-            </div>
-            <?php } ?>
-
-            <?php if(!$creation && !$nomOK) { ?>
-            <!-- Si la création ne s'est pas bien déroulée on affiche un message d'avertissement -->
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col">
-                    <div class="alert alert-warning" role="alert">
-                        Attention ! Le nom ne doit pas depasser 80 caractères.                     
-                    </div>
-                </div>
-                <div class="col-1"></div>
-            </div>
-            <?php } ?>
-
-            <?php if(!$creation && !$prenomOK) { ?>
-            <!-- Si la création ne s'est pas bien déroulée on affiche un message d'avertissement -->
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col">
-                    <div class="alert alert-warning" role="alert">
-                        Attention ! Le prenom ne doit pas depasser 80 caractères.                     
+                        <a href="/?controller=index"" class="alert-link">Cliquez ici si vous connecter</a>
                     </div>
                 </div>
                 <div class="col-1"></div>
@@ -118,24 +76,23 @@ require 'includes/header.php';
             </div>
             <?php } ?>
 
-
             <!-- Partie nom, prenom, nom d'utilisateur, adresse mail-->
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col gauche">
-                    <label class="form-label">Nom</label>
-                    <input name="newNom" value="<?php if ($nomOK) { echo $nom; } ?>" type="Text" placeholder="Saisissez votre nom" class="form-control <?php if ($nomOK) { echo 'is-valid'; } ?>" required>
+                    <label for="newNom"  class="form-label">Nom</label>
+                    <input pattern="\w{2,80}" title="Le nom  ne doit pas depasser 80 caractere" name="newNom" value="<?php if ($nomOK) { echo $nom; } ?>" type="Text" placeholder="Saisissez votre nom" class="form-control <?php if ($nomOK) { echo 'is-valid'; } ?>" required>
                 </div>
                 <div class="col gauche">
-                    <label class="form-label">Prenom</label>
-                    <input name="newPrenom" value="<?php if ($prenomOK) { echo $prenom; } ?>" type="Text" placeholder="Saisissez votre prenom" class="form-control <?php if ($prenomOK) { echo 'is-valid'; } ?>" required>
+                    <label for="newPrenom" class="form-label">Prenom</label>
+                    <input pattern="\w{2,80}" title="Le prenom ne doit pas depasser 80 caractere" name="newPrenom" value="<?php if ($prenomOK) { echo $prenom; } ?>" type="Text" placeholder="Saisissez votre prenom" class="form-control <?php if ($prenomOK) { echo 'is-valid'; } ?>" required>
                 </div>
                 <div class="col gauche">
-                    <label class="form-label">Nom d'utilisateur</label>
-                    <input name="newNomUtilisateur" value="<?php if ($nomUtilisateurOK) { echo $nomUtilisateur; } ?>" type="Text" placeholder="Saisissez votre nom d'utilisateur" class="form-control <?php if ($nomUtilisateurOK) { echo 'is-valid'; } ?>" required>
+                    <label for="newNomUtilisateur" class="form-label">Nom d'utilisateur</label>
+                    <input pattern="\w{2,80}" title="Le nom d'utilisateur ne doit pas depasser 80 caractere" name="newNomUtilisateur" value="<?php if ($nomUtilisateurOK) { echo $nomUtilisateur; } ?>" type="Text" placeholder="Saisissez votre nom d'utilisateur" class="form-control <?php if ($nomUtilisateurOK) { echo 'is-valid'; } ?>" required>
                 </div>
                 <div class="col gauche">
-                    <label class="form-label">Adresse Mail</label>
+                    <label for="newMail" class="form-label">Adresse Mail</label>
                     <input name="newMail" value="<?php if ($mailOK) { echo $mail; } ?>" type="Text" placeholder="Saisissez votre adresse mail" class="form-control <?php if ($mailOK) { echo 'is-valid'; } ?>" required>
                 </div>
                 <div class="col-1"></div>

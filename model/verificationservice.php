@@ -7,13 +7,16 @@ class verificationservice
 
     /**
      * Permet de verifier la valeur du nom d'un utilisateur
-     * @return true si ok false sinon
+     * @return true si trouver sinon false
      */
     public static function testNom($nom) {
-        if (strlen($nom) < 80) {
-            return true;
-        } else {
-            return false;
+        if ($nom != null || $nom != "") {
+            if (strlen($nom) < 80) {
+                //$_GET['msgRetour'] = "test d'un msg retour";
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
