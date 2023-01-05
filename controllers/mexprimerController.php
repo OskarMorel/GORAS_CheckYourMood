@@ -33,12 +33,14 @@ class mexprimerController implements controller
         $view->setVar('intervalleValide', null);
 
         $view->setVar('description', httphelper::getParam('newDescription'));
-        $view->setVar('dateHeure', httphelper::getParam('newDateHeure'));
+        $view->setVar('heure', httphelper::getParam('newHeure'));
+        $view->setVar('date', httphelper::getParam('newDate'));
         $view->setVar('codeEmotion', httphelper::getParam('newCodeEmotion'));
         $view->setVar('codeUtilisateur', httphelper::getParam('newCodeUtilisateur'));
 
         $view->setVar('descriptionOK', httphelper::getParam('descriptionOK'));
         $view->setVar('dateHeureOK', httphelper::getParam('dateHeureOK'));
+        //gerer date heure
         $view->setVar('codeUtilisateurOK', httphelper::getParam('codeUtilisateurOK'));
         $view->setVar('codeEmotionOK', httphelper::getParam('codeEmotionOK'));
 
@@ -63,7 +65,7 @@ class mexprimerController implements controller
 
         //TODO verifier les variables
 
-        humeurservice::ajoutHumeur($pdo, $description, $dateHeure, $codeUtilisateur, $codeEmotion);
+        //humeurservice::ajoutHumeur($pdo, $description, $dateHeure, $codeUtilisateur, $codeEmotion);
 
         return $this->index($pdo);
     }

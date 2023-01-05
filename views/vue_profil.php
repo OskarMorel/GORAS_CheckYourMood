@@ -13,7 +13,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         //var_dump($_SESSION);
         //$edition = true;
     ?>
-
     
     <div class="container-fluid text-center">
         <p class="espace2"></p>

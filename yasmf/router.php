@@ -35,8 +35,6 @@ class router {
             }*/
             $controllerName = httphelper::getParam('controller') ?: 'index';
 
-            
-
             $controllerQualifiedName = "controllers\\" . $controllerName . "Controller";
 
             try {

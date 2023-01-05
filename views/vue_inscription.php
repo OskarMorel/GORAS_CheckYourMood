@@ -17,6 +17,9 @@ require 'includes/header.php';
             </div>
         </div>
         <p class="espace2"></p>
+        <?php 
+        var_dump($_POST)
+        ?>
         <form action="/?controller=inscription&action=creation" method="POST">
 
             <?php if($creation) { ?>
@@ -35,7 +38,7 @@ require 'includes/header.php';
             <?php } ?>
 
             <?php if(!$creation && $identifiantDejaUtilise) { ?>
-            <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
+            <!-- Si la création ne s'est pas bien déroulée on affiche un message d'avertissement -->
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
@@ -43,6 +46,45 @@ require 'includes/header.php';
                         Erreur ! L'identifiant <?php echo ($nomUtilisateur);?> est deja utilisé.
                         <br>                        
                         <a href="/?controller=index"" class="alert-link">Cliquez ici pour vous connecter</a>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <?php } ?>
+
+            <?php if(!$creation && !$nomUtilisateurOK) { ?>
+            <!-- Si la création ne s'est pas bien déroulée on affiche un message d'avertissement -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        Attention ! L'identifiant ne doit pas depasser 80 caractères.                     
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <?php } ?>
+
+            <?php if(!$creation && !$nomOK) { ?>
+            <!-- Si la création ne s'est pas bien déroulée on affiche un message d'avertissement -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        Attention ! Le nom ne doit pas depasser 80 caractères.                     
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <?php } ?>
+
+            <?php if(!$creation && !$prenomOK) { ?>
+            <!-- Si la création ne s'est pas bien déroulée on affiche un message d'avertissement -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        Attention ! Le prenom ne doit pas depasser 80 caractères.                     
                     </div>
                 </div>
                 <div class="col-1"></div>

@@ -96,7 +96,7 @@ a:link {
 
 /* Page saisie humeur */
 
-input[type="datetime-local"] {
+input[type="time"] {
     padding: 5px;
     top: 50%;
     font-family: "Roboto Mono",monospace;

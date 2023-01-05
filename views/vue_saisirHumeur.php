@@ -25,7 +25,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="col-1"></div>
         </div>
         <?php if($creation) { ?>
-            <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
+            <!-- Si la creation s'est bien déroulée on affiche un message de validation -->
             <p class="espace1"></p>
             <div class="row">
                 <div class="col-2"></div>
@@ -58,8 +58,16 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 </div>
                 <div class="col-3">
                     <label>Période de l'humeur</label><br>
-                    <input name="newDateHeure" type="datetime-local" value="<?php  if (isset($dateHeure)) {echo($dateHeure);}?>" required>
+                    <!-- Input caché pour avoir la date du jour de l'humeur 
+                    <input hidden name="newDate" type="date" value="<?php /* mettre une fonction pour récuperer la date */ ?>">-->
+                    <input name="newHeure" min="06:40" max="08:40" type="time" required value="<?php echo($heure); ?>">
                 </div>
+                <?php  
+                //echo(time("Y/m/d"));
+                //$date = "2023-01-05 08:00:00";
+                //echo ($date->format('Y/m/d H:i:s'));
+                
+                ?>
                 <div class="col-2"></div>
             </div>
             <p class="espace1"></p>

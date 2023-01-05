@@ -13,14 +13,20 @@ class connexionservice
      */
     public static function identifiantExiste($pdo, $identifiant)
     {
-        $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE NOM_UTILISATEUR = ?");
-        $stmt->execute([$identifiant]);
-        $user = $stmt->fetch();
-        if ($user == null) {
-            return false;
-        } else {
-            return true;
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE NOM_UTILISATEUR = ?");
+            $stmt->execute([$identifiant]);
+            $user = $stmt->fetch();
+            if ($user == null) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+            exit();
         }
+        
     }
 
     /**
