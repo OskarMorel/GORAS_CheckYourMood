@@ -55,7 +55,8 @@ class  datasource
             $pdo = new PDO($dsn, $this->user, $this->pass, $options);
             return $pdo;
         } catch (\PDOException $Exception) {
-            header("Location: /../views/PageErreur.php");
+            header("Location: ../views/vue_erreurBD.php");
+            exit();
         }
     }
 }
