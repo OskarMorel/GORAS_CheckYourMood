@@ -15,19 +15,26 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
-            <h5>Choisissez comment vous voulez consulter vos humeurs</h5>
+            <h5>Choisissez comment vous voulez consulter vos humeurs</h5><br>
             <p class="espace0"></p>
             <form action="/?controller=consultationHumeurs&action=consulter" method="POST">
 
-                <input name="choixConsultation" value="tout" type="radio" class="btn-check" id="toutHumeurs" <?php if(isset($choixConsultation)) {if($choixConsultation == 'tout') {echo('checked');}} ?>>
-                <label class="btn btn-outline-secondary" for="toutHumeurs">Toutes les humeurs</label> 
+                <input hidden name="choixConsultation" value="tout" type="text" id="toutHumeurs">
 
-                <input name="choixConsultation" value="calendrier" type="radio" class="btn-check" id="calendrier" <?php if(isset($choixConsultation)) {if($choixConsultation == 'calendrier') {echo('checked');}} ?>>
-                <label class="btn btn-outline-secondary" for="calendrier">Calendrier des humeurs</label> 
+                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
+                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                <input name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>" hidden>
+                <input type="submit" value="Toutes les humeurs" class="btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'tout') {echo('-outline');}}?>-secondary">
 
-                <input type="submit" value="OK" class="btn btn-primary">
+            </form>
+            <form action="/?controller=consultationHumeurs&action=consulter" method="POST">
+
+                <input hidden name="choixConsultation" value="calendrier" type="text" id="calendrier">
+
+                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
+                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
+
+                <input type="submit" value="Calendrier des humeurs" class="btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'calendrier') {echo('-outline');}}?>-secondary">
             </form>
             </div>
             <div class="col-1"></div>

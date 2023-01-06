@@ -102,7 +102,7 @@ require 'includes/header.php';
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col gauche">
-                    <label class="form-label">Genre</label>
+                    <label class="form-label">Genre <i>(optionnel)</i></label>
                     <select class="form-select <?php if ($genreOK) { echo 'is-valid'; } ?>" name="newGenre">
                         <option value="">Veuillez renseigner un genre</option>
                         <option 
@@ -129,7 +129,7 @@ require 'includes/header.php';
                     </select>
                 </div>
                 <div class="col gauche">
-                    <label class="form-label">Date de naissance</label>
+                    <label class="form-label">Date de naissance <i>(optionnel)</i></label>
                     <input name="newDateNaissance" value="<?php if ($dateNaissanceOK) { echo $dateNaissance; } ?>" type="date" class="form-control <?php if ($dateNaissanceOK) { echo 'is-valid'; } ?>">
                 </div>
                 <div class="col gauche">

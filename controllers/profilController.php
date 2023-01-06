@@ -52,7 +52,7 @@ class profilController implements controller
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
 
         //Suppression de toutes les humeurs de l'utilisateur
-        humeurservice::suppHumeursUtilisateur($pdo, $codeUtilisateur);
+        humeurservice::suppToutesHumeursUtilisateur($pdo, $codeUtilisateur);
 
         //Suppression de l'utilisateur
         utilisateurservice::suppUtilisateur($pdo, $codeUtilisateur);

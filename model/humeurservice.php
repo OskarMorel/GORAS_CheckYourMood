@@ -74,6 +74,24 @@ class humeurservice
         }
     }
 
+    /* Suppression d'une humeur */
+    public static function suppToutesHumeursUtilisateur($pdo, $codeUtilisateur)
+    {
+        try {
+
+            $stmt = $pdo->prepare("DELETE FROM humeur WHERE CODE_UTILISATEUR = ?");
+
+            $stmt->execute([$codeUtilisateur]);
+            
+        } catch (Exception $e) {
+            $pdo->rollBack();
+            $e -> getMessage();
+        }
+    }
+
+
+    
+
     public static function intervalleHumeur() {
         
     }
