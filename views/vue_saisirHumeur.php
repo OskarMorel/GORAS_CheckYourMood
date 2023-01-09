@@ -60,7 +60,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <label>Période de l'humeur</label><br>
                     <!-- Input caché pour avoir la date du jour de l'humeur 
                     <input hidden name="newDate" type="date" value="<?php /* mettre une fonction pour récuperer la date */ ?>">-->
-                    <input name="newHeure" min="06:40" max="08:40" type="time" required value="<?php echo($heure); ?>">
+                    <input class="form-control" name="newHeure" min="06:40" max="08:40" type="time" required value="<?php echo($heure); ?>">
                 </div>
                 <?php  
                 //echo(time("Y/m/d"));

@@ -34,16 +34,6 @@ class profilController implements controller
     }
 
     /**
-     * Modifie le profil de l'utilisateur
-     */
-    public function modifierProfil($pdo)
-    {
-        //TODO gerer les sessions
-        return $this->index($pdo);
-        $edition = $_POST['editionProfil'];
-    }
-
-    /**
      * Supprime le profil de l'utilisateur le deinscrit de l'application
      */
     public function supprimerProfil($pdo)

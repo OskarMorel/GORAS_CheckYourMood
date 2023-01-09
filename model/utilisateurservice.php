@@ -55,4 +55,29 @@ class utilisateurservice
         }
     }
 
+    /* Modifier profil */
+    public static function modifierProfil($pdo, $nom, $prenom, $nomUtilisateur, $mail, $genre, $dateNaissance, $codeUtilisateur)
+    {
+
+        $sql = "UPDATE utilisateur
+        SET NOM = ?,
+        PRENOM = ?,
+        NOM_UTILISATEUR = ?,
+        MAIL = ?,
+        GENRE = ?,
+        DATE_DE_NAISSANCE = ?	 
+        WHERE ID_UTILISATEUR = ?";
+
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$nom, $prenom, $nomUtilisateur, $mail, $genre, $dateNaissance, $codeUtilisateur]);
+            $_GET['modification'] = true;
+        } catch (\Exception $e) {
+            //$pdo->rollBack();
+            $e->getMessage();
+            print $e;
+            $_GET['modification'] = false;
+        }
+    }
+
 }

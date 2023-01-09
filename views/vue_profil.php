@@ -9,7 +9,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <!-- Barre de navigation -->
     <?php
         require 'includes/navbar.php';
-        var_dump($edition);
         //var_dump($_SESSION);
         //$edition = true;
     ?>
@@ -22,17 +21,17 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col">
                     <div class="gauche">
                         <label class="form-label">Nom</label>
-                        <input <?php if (!$edition) { echo("disabled"); } ?> value="<?php echo($_SESSION['nom']); ?>" type="Text" class="form-control">
+                        <input disabled value="<?php echo($_SESSION['nom']); ?>" type="Text" class="form-control">
                     </div>
                     <p class="espace0"></p>
                     <div class="gauche">
                         <label class="form-label">Prenom</label>
-                        <input <?php if (!$edition) { echo("disabled"); } ?> value="<?php echo($_SESSION['prenom']); ?>" type="Text" class="form-control">
+                        <input disabled value="<?php echo($_SESSION['prenom']); ?>" type="Text" class="form-control">
                     </div>
                     <p class="espace0"></p>
                     <div class="gauche">
                         <label class="form-label">Genre</label>
-                        <select <?php if (!$edition) { echo("disabled"); } ?> class="form-select">
+                        <select disabled class="form-select">
                             <?php if ($_SESSION['genre'] == "homme") { ?>
                             <option value="homme" selected>homme</option>
                             <option value="femme">femme</option>
@@ -52,17 +51,17 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col">
                     <div class="gauche">
                         <label class="form-label">E-Mail</label>
-                        <input <?php if (!$edition) { echo("disabled"); } ?> value="<?php echo($_SESSION['mail']); ?>" type="email" class="form-control">
+                        <input disabled value="<?php echo($_SESSION['mail']); ?>" type="email" class="form-control">
                     </div>
                     <p class="espace0"></p>
                     <div class="gauche">
                         <label class="form-label">Nom d'utilisateur</label>
-                        <input <?php if (!$edition) { echo("disabled"); } ?> value="<?php echo($_SESSION['nom_utilisateur']); ?>" type="text" class="form-control">
+                        <input disabled value="<?php echo($_SESSION['nom_utilisateur']); ?>" type="text" class="form-control">
                     </div>
                     <p class="espace0"></p>
                     <div class="gauche">
                         <label class="form-label">Date de naissance</label>
-                        <input <?php if (!$edition) { echo("disabled"); } ?> value="<?php echo($_SESSION['date_naissance']); ?>" type="date" class="form-control">
+                        <input disabled value="<?php echo($_SESSION['date_naissance']); ?>" type="date" class="form-control">
                     </div>
                 </div>
                 <div class="col"></div>
@@ -72,7 +71,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <input hidden name="editionProfil" value="true">
             <div class="row">
                 <div class="col"></div>
-                <div class="col"><input type="submit" value="Modifier mes informations" class="btn btn-primary"></div>
+                <div class="col"><a href="/?controller=modificationProfil" class="btn btn-primary">Modifier mes informations</a></div>
                 <div class="col"></div>
             </div>
         </form>

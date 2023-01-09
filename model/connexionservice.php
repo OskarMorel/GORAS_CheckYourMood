@@ -57,5 +57,17 @@ class connexionservice
         return $user;
     }
 
+    /**
+     * Donne les infos de l'utilisateur sélectionné
+     * retourne vrai si les informations ont pu être données sinon faux
+     */
+    public static function getUtilisateurById($pdo, $id)
+    {
+        $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE ID_UTILISATEUR = ?");
+        $stmt->execute([$id]);
+        $user = $stmt->fetch();
+        return $user;
+    }
+
 
 }
