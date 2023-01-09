@@ -67,7 +67,6 @@ class verificationservice
             return false;
         }
     }
-
     
     /**
      * Permet de verifier la valeur d'un genre est correcte
