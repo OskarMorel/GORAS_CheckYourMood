@@ -18,7 +18,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="col-1"></div>
             <div class="col">
                 <h5>Choisissez votre type de visualisation</h5>
-                <form action="/?controller=visualisationHumeurs&action=afficher" method="POST">
+                <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
 
                 <input name="choixVisualisation" value="camembert" type="radio" class="btn-check" id="camembert" <?php if(isset($choixConsultation)) {if($choixConsultation == 'camembert') {echo('checked');}} ?>>
                 <label class="btn btn-outline-secondary" for="camembert">Camembert</label> 

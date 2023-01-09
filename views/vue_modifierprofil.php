@@ -18,7 +18,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <p class="espace1"></p>
         <h2>Modification de votre profil</h2>
         <p class="espace1"></p>
-        <form action="/?controller=modificationProfil&action=modifierProfil" method="POST">
+        <form action="/?controller=modificationprofil&action=modifierProfil" method="POST">
             <?php if($modification) { ?>
                 <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
                 <div class="row">
