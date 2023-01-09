@@ -17,7 +17,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="col">
             <h5>Choisissez comment vous voulez consulter vos humeurs</h5><br>
             <p class="espace0"></p>
-            <form action="/?controller=consultationHumeurs&action=consulter" method="POST">
+            <form action="/?controller=consultationhumeurs&action=consulter" method="POST">
 
                 <input hidden name="choixConsultation" value="tout" type="text" id="toutHumeurs">
 
@@ -27,7 +27,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <input type="submit" value="Toutes les humeurs" class="btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'tout') {echo('-outline');}}?>-secondary">
 
             </form>
-            <form action="/?controller=consultationHumeurs&action=consulter" method="POST">
+            <form action="/?controller=consultationhumeurs&action=consulter" method="POST">
 
                 <input hidden name="choixConsultation" value="calendrier" type="text" id="calendrier">
 
