@@ -72,7 +72,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="row">
                 <div class="col"></div>
                 <div class="col-2"><a href="/?controller=modificationProfil" class="btn btn-primary">Modifier mes informations</a></div>
-                <div class="col-2eRZ"><a href="/?controller=modificationMotDePasse" class="btn btn-secondary">Modifier mon mot de passe</a></div>
+                <div class="col-2"><a href="/?controller=modificationMotDePasse" class="btn btn-secondary">Modifier mon mot de passe</a></div>
                 <div class="col"></div>
             </div>
         </form>

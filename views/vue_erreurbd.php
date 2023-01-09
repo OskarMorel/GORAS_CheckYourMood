@@ -13,7 +13,7 @@ require 'includes/header.php';
         <div class="row">
             <div class="col">
             
-            <img src="../images/imgErreurbd.png" class="img-fluid" alt="Image de la base de donnée injoignable">
+            <img src="../images/imgerreurbd.png" class="img-fluid" alt="Image de la base de donnée injoignable">
             <br>
             <h3>La base de donnée semble injoignable pour le moment</h3>
             

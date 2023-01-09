@@ -75,7 +75,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
 
             <p class="espace1"></p>
             <input hidden name="idUtilisateur" value="<?php echo($_SESSION['id']); ?>">
-            <input type="submit" value="Valider modification" class="btn btn-primary">
+            <input type="submit" value="Valider la modification" class="btn btn-primary">
             <div class="row">
                 <div class="col"></div>
                 <div class="col">
