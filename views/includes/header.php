@@ -19,7 +19,7 @@
     <link rel="icon" href="../images/smiley.png" />
 
     <!-- Liens vers les feuilles de styles (.css) -->
-    <link href="../../pageStylesScripts/checkYourMood.css" rel="stylesheet">
+    <link href="../../pageStylesScripts/checkyourmood.css" rel="stylesheet">
     <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Liens vers les scripts (.js) -->
