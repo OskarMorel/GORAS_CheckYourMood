@@ -24,7 +24,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <div class="row">
             <div class="col-1"></div>
             <!-- Lien vers les humeurs de l'utilisateur -->
-            <div class="col">
+            <div class="col notDraggable">
               <a href="/?controller=consultationHumeurs">
                 <div class="zoom">
                 <p class="icon-accueil">&#128301;</p>
@@ -33,7 +33,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
               </a>
             </div>
             <!-- Lien pour saisir une nouvelle humeur -->
-            <div class="col">
+            <div class="col notDraggable">
               <a href="/?controller=mexprimer">
                 <div class="zoom">
                 <p class="icon-accueil">&#128221;</p>

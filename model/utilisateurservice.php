@@ -68,16 +68,57 @@ class utilisateurservice
         DATE_DE_NAISSANCE = ?	 
         WHERE ID_UTILISATEUR = ?";
 
+        $pdo->beginTransaction();        
+
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$nom, $prenom, $nomUtilisateur, $mail, $genre, $dateNaissance, $codeUtilisateur]);
             $_GET['modification'] = true;
+            $pdo->commit();
+        } catch (\PDOException $e) {
+            $code = $e -> getCode();
+            if ($code == 23000) {
+                $_GET['identifiantDejaUtilise'] = true;
+            } else {
+                $e->getMessage();
+                $_GET['exception'] = $e;
+            }
+            $pdo->rollBack();
         } catch (\Exception $e) {
-            //$pdo->rollBack();
+            $pdo->rollBack();
+            $e->getMessage();
+            $_GET['modification'] = false;
+        }
+        
+        
+        
+    }
+
+    /* Modifier profil */
+    public static function modifierMotDePasse($pdo, $motDePasse, $codeUtilisateur)
+    {
+        $motDePasse = sha1($motDePasse);
+
+        $sql = "UPDATE utilisateur
+        SET MOT_DE_PASSE = ?
+        WHERE ID_UTILISATEUR = ?";
+
+        $pdo->beginTransaction();     
+
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$motDePasse, $codeUtilisateur]);
+            $_GET['modification'] = true;
+            $pdo->commit();
+        } catch (\Exception $e) {
+            $pdo->rollBack();
             $e->getMessage();
             print $e;
             $_GET['modification'] = false;
         }
+        
+        
+        
     }
 
 }

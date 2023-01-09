@@ -27,7 +27,7 @@ class mexprimerController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "views/vue_saisirHumeur");
+        $view = new view(config::getRacine() . "views/vue_saisirhumeur");
 
         $view->setVar('tabEmotions', emotionsservice::getEmotions($pdo));
         $view->setVar('intervalleValide', null);

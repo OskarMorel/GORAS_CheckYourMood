@@ -24,9 +24,10 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
                 <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                <input type="submit" value="Toutes les humeurs" class="btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'tout') {echo('-outline');}}?>-secondary">
+                <input type="submit" value="Toutes les humeurs" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'tout') {echo('-outline');}}?>-secondary">
 
             </form>
+            <p class="espace0"></p>
             <form action="/?controller=consultationHumeurs&action=consulter" method="POST">
 
                 <input hidden name="choixConsultation" value="calendrier" type="text" id="calendrier">
@@ -34,7 +35,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
                 <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                <input type="submit" value="Calendrier des humeurs" class="btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'calendrier') {echo('-outline');}}?>-secondary">
+                <input type="submit" value="Calendrier des humeurs" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'calendrier') {echo('-outline');}}?>-secondary">
             </form>
             </div>
             <div class="col-1"></div>

@@ -26,7 +26,7 @@ class visualisationHumeursController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "views/vue_visualisationHumeurs");
+        $view = new view(config::getRacine() . "views/vue_visualisationhumeurs");
 
         $view->setVar('choixVisualisation', httphelper::getParam('choixVisualisation'));
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');

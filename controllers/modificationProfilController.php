@@ -28,7 +28,7 @@ class ModificationProfilController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "/views/vue_modifierProfil");
+        $view = new view(config::getRacine() . "/views/vue_modifierprofil");
         $view->setVar('RACINE', config::getRacine());
         $view->setVar('modification', httphelper::getParam('modification'));
 

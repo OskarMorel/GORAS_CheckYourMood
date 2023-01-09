@@ -26,7 +26,7 @@ class consultationHumeursController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "views/vue_consultationHumeur");
+        $view = new view(config::getRacine() . "views/vue_consultationhumeur");
         $view->setVar('choixConsultation', httphelper::getParam('choixConsultation'));
         $view->setVar('humeurs', httphelper::getParam('humeurs'));
 

@@ -71,7 +71,8 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <input hidden name="editionProfil" value="true">
             <div class="row">
                 <div class="col"></div>
-                <div class="col"><a href="/?controller=modificationProfil" class="btn btn-primary">Modifier mes informations</a></div>
+                <div class="col-2"><a href="/?controller=modificationProfil" class="btn btn-primary">Modifier mes informations</a></div>
+                <div class="col-2eRZ"><a href="/?controller=modificationMotDePasse" class="btn btn-secondary">Modifier mon mot de passe</a></div>
                 <div class="col"></div>
             </div>
         </form>
@@ -81,7 +82,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <!-- Partie de la vue pour se deinscrire de CheckYourMood -->
 
         <!-- Boutton pour afficher le modal contenant le formulaire de deinscription -->
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeinscription">Me déinscrire</button>
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeinscription">Me désinscrire</button>
 
         <div class="modal fade" id="modalDeinscription">
             <!-- Modal contenant le formulaire de deinscription et qui appelle le controller profil et l'action supprimer profil -->
