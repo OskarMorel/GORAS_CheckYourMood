@@ -27,7 +27,20 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col-2"></div>
                 <div class="col">
                     <div class="alert alert-success" role="alert">
-                        Votre humeur a bien été enregistrée
+                        Votre humeur a bien été enregistrée.
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        <?php } ?>
+        <?php if(isset($descriptionOK) && !$descriptionOK) { ?>
+            <!-- Description incorrete on affiche un message pour preciser un format valide -->
+            <p class="espace1"></p>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col">
+                    <div class="alert alert-danger" role="alert">
+                        Description invalide, la déscription d'une humeur ne doit pas dépasser 3000 caractères.
                     </div>
                 </div>
                 <div class="col-2"></div>
@@ -75,7 +88,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
-                    <label>Description</label>
+                    <label>Description (3000 caractères)</label>
                     <div class="form-floating">
                         <textarea name="newDescription" class="form-control" placeholder="Description"><?php  if (isset($description)) {echo($description);}?></textarea>
                         <label for="floatingTextarea">Description</label>

@@ -42,7 +42,7 @@ class mexprimerController implements controller
         $view->setVar('codeUtilisateurOK', httphelper::getParam('codeUtilisateurOK'));
         $view->setVar('codeEmotionOK', httphelper::getParam('codeEmotionOK'));
 
-        $view->setVar('creation', httphelper::getParam('creation'));
+        $view->setVar('humeursaisie', httphelper::getParam('humeursaisie'));
         
         return $view;
     }

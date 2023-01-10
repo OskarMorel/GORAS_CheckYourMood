@@ -46,6 +46,8 @@ class humeurservice
             $code = $e -> getCode();
             if ($code == 78945) {
                 $_GET['dateHeureOK'] = false;
+            } else if ($code == 22001) {
+                $_GET['descriptionOK'] = false;
             } else {
                 $e->getMessage();
                 $_GET['exception'] = $e;
@@ -54,6 +56,7 @@ class humeurservice
         } catch (\Exception $e) {
             $_GET['exception'] = $e->getMessage();
         }
+
     }
 
     /* Suppression d'une humeur */
