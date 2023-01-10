@@ -29,10 +29,12 @@ class visualisationHumeursController implements controller
         $view = new view(config::getRacine() . "views/vue_visualisationhumeurs");
 
         $view->setVar('choixVisualisation', httphelper::getParam('choixVisualisation'));
+        
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+        $view->setVar('humeursStat', stathumeurservice::getNbEmotion($pdo, $codeUtilisateur));
+
         $dateDebut = httphelper::getParam('dateDebut');
         $dateFin = httphelper::getParam('dateFin');
-        $view->setVar('humeursStat', stathumeurservice::getNbEmotion($pdo, $codeUtilisateur));
         $view->setVar('tableauDates', stathumeurservice::getDates($pdo, $dateDebut, $dateFin, $codeUtilisateur));
 
         return $view;
@@ -61,10 +63,6 @@ class visualisationHumeursController implements controller
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
         $dateDebut = httphelper::getParam('dateDebut');
         $dateFin = httphelper::getParam('dateFin');
-
-        var_dump($dateDebut);
-        var_dump($dateFin);
-        var_dump($codeUtilisateur);
 
         $tableauDates = stathumeurservice::getDates($pdo, $dateDebut, $dateFin, $codeUtilisateur);
 

@@ -43,21 +43,18 @@ class stathumeurservice
         $stmt->bindParam(':dateDebut', $dateDebut);
         $stmt->bindParam(':dateFin', $dateFin);
         $stmt->bindParam(':codeUtilisateur', $codeUtilisateur);
-
         $stmt->execute();
-        var_dump($stmt->rowCount());
+        
         $tabDates[] = array();
         $texteFinal = "[";
 
         while ($rowStmt = $stmt->fetch()) {
-            $tabDates[] = substr(json_encode(array_values($rowStmt)), 2, -11);
+            $tabDates[] = substr(json_encode(array_values($rowStmt)), 0, -11)."\"   ";
         }
         unset($tabDates[0]);
         $texte = implode(',',$tabDates);
         $texteSansCrochets = str_replace(["[", "]"], "",$texte);
         $texteFinal = $texteFinal.$texteSansCrochets."]";
-
-        var_dump($texteFinal);
         return $texteFinal;
     }
 

@@ -9,9 +9,11 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <div class="container-fluid text-center">
         <?php
         require 'includes/navbar.php';
-        //var_dump($choixVisualisation);
-        //var_dump($humeurs);
-        //var_dump($_SESSION);
+        //var_dump($humeursStat);
+        //var_dump($tableauDates);
+        if ($choixVisualisation == "") {
+            $choixVisualisation = "graphique";
+        }
         ?>
         <p class="espace1"></p>
         <div class="row">
@@ -59,7 +61,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             if ($choixVisualisation == 'camembert') {   
         ?>    
         <div class="row">
-
             <div class="col-2"></div>
             <div class="col">
                 <canvas id="camembertChart" style="width:1000px;height:420px"></canvas>
@@ -132,18 +133,22 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         </script>
         <?php
             } else if ($choixVisualisation == 'graphique') {
+                if (isset($_POST['dateDebut']) && isset($_POST['dateFin'])) {
+                    $dateDebut = $_POST['dateDebut'];
+                    $dateFin = $_POST['dateFin'];
+                }
         ?>
-            
+
             <form action="/?controller=visualisationhumeurs&action=getDates" method="POST"> 
                 <div class="row">
                     <div class="col"></div>
                     <div class="gauche col-2">
                         <label for="dateDebut">Entrez la date de début</label>
-                        <input type="date" name="dateDebut" id="dateDebut" class="form-control">
+                        <input type="date" name="dateDebut" id="dateDebut" class="form-control" value="<?php if (isset($_POST['dateDebut'])) {echo $_POST['dateDebut']; }?>">
                     </div>
                     <div class="gauche col-2">
                         <label for="dateFin">Entrez la date de fin</label>
-                        <input type="date" name="dateFin" id="dateFin" class="form-control">   
+                        <input type="date" name="dateFin" id="dateFin" class="form-control" value="<?php if (isset($_POST['dateFin'])) {echo $_POST['dateFin'];}?>">   
                     </div>
                     <div class="col"></div>
                     <p class="espace0"></p>
@@ -168,13 +173,13 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 new Chart(document.getElementById("lineChart"), {
                     type: 'line',
                     data: {
-                        labels: <?php echo $tableauDates ?>,
+                        labels: <?php echo $tableauDates; ?>,
                         datasets: [{ 
                             data: [86,114,106,106,107,111,133,221,783,2478],
                             label: "Admiration",
                             borderColor: "#d7a7ff",
                             fill: false
-                        }, { 
+                        }, {
                             data: [282,350,411,502,635,809,947,1402,3700,5267],
                             label: "Adoration",
                             borderColor: "#8e5ea2",
@@ -309,8 +314,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     },
                     options: {
                         title: {
-                        display: true,
-                        text: 'Nb humeur'
+                        display: true
                         }
                     }
                     });
