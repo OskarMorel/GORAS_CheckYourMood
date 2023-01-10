@@ -10,21 +10,17 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <!-- Barre de navigation -->
         <?php
         require 'includes/navbar.php';
-        //var_dump($_SESSION);
-        //var_dump($description);
-        //var_dump($dateHeure);
-        //var_dump($codeEmotion);
-        //var_dump($creation);
+        //var_dump($_GET);
         ?>
         <p class="espace2"></p>
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
-                <h5>Que ressentez vous ?</h5>
+                <h4>Que ressentez vous ?</h4>
             </div>
             <div class="col-1"></div>
         </div>
-        <?php if($creation) { ?>
+        <?php if(isset($humeursaisie) && $humeursaisie) { ?>
             <!-- Si la creation s'est bien déroulée on affiche un message de validation -->
             <p class="espace1"></p>
             <div class="row">
@@ -36,7 +32,20 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 </div>
                 <div class="col-2"></div>
             </div>
-            <?php } ?>
+        <?php } ?>
+        <?php if(isset($dateHeureOK) && !$dateHeureOK) { ?>
+            <!-- Heure incorrete on affiche un message pour preciser un format valide -->
+            <p class="espace1"></p>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col">
+                    <div class="alert alert-danger" role="alert">
+                        Heure incorrecte, vous ne pouvez renseigner au maximum une période de 2 heures auparavant.
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        <?php } ?>
         <p class="espace1"></p>
         <form action="/?controller=mexprimer&action=exprimer" method="POST">
             <div class="row">
@@ -57,34 +66,19 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     </select>
                 </div>
                 <div class="col-3">
-                    <label>Période de l'humeur</label><br>
-                    <!-- Input caché pour avoir la date du jour de l'humeur 
-                    <input hidden name="newDate" type="date" value="<?php /* mettre une fonction pour récuperer la date */ ?>">-->
-                    <input class="form-control" name="newHeure" min="06:40" max="08:40" type="time" required value="<?php echo($heure); ?>">
+                    <label>Période (depuis les 2 dernières heures)</label><br>
+                    <input class="form-control" name="newDateHeure" type="datetime-local" required value="<?php echo($dateHeure); ?>">
                 </div>
-                <?php  
-                //echo(time("Y/m/d"));
-                //$date = "2023-01-05 08:00:00";
-                //echo ($date->format('Y/m/d H:i:s'));
-                
-                ?>
                 <div class="col-2"></div>
             </div>
             <p class="espace1"></p>
             <div class="row">
                 <div class="col-2"></div>
-                <div class="col-5">
+                <div class="col">
                     <label>Description</label>
                     <div class="form-floating">
                         <textarea name="newDescription" class="form-control" placeholder="Description"><?php  if (isset($description)) {echo($description);}?></textarea>
                         <label for="floatingTextarea">Description</label>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <label>Ajouter un ou des fichiers</label><br>
-                    <div class="file-upload">
-                        <input name="fichiers" type="file"/>
-                        <i class="fa-sharp fa-solid fa-arrow-up-from-bracket"></i>
                     </div>
                 </div>
                 <div class="col-2"></div>

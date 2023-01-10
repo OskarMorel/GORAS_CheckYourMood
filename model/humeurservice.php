@@ -5,15 +5,6 @@ namespace model;
 class humeurservice
 {
 
-    /**
-     * Renvoie TODO peut etre renovyer des valeurs ?
-     *
-     */
-    public static function intervalleValide()
-    {
-        return true;
-    }
-
     /* Recupération des humeurs */
     public static function getHumeursUtilisateur($pdo, $codeUtilisateur)
     {
@@ -40,28 +31,36 @@ class humeurservice
     public static function ajoutHumeur($pdo, $description, $dateHeure, $codeUtilisateur, $codeEmotion)
     {
 
-        $sql = "INSERT INTO `humeur` (`DESCRIPTION`, `DATE_HEURE`, `FICHIER`, `CODE_UTILISATEUR`, `CODE_EMOTION`) 
-                VALUES (?, ?, NULL, ?, ?)";
+        $sql = "INSERT INTO `humeur` (`DESCRIPTION`, `DATE_HEURE`, `CODE_UTILISATEUR`, `CODE_EMOTION`) 
+                VALUES (?, ?, ?, ?)";
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$description, $dateHeure, $codeUtilisateur, $codeEmotion]);
+        $pdo->beginTransaction();  
 
-        // On affecte a une variable le nombre de création
-        $data = $stmt->fetch();
-        $data = $stmt->rowCount();
-        
-        if ($data == 1) {
-            $_GET['creation'] = true;
-            return true;
-        } else {
-            $_GET['creation'] = false;
-            return false;
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$description, $dateHeure, $codeUtilisateur, $codeEmotion]);
+            $_GET['humeursaisie'] = true;
+            $pdo->commit();
+
+        } catch (\PDOException $e) {
+            $code = $e -> getCode();
+            if ($code == 78945) {
+                $_GET['dateHeureOK'] = false;
+            } else {
+                $e->getMessage();
+                $_GET['exception'] = $e;
+            }
+            $pdo->rollBack();
+        } catch (\Exception $e) {
+            $_GET['exception'] = $e->getMessage();
         }
     }
 
     /* Suppression d'une humeur */
     public static function suppHumeursUtilisateur($pdo, $codeUtilisateur, $codeEmotion, $dateEmotion)
     {
+        $pdo->beginTransaction(); 
+
         try {
 
             $stmt = $pdo->prepare("DELETE FROM humeur WHERE CODE_UTILISATEUR = ? AND CODE_EMOTION = ? AND DATE_HEURE = ?");

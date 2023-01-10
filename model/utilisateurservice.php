@@ -90,8 +90,6 @@ class utilisateurservice
             $_GET['modification'] = false;
         }
         
-        
-        
     }
 
     /* Modifier profil */

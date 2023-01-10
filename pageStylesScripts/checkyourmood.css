@@ -96,14 +96,14 @@ a:link {
 
 /* Page saisie humeur */
 
-input[type="time"] {
+input[type="datetime-local"] {
     padding: 5px;
     top: 50%;
     font-family: "Roboto Mono",monospace;
     color: black;
     border-width: 0.5px;
     border-radius: 5px;
-    width:300px;
+    width:352px;
 }
 ::-webkit-calendar-picker-indicator {
     background-color: #ffffff;
