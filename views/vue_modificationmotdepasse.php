@@ -23,7 +23,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         ?>
         <!-- Affichage des erreurs -->
         <div class="row">
-            <div class="col-1"></div>
+            <div class="col-3"></div>
             
                 <?php
                     $err = htmlspecialchars($_GET['err']);
@@ -32,7 +32,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                         case 'mdp':
                 ?>
                 <div class="col alert alert-warning">
-                    <strong>Mot de passe incorrect</strong>
+                    <strong>Mot de passe actuel incorrect</strong>
                 </div>
                 <?php
                     break;
@@ -42,6 +42,13 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <strong>Veuillez remplir les champs</strong>
                 </div>
                 <?php
+                    break;
+                    case 'confirmer':
+                ?>
+                <div class="col alert alert-warning">
+                    <strong>Les mots de passes ne correspondent pas</strong>
+                </div>
+                <?php
                     break;     
                     case 'nope':       
                 ?>
@@ -49,7 +56,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                         <strong>Modification du mot de passe effectuée</strong>
                     </div>
                 <?php break; } ?>
-                <div class="col-1"></div>
+                <div class="col-3"></div>
             </div>
         <?php } ?>
         <p class="espace1"></p>
@@ -67,12 +74,12 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <label for="nouveauMotDePasse">Saisissez votre nouveau mot de passe</label>
                     <input name="nouveauMotDePasse" type="password" class="form-control" placeholder="Saisissez votre nouveau mot de passe">
                 </div>
+                <div class="col gauche">
+                    <label for="confirmerMdp">Confirmer votre nouveau mot de passe</label>
+                    <input name="confirmerMdp" type="password" class="form-control" placeholder="Saisissez votre nouveau mot de passe pour confirmer">
+                </div>
                 <div class="col-3"></div>
             </div>
-
-
-
-
             <p class="espace1"></p>
             <input hidden name="idUtilisateur" value="<?php echo($_SESSION['id']); ?>">
             <input type="submit" value="Valider la modification" class="btn btn-primary">

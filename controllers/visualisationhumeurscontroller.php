@@ -49,5 +49,19 @@ class visualisationHumeursController implements controller
         return $this->index($pdo);
     }
 
+    /**
+     * @param pdo connexion à la base de données
+     * @return view appel de la méthode index
+     */
+    public function afficherGraphique($pdo)
+    {
+
+        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+
+        $humeursStat = stathumeurservice::getNbEmotion($pdo, $codeUtilisateur);
+
+        return $this->index($pdo);
+    }
+
 }
 

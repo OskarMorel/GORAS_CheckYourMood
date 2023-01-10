@@ -15,25 +15,46 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         ?>
         <p class="espace1"></p>
         <div class="row">
-            <div class="col-1"></div>
-            <div class="col">
-                <h5>Choisissez votre type de visualisation</h5>
-                <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
+            <div class="col"></div>
+            <h5>Choisissez comment vous visualiser vos humeurs</h5><br>
+            <p class="espace0"></p>
+            <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
 
-                <input name="choixVisualisation" value="camembert" type="radio" class="btn-check" id="camembert" <?php if(isset($choixConsultation)) {if($choixConsultation == 'camembert') {echo('checked');}} ?>>
-                <label class="btn btn-outline-secondary" for="camembert">Camembert</label> 
+                <input hidden name="choixVisualisation" value="camembert" type="text" id="camembert">
 
-                <input name="choixVisualisation" value="baton" type="radio" class="btn-check" id="baton" <?php if(isset($choixConsultation)) {if($choixConsultation == 'baton') {echo('checked');}} ?>>
-                <label class="btn btn-outline-secondary btnRed" for="baton">Diagramme en baton</label> 
+                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
+                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                <input name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>" hidden>
+                <input type="submit" value="Diagramme camembert" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'camembert') {echo('-outline');}}?>-secondary">
 
-                <input type="submit" value ="OK"class="btn btn-primary">
+            </form>
+            <p class="espace0"></p>
+            <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
+
+                <input hidden name="choixVisualisation" value="baton" type="text" id="baton">
+
+                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
+                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
+
+                <input type="submit" value="Diagramme baton" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'baton') {echo('-outline');}}?>-secondary">
             </form>
             </div>
-            <div class="col-1"></div>
+            <div class="col"></div>
+            <p class="espace0"></p>
+            <div class="col"></div>   
+            <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
+
+                <input hidden name="choixVisualisation" value="graphique" type="text" id="graphique">
+
+                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
+                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
+
+                <input type="submit" value="Graphique" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'graphique') {echo('-outline');}}?>-secondary">
+            </form>
+            </div>
+            <div class="col"></div>
         </div>
-        <p class="espace1"></p>
+        <p class="espace2"></p>
 
         
         <?php 
@@ -43,7 +64,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
 
             <div class="col-2"></div>
             <div class="col">
-                <canvas id="camembertChart" style="width:1000px;height:500px"></canvas>
+                <canvas id="camembertChart" style="width:1000px;height:420px"></canvas>
             </div>
             <div class="col-2"></div>
         </div>
@@ -80,7 +101,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
 
             <div class="col-2"></div>
             <div class="col">
-                <canvas id="barChart" style="width:1000px;height:500px"></canvas>
+                <canvas id="barChart" style="width:1000px;height:420px"></canvas>
             </div>
             <div class="col-2"></div>
         </div>
@@ -111,8 +132,26 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 }
             });
         </script>
-        <?php 
-            } 
+        <?php
+            } else if ($choixVisualisation == 'graphique') {
         ?>
+            <div class="row">
+                <form action="/?controller=visualisationhumeurs&action=afficherGraphique" method="POST"> 
+                    <div class="col-5">
+                        <input type="date" name="dateDebut" id="dateDebut" class="form-control">
+                    </div>   
+                    <div class="col-5">
+                        <input type="date" name="dateFin" id="dateFin" class="form-control">
+                    </div>
+                    <div class="col-2">
+                        <p class="espace0"></p>
+                        <input type="submit" value="Valider" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        <?php
+            }
+        ?>
+    </div>
 </body>
 </html>
