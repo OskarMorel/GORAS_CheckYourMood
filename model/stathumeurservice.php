@@ -50,7 +50,7 @@ class stathumeurservice
         $texteFinal = "[";
 
         while ($rowStmt = $stmt->fetch()) {
-            $tabDates[] = json_encode(array_values($rowStmt));
+            $tabDates[] = substr(json_encode(array_values($rowStmt)), 2, -11);
         }
         unset($tabDates[0]);
         $texte = implode(',',$tabDates);
