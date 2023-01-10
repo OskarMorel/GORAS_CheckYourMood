@@ -33,5 +33,33 @@ class stathumeurservice
         return $texteFinal;
     }
 
+     /**
+     * Renvoie toutes les emotions presentes dans la base de donnée
+     */
+    public static function getDates($pdo, $dateDebut, $dateFin, $codeUtilisateur)
+    {
+
+        $stmt = $pdo->prepare("SELECT DATE_HEURE FROM humeur WHERE DATE_HEURE BETWEEN :dateDebut AND :dateFin AND CODE_UTILISATEUR = :codeUtilisateur ORDER BY DATE_HEURE");
+        $stmt->bindParam(':dateDebut', $dateDebut);
+        $stmt->bindParam(':dateFin', $dateFin);
+        $stmt->bindParam(':codeUtilisateur', $codeUtilisateur);
+
+        $stmt->execute();
+        var_dump($stmt->rowCount());
+        $tabDates[] = array();
+        $texteFinal = "[";
+
+        while ($rowStmt = $stmt->fetch()) {
+            $tabDates[] = json_encode(array_values($rowStmt));
+        }
+        unset($tabDates[0]);
+        $texte = implode(',',$tabDates);
+        $texteSansCrochets = str_replace(["[", "]"], "",$texte);
+        $texteFinal = $texteFinal.$texteSansCrochets."]";
+
+        var_dump($texteFinal);
+        return $texteFinal;
+    }
+
 
 }
