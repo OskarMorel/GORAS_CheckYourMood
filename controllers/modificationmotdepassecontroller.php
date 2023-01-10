@@ -47,12 +47,16 @@ class modificationMotDePasseController implements controller
             $identifiant = $_SESSION['nom_utilisateur'];
             $motDePasseActuel = httphelper::getParam('motDePasseActuel');
             $nouveauMotDePasse = httphelper::getParam('nouveauMotDePasse');
+            $confirmerMdp = httphelper::getParam('confirmerMdp');
             $codeUtilisateur = httphelper::getParam('idUtilisateur');
 
-
                 if (connexionservice::motDePasseValide($pdo, $identifiant, $motDePasseActuel)) {
-                    utilisateurservice::modifierMotDePasse($pdo, $nouveauMotDePasse, $codeUtilisateur);
-                    $err = 'nope';
+                    if ($nouveauMotDePasse == $confirmerMdp) {
+                        utilisateurservice::modifierMotDePasse($pdo, $nouveauMotDePasse, $codeUtilisateur);
+                        $err = 'nope';
+                    } else {
+                        $err = 'confirmer';
+                    }
                 } else {
                     $err = 'mdp';
                 }
