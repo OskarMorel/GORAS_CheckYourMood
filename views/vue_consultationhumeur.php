@@ -10,6 +10,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <div class="container-fluid text-center">
         <?php
         require 'includes/navbar.php';
+        
         ?>
         <p class="espace1"></p>
 

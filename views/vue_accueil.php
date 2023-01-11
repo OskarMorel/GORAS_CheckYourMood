@@ -10,6 +10,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <!-- Barre de navigation -->
         <?php
         require 'includes/navbar.php';
+        //var_dump($_SESSION);
         ?>
         <p class="espace2"></p>
         <div class="row">
@@ -25,29 +26,30 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="col-1"></div>
             <!-- Lien vers les humeurs de l'utilisateur -->
             <div class="col notDraggable">
-              <a href="/?controller=consultationHumeurs">
-                <div class="zoom">
-                <p class="icon-accueil">&#128301;</p>
-                <p class="texteBouton">Voir mes humeurs</p>
-                </div>  
-              </a>
+              <form action="/?controller=consultationhumeurs&action=consulter" method="POST">
+                  <button class="zoom" type="submit">
+                    <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id']) ?>">
+                    <p class="icon-accueil">&#128301;</p>
+                    <p class="texteBouton">Voir mes humeurs</p>
+                  </button>
+              </form>
             </div>
             <!-- Lien pour saisir une nouvelle humeur -->
             <div class="col notDraggable">
               <a href="/?controller=mexprimer">
-                <div class="zoom">
+                <button class="zoom">
                 <p class="icon-accueil">&#128221;</p>
                 <p class="texteBouton">M'exprimer !</p>
-                </div>  
+                </button>  
               </a>
             </div>
             <!-- Lien pour voir les statistiques des humeurs de l'utilisateur -->
             <div class="col">
               <a href="/?controller=visualisationHumeurs">
-                <div class="zoom">
+                <button class="zoom">
                 <p class="icon-accueil">&#128200;</p>
                 <p class="texteBouton">Statistiques sur mes humeurs</p>
-                </div>  
+                </button>  
               </a>
             </div>
             <div class="col-1"></div>

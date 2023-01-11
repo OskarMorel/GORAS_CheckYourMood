@@ -24,9 +24,9 @@ class httphelper
 {
     public static function getParam($name)
     {
-        if (isset($_GET[$name])) return htmlspecialchars($_GET[$name]);
-        if (isset($_POST[$name])) return htmlspecialchars($_POST[$name]);
-        if (isset($_SESSION[$name])) return htmlspecialchars($_SESSION[$name]);
+        if (isset($_GET[$name])) return $_GET[$name];
+        if (isset($_POST[$name])) return $_POST[$name];
+        if (isset($_SESSION[$name])) return $_SESSION[$name];
         return null;
     }
 
