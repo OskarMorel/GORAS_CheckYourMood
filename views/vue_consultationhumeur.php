@@ -12,63 +12,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         require 'includes/navbar.php';
         ?>
         <p class="espace1"></p>
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col">
-            <h5>Choisissez comment vous voulez consulter vos humeurs</h5><br>
-            <p class="espace0"></p>
-            <form action="/?controller=consultationhumeurs&action=consulter" method="POST">
-
-                <input hidden name="choixConsultation" value="tout" type="text" id="toutHumeurs">
-
-                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
-                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
-
-                <input type="submit" value="Toutes les humeurs" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'tout') {echo('-outline');}}?>-secondary">
-
-            </form>
-            <p class="espace0"></p>
-            <form action="/?controller=consultationhumeurs&action=consulter" method="POST">
-
-                <input hidden name="choixConsultation" value="calendrier" type="text" id="calendrier">
-
-                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
-                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
-
-                <input type="submit" value="Calendrier des humeurs" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'calendrier') {echo('-outline');}}?>-secondary">
-            </form>
-            </div>
-            <div class="col-1"></div>
-        </div>
-        <p class="espace2"></p>
-
-        <?php 
-            if($choixConsultation == 'calendrier') {
-        ?>
-        
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    locale: 'fr',
-                    headerToolbar: {
-                        left: 'prev,next',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                        }
-                });
-
-                calendar.render();
-                });
-
-            </script>
-
-            <div id='calendar'></div>
-
-        <?php 
-            } else if ($choixConsultation == 'tout') {
-        ?>
 
         <div class="row">
             <div class="col">
@@ -145,10 +88,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
 
             <div class="col-1"></div>
         </div>
-
-        <?php 
-            }
-        ?>
 
 
     </div>

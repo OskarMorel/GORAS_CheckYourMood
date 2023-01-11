@@ -28,24 +28,12 @@ class consultationHumeursController implements controller
     {
         $view = new view(config::getRacine() . "views/vue_consultationhumeur");
         $view->setVar('choixConsultation', httphelper::getParam('choixConsultation'));
+        $codeUtilisateur = $_SESSION['id'];
+        $_POST['humeurs'] = humeurservice::getHumeursUtilisateur($pdo, $codeUtilisateur);
         $view->setVar('humeurs', httphelper::getParam('humeurs'));
 
         return $view;
     }  
-
-    /**
-     * Tentative de creation d'un utilisateur
-     * @param pdo connexion à la base de données
-     * @return view appel de la méthode index
-     */
-    public function consulter($pdo)
-    {
-        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
-
-        $_POST['humeurs'] = humeurservice::getHumeursUtilisateur($pdo, $codeUtilisateur);
-
-        return $this->index($pdo);
-    }
 
     /**
      * Suppression d'une humeur d'un utilisateur

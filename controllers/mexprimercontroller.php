@@ -41,7 +41,6 @@ class mexprimerController implements controller
         $view->setVar('dateHeureOK', httphelper::getParam('dateHeureOK'));
         $view->setVar('codeUtilisateurOK', httphelper::getParam('codeUtilisateurOK'));
         $view->setVar('codeEmotionOK', httphelper::getParam('codeEmotionOK'));
-
         $view->setVar('humeursaisie', httphelper::getParam('humeursaisie'));
         
         return $view;
@@ -61,9 +60,6 @@ class mexprimerController implements controller
         $codeUtilisateur = httphelper::getParam('newCodeUtilisateur');
 
         humeurservice::ajoutHumeur($pdo, $description, $dateHeure, $codeUtilisateur, $codeEmotion);
-        
-
-    
 
     return $this->index($pdo);
     }
