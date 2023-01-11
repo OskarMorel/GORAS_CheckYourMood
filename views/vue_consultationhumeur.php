@@ -6,14 +6,12 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
   }
 ?>
 <body>
-
-    <div class="container-fluid text-center">
-        <?php
+    <!-- Barre de navigation -->
+    <?php
         require 'includes/navbar.php';
         //var_dump($_POST);
         //var_dump($tabEmotions);
         ?>
-        <p class="espace1"></p>
 
         <h3>Vous pouvez consulter vos humeurs</h3>
         <p class="espace1"></p>

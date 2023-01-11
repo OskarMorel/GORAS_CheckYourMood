@@ -6,53 +6,55 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
 }
 ?>
 <body>
-    <div class="container-fluid text-center">
-        <?php
+    <?php
         require 'includes/navbar.php';
         //var_dump($humeursStat);
         //var_dump($tableauDates);
         if ($choixVisualisation == "") {
             $choixVisualisation = "graphique";
         }
-        ?>
+    ?>
+    <div class="container-fluid text-center">   
         <p class="espace1"></p>
         <div class="row">
-            <div class="col"></div>
             <h5>Choisissez comment vous visualiser vos humeurs</h5><br>
+            <div class="col">
+                <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
+
+                    <input hidden name="choixVisualisation" value="graphique" type="text" id="graphique">
+
+                    <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
+                    <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
+
+                    <input type="submit" value="Graphique" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'graphique') {echo('-outline');}}?>-secondary">
+                </form>
+            </div>
             <p class="espace0"></p>
-            <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
+            <div class="col">
+                <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
 
-                <input hidden name="choixVisualisation" value="camembert" type="text" id="camembert">
+                    <input hidden name="choixVisualisation" value="camembert" type="text" id="camembert">
 
-                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
-                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
+                    <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
+                    <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                <input type="submit" value="Diagramme camembert" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'camembert') {echo('-outline');}}?>-secondary">
+                    <input type="submit" value="Diagramme camembert" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'camembert') {echo('-outline');}}?>-secondary">
 
-            </form>
+                </form>
+            </div>
             <p class="espace0"></p>
-            <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
+            <div class="col">
+                <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
 
-                <input hidden name="choixVisualisation" value="baton" type="text" id="baton">
+                    <input hidden name="choixVisualisation" value="baton" type="text" id="baton">
 
-                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
-                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
+                    <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
+                    <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                <input type="submit" value="Diagramme baton" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'baton') {echo('-outline');}}?>-secondary">
-            </form>
-            <div class="col"></div>
+                    <input type="submit" value="Diagramme baton" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'baton') {echo('-outline');}}?>-secondary">
+                </form>
+            </div>
             <p class="espace0"></p>
-            <div class="col"></div>   
-            <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
-
-                <input hidden name="choixVisualisation" value="graphique" type="text" id="graphique">
-
-                <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
-                <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
-
-                <input type="submit" value="Graphique" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'graphique') {echo('-outline');}}?>-secondary">
-            </form>
-            <div class="col"></div>
         </div>
         <p class="espace0"></p>
 
@@ -139,16 +141,26 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 }
         ?>
 
-            <form action="/?controller=visualisationhumeurs&action=getDates" method="POST"> 
+            <form action="/?controller=visualisationhumeurs&action=getDatas" method="POST"> 
                 <div class="row">
                     <div class="col"></div>
                     <div class="gauche col-2">
                         <label for="dateDebut">Entrez la date de début</label>
-                        <input type="date" name="dateDebut" id="dateDebut" class="form-control" value="<?php if (isset($_POST['dateDebut'])) {echo $_POST['dateDebut']; }?>">
+                        <input type="date" name="dateDebut" id="dateDebut" class="form-control" value="
+                        <?php 
+                            if (isset($_POST['dateDebut'])) {
+                                echo $_POST['dateDebut'];
+                            }
+                        ?>">
                     </div>
                     <div class="gauche col-2">
                         <label for="dateFin">Entrez la date de fin</label>
-                        <input type="date" name="dateFin" id="dateFin" class="form-control" value="<?php if (isset($_POST['dateFin'])) {echo $_POST['dateFin'];}?>">   
+                        <input type="date" name="dateFin" id="dateFin" class="form-control" value="
+                        <?php 
+                            if (isset($_POST['dateFin'])) {
+                                echo $_POST['dateFin'];
+                            }
+                        ?>">   
                     </div>
                     <div class="col"></div>
                     <p class="espace0"></p>
@@ -175,137 +187,137 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     data: {
                         labels: <?php echo $tableauDates; ?>,
                         datasets: [{ 
-                            data: [86,114,106,106,107,111,133,221,783,2478],
+                            data: <?php echo $tableau1; ?>,
                             label: "Admiration",
                             borderColor: "#d7a7ff",
                             fill: false
                         }, {
-                            data: [282,350,411,502,635,809,947,1402,3700,5267],
+                            data: <?php echo $tableau2; ?>,
                             label: "Adoration",
                             borderColor: "#8e5ea2",
                             fill: false
                         }, { 
-                            data: [168,170,178,190,203,276,408,547,675,734],
+                            data: <?php echo $tableau3; ?>,
                             label: "Apréciation esthétique",
                             borderColor: "#3cba9f",
                             fill: false
                         }, { 
-                            data: [40,20,10,16,24,38,74,167,508,784],
+                            data: <?php echo $tableau4; ?>,
                             label: "Amusement",
                             borderColor: "#e8c3b9",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau5; ?>,
                             label: "Colère",
                             borderColor: "#c45850",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau6; ?>,
                             label: "Anxiété",
                             borderColor: "#a48ce4",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau7; ?>,
                             label: "Émerveillement",
                             borderColor: "#b6d7a8",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau8; ?>,
                             label: "Malaise",
                             borderColor: "#8cace4",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau9; ?>,
                             label: "Ennui",
                             borderColor: "#e48c8c",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau10; ?>,
                             label: "Calme (sérénité)",
                             borderColor: "#f7df7c",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau11; ?>,
                             label: "Confusion",
                             borderColor: "#2f90a8",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau12; ?>,
                             label: "Envie",
                             borderColor: "#e32b2b",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau13; ?>,
                             label: "Dégoût",
                             borderColor: "#351431",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau14; ?>,
                             label: "Douleur empathique",
                             borderColor: "#eee7cf",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau15; ?>,
                             label: "Intérêt étonné, intrigué",
                             borderColor: "#4b5e20",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau16; ?>,
                             label: "Excitation (montée d'adrénaline)",
                             borderColor: "#c9b9ad",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau17; ?>,
                             label: "Peur",
                             borderColor: "#8700ff",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau18; ?>,
                             label: "Horreur",
                             borderColor: "#3e95cd",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau19; ?>,
                             label: "Intérêt",
                             borderColor: "#f2cfb4",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau20; ?>,
                             label: "Joie",
                             borderColor: "#fc7a08",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau21; ?>,
                             label: "Nostalgie",
                             borderColor: "#000000",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau22; ?>,
                             label: "Soulagement",
                             borderColor: "#98d400",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau23; ?>,
                             label: "Romance",
                             borderColor: "#f50b86",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau24; ?>,
                             label: "Tristesse",
                             borderColor: "#1d2564",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau25; ?>,
                             label: "Satisfaction",
                             borderColor: "#05f9e2",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau26; ?>,
                             label: "Désir sexuel",
                             borderColor: "#e2f705",
                             fill: false
                         }, { 
-                            data: [6,3,2,2,7,26,82,172,312,433],
+                            data: <?php echo $tableau27; ?>,
                             label: "Surprise",
                             borderColor: "#ff6f00",
                             fill: false

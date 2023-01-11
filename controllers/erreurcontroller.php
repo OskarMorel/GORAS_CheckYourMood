@@ -28,7 +28,7 @@ class erreurController implements controller
 
         $err = httphelper::getParam('err');
         $view->setVar('err', $err);
-
+        
         return $view;
     }
 }
