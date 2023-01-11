@@ -69,5 +69,21 @@ class visualisationHumeursController implements controller
         return $this->index($pdo);
     }
 
+    /**
+     * @param pdo connexion à la base de données
+     * @return view appel de la méthode index
+     */
+    public function getHumeursByDate($pdo)
+    {
+        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+        $dateDebut = httphelper::getParam('dateDebut');
+        $dateFin = httphelper::getParam('dateFin');
+        $codeEmotion = 1;
+        
+        $tableauHumeursByDate = stathumeurservice::getNbHumeursParEmotions($pdo, $dateDebut, $dateFin, $codeEmotion, $codeUtilisateur);
+
+        return $this->index($pdo);
+    }
+
 }
 
