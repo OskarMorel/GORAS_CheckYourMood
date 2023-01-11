@@ -16,7 +16,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
-                <h4>Que ressentez vous ?</h4>
+                <h3>Que ressentez vous ?</h3>
             </div>
             <div class="col-1"></div>
         </div>

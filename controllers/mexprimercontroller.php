@@ -30,7 +30,6 @@ class mexprimerController implements controller
         $view = new view(config::getRacine() . "views/vue_saisirhumeur");
 
         $view->setVar('tabEmotions', emotionsservice::getEmotions($pdo));
-        $view->setVar('intervalleValide', null);
 
         $view->setVar('description', httphelper::getParam('newDescription'));
         $view->setVar('dateHeure', httphelper::getParam('newDateHeure'));

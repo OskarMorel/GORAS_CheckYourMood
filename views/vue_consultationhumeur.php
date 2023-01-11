@@ -10,28 +10,42 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <div class="container-fluid text-center">
         <?php
         require 'includes/navbar.php';
-        
+        //var_dump($_POST);
+        //var_dump($tabEmotions);
         ?>
         <p class="espace1"></p>
 
+        <h3>Vous pouvez consulter vos humeurs</h3>
+        <p class="espace1"></p>
         <div class="row">
-            <div class="col">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                        <a class="page-link">Precedent</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">Suivant</a>
-                        </li>
-                    </ul>
-                </nav>
+            <div class="col-4"></div>
+            <div class="col-2">
+                <form action="/?controller=consultationhumeurs&action=consulter" method="POST">
+                    <input hidden value="<?php echo($_SESSION['id']); ?>">
+                    <input class="form-control" name="dateSaisie" type="date">
             </div>
+            <div class="col-2">
+                    <select name="codeEmotion" class="form-select" required>
+                        <option value="">Saisir une émotion</option>
+                        <?php 
+                        foreach ($tabEmotions as $emotion){
+                        ?>
+                        <option <?php if (isset($codeEmotion)) {if ($codeEmotion == $emotion['ID_EMOTION']) {echo ('selected');}}?> 
+                                value="<?php echo $emotion['ID_EMOTION']?>"><?php echo($emotion['EMOJI'].' - '.$emotion['NOM']) ?>
+                        </option>
+                        <?php
+                        }  
+                        ?>
+                    </select>
+                </form>
+            </div>
+            <div class="col-1">
+                    <input class="btn btn-success" type="submit" value="OK">
+                </form>
+            </div>
+            <div class="col-4"></div>
         </div>
-
+        <p class="espace1"></p>
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
