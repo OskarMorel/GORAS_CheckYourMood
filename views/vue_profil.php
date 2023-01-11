@@ -9,10 +9,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <!-- Barre de navigation -->
     <?php
         require 'includes/navbar.php';
-        //var_dump($_SESSION);
-        //$edition = true;
     ?>
-    
     <div class="container-fluid text-center">
         <p class="espace2"></p>
         <form action="/?controller=profil&action=modifierProfil" method="POST">

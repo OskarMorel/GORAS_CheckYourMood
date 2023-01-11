@@ -6,12 +6,12 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
 }
 ?>
 <body>
+  <!-- Barre de navigation -->
+    <?php
+      require 'includes/navbar.php';
+      //var_dump($_SESSION);
+    ?>
     <div class="container-fluid text-center">
-        <!-- Barre de navigation -->
-        <?php
-        require 'includes/navbar.php';
-        //var_dump($_SESSION);
-        ?>
         <p class="espace2"></p>
         <div class="row">
             <div class="col"></div>
