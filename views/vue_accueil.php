@@ -29,6 +29,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
               <form action="/?controller=consultationhumeurs&action=consulter" method="POST">
                   <button class="zoom" type="submit">
                     <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id']) ?>">
+                    
                     <p class="icon-accueil">&#128301;</p>
                     <p class="texteBouton">Voir mes humeurs</p>
                   </button>

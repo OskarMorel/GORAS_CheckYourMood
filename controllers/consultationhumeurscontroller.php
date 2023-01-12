@@ -31,13 +31,32 @@ class consultationHumeursController implements controller
         $view = new view(config::getRacine() . "views/vue_consultationhumeur");
        
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
-        $_POST['humeurs'] = humeurservice::getHumeursUtilisateur($pdo, $codeUtilisateur);
+        
+        $view->setVar('dateSaisie', httphelper::getParam('dateSaisie'));
+        $view->setVar('codeEmotion', httphelper::getParam('codeEmotion'));
+        $view->setVar('codeUtilisateur', httphelper::getParam('codeUtilisateur'));
+
+        $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+
+        //Filtres possibles
+        $codeEmotion = httphelper::getParam('codeEmotion');
+        $dateSaisie = httphelper::getParam('dateSaisie');
+        if (isset($dateSaisie) && $dateSaisie != "" && isset($codeEmotion) && $codeEmotion != "") {
+            $_POST['humeurs'] = humeurservice::getHumeursUtilisateurFiltres($pdo, $codeUtilisateur, $codeEmotion, $dateSaisie);
+            $_GET['passeici'] = "date";
+        } else if (isset($codeEmotion) && $codeEmotion != "") {
+            $_POST['humeurs'] = humeurservice::getHumeursUtilisateurEmotion($pdo, $codeUtilisateur, $codeEmotion);
+            $_GET['passeici'] = "emotion";
+        } else if (isset($dateSaisie) && $dateSaisie != "") {
+            $_POST['humeurs'] = humeurservice::getHumeursUtilisateurDate($pdo, $codeUtilisateur, $dateSaisie);
+            $_GET['passeici'] = "tout";
+        } else {
+            $_POST['humeurs'] = humeurservice::getHumeursUtilisateur($pdo, $codeUtilisateur);
+            $_GET['passeici'] = "justehumeur";
+        }
 
         $view->setVar('humeurs', httphelper::getParam('humeurs'));
         $view->setVar('tabEmotions', emotionsservice::getEmotions($pdo));
-
-        $view->setVar('dateSaisie', httphelper::getParam('dateSaisie'));
-        $view->setVar('codeEmotion', httphelper::getParam('codeEmotion'));
 
         return $view;
     }  
@@ -49,8 +68,8 @@ class consultationHumeursController implements controller
      */
     public function consulter($pdo)
     {
-
         
+
         return $this->index($pdo);
     }  
 
