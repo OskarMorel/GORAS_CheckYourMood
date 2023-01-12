@@ -3,10 +3,10 @@ require 'includes/header.php';
 ?>
 <body>
     <div class="container-fluid text-center">
-        <p class="espace1"></p>
+        <p class="espace3"></p>
         <div class="row">
             <div class="col">
-                <img src="..\images\logo.png" alt="Logo">
+                <h1>CheckYourMood</h1>
             </div>
         </div>
         <p class="espace1"></p>
