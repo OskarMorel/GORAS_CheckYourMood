@@ -24,7 +24,7 @@ class accueilController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "/views/vue_accueil");
+        $view = new view(config::getRacine() . "views/vue_accueil");
         $view->setVar('RACINE', config::getRacine());
 
         return $view;
