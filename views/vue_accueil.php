@@ -12,7 +12,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
       //var_dump($_SESSION);
     ?>
     <div class="container-fluid text-center">
-        <p class="espace2"></p>
+        <p class="espace1"></p>
         <div class="row">
             <div class="col"></div>
             <div class="col">
@@ -20,7 +20,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </div>
             <div class="col"></div>
         </div>
-        <p class="espace3"></p>
+        <p class="espace2"></p>
 
         <div class="row">
             <div class="col-1"></div>
@@ -55,6 +55,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </div>
             <div class="col-1"></div>
         </div>
+        <p class="espace2"></p>
         
     </div>
 </body>

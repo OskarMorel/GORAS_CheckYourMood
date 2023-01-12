@@ -9,10 +9,9 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <!-- Barre de navigation -->
     <?php
         require 'includes/navbar.php';
-        //var_dump($_GET);
     ?>
     <div class="container-fluid text-center">
-        <p class="espace2"></p>
+        <p class="espace1"></p>
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
@@ -20,6 +19,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </div>
             <div class="col-1"></div>
         </div>
+        <p class="espace2"></p>
         <?php if(isset($humeursaisie) && $humeursaisie) { ?>
             <!-- Si la creation s'est bien déroulée on affiche un message de validation -->
             <p class="espace1"></p>
@@ -64,7 +64,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-5">
-                    <label>Emotion</label>
+                    <label>Votre émotion</label>
                     <select name="newCodeEmotion" class="form-select" required>
                         <option value="">Saisir une émotion</option>
                         <?php 
