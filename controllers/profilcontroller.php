@@ -26,7 +26,7 @@ class profilController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "/views/vue_profil");
+        $view = new view(config::getRacine() . "views/vue_profil");
         $view->setVar('RACINE', config::getRacine());
         $view->setVar('edition', false);
 

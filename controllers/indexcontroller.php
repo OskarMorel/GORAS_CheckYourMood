@@ -24,7 +24,7 @@ class indexController implements controller
      */
     public function index($pdo)
     {
-        $view = new view(config::getRacine() . "/views/index");
+        $view = new view(config::getRacine() . "views/index");
         $view->setVar('RACINE', config::getRacine());
 
         return $view;
