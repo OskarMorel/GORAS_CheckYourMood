@@ -55,7 +55,6 @@ class stathumeurservice
         $texte = implode(',',$tabDates);
         $texteSansCrochets = str_replace(["[", "]"], "",$texte);
         $texteFinal = $texteFinal.$texteSansCrochets."]";
-        var_dump($texteFinal);
         return $texteFinal;
     }
 

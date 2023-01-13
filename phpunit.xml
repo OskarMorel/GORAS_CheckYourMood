@@ -6,7 +6,11 @@
 >
     <testsuites>
         <testsuite name="Unit">
-            <directory>testsunitaires/testSelectBd.php</directory>
+            <directory>testsunitaires/testconnexionservice.php</directory>
+            <directory>testsunitaires/testemotionsservice.php</directory>
+            <directory>testsunitaires/testhumeurservice.php</directory>
+            <directory>testsunitaires/teststathumeurservice.php</directory>
+            <directory>testsunitaires/testutilisateurservice.php</directory>
         </testsuite>
     </testsuites>
 </phpunit>
