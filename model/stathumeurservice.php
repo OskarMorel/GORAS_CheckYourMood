@@ -39,7 +39,7 @@ class stathumeurservice
      */
     public static function getDates($pdo, $dateDebut, $dateFin, $codeUtilisateur)
     {
-        $stmt = $pdo->prepare("SELECT DISTINCT DATE_FORMAT(DATE_HEURE, '%Y-%m-%d') FROM humeur WHERE DATE_HEURE BETWEEN :dateDebut AND :dateFin AND CODE_UTILISATEUR = :codeUtilisateur ORDER BY DATE_HEURE");
+        $stmt = $pdo->prepare("SELECT DISTINCT DATE_FORMAT(DATE_HEURE, '%Y-%m-%d') FROM humeur WHERE DATE_HEURE BETWEEN :dateDebut AND :dateFin AND CODE_UTILISATEUR = :codeUtilisateur ORDER BY DATE_FORMAT(DATE_HEURE, '%Y-%m-%d')");
         $stmt->bindParam(':dateDebut', $dateDebut);
         $stmt->bindParam(':dateFin', $dateFin);
         $stmt->bindParam(':codeUtilisateur', $codeUtilisateur);
@@ -55,6 +55,7 @@ class stathumeurservice
         $texte = implode(',',$tabDates);
         $texteSansCrochets = str_replace(["[", "]"], "",$texte);
         $texteFinal = $texteFinal.$texteSansCrochets."]";
+        var_dump($texteFinal);
         return $texteFinal;
     }
 
@@ -64,7 +65,7 @@ class stathumeurservice
     public static function getNbHumeursParEmotions($pdo, $dateDebut, $dateFin, $codeEmotion, $codeUtilisateur)
     {
 
-        $stmt = $pdo->prepare("SELECT DISTINCT DATE_FORMAT(DATE_HEURE, '%Y-%m-%d') FROM humeur WHERE DATE_HEURE BETWEEN :dateDebut AND :dateFin AND CODE_UTILISATEUR = :codeUtilisateur ORDER BY DATE_HEURE");
+        $stmt = $pdo->prepare("SELECT DISTINCT DATE_FORMAT(DATE_HEURE, '%Y-%m-%d') FROM humeur WHERE DATE_HEURE BETWEEN :dateDebut AND :dateFin AND CODE_UTILISATEUR = :codeUtilisateur ORDER BY DATE_FORMAT(DATE_HEURE, '%Y-%m-%d')");
         $stmt->bindParam(':dateDebut', $dateDebut);
         $stmt->bindParam(':dateFin', $dateFin);
         $stmt->bindParam(':codeUtilisateur', $codeUtilisateur);

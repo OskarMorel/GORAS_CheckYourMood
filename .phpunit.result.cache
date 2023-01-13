@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":191:{a:2:{s:7:"defects";a:2:{s:21:"SelectTest::testDates";i:3;s:25:"SelectTest::testConnexion";i:3;}s:5:"times";a:2:{s:21:"SelectTest::testDates";d:0.01;s:25:"SelectTest::testConnexion";d:0.024;}}}
