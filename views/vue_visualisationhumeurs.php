@@ -8,16 +8,15 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
 <body>
     <?php
         require 'includes/navbar.php';
-        //var_dump($humeursStat);
-        //var_dump($tableauDates);
         if ($choixVisualisation == "") {
             $choixVisualisation = "graphique";
         }
     ?>
     <div class="container-fluid text-center">   
         <p class="espace1"></p>
+        <h3>Choisissez comment vous visualiser vos humeurs</h3><br>
+        <p class="espace0"></p>
         <div class="row">
-            <h5>Choisissez comment vous visualiser vos humeurs</h5><br>
             <div class="col">
                 <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
 
@@ -26,7 +25,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
                     <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                    <input type="submit" value="Graphique" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'graphique') {echo('-outline');}}?>-secondary">
+                    <input type="submit" value="En ligne" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'graphique') {echo('-outline');}}?>-secondary">
                 </form>
             </div>
             <p class="espace0"></p>
@@ -38,7 +37,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
                     <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                    <input type="submit" value="Diagramme camembert" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'camembert') {echo('-outline');}}?>-secondary">
+                    <input type="submit" value="En camembert" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'camembert') {echo('-outline');}}?>-secondary">
 
                 </form>
             </div>
@@ -51,7 +50,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
                     <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
 
-                    <input type="submit" value="Diagramme baton" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'baton') {echo('-outline');}}?>-secondary">
+                    <input type="submit" value="En baton" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'baton') {echo('-outline');}}?>-secondary">
                 </form>
             </div>
             <p class="espace0"></p>
@@ -62,10 +61,10 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <?php 
             if ($choixVisualisation == 'camembert') {   
         ?>    
-        <div class="row">
+        <div class="row centrer">
             <div class="col-2"></div>
             <div class="col">
-                <canvas id="camembertChart" style="width:1000px;height:420px"></canvas>
+                <canvas id="camembertChart"></canvas>
             </div>
             <div class="col-2"></div>
         </div>
@@ -102,7 +101,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
 
             <div class="col-2"></div>
             <div class="col">
-                <canvas id="barChart" style="width:1000px;height:420px"></canvas>
+                <canvas id="barChart"></canvas>
             </div>
             <div class="col-2"></div>
         </div>
@@ -177,7 +176,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
-                    <canvas id="lineChart" width="1000px" height="350px"></canvas>
+                    <canvas id="lineChart"></canvas>
                 </div>
                 <div class="col-2"></div>
             </div>

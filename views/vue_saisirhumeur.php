@@ -20,8 +20,8 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="col-1"></div>
         </div>
         <p class="espace2"></p>
-        <?php if(isset($humeursaisie) && $humeursaisie) { ?>
-            <!-- Si la creation s'est bien déroulée on affiche un message de validation -->
+        <!-- Si la creation s'est bien déroulée on affiche un message de validation -->
+        <?php if(isset($humeursaisie) && $humeursaisie) { ?>$
             <p class="espace1"></p>
             <div class="row">
                 <div class="col-2"></div>
@@ -33,8 +33,8 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col-2"></div>
             </div>
         <?php } ?>
+        <!-- Description incorrete on affiche un message pour preciser le format attendu -->
         <?php if(isset($descriptionOK) && !$descriptionOK) { ?>
-            <!-- Description incorrete on affiche un message pour preciser un format valide -->
             <p class="espace1"></p>
             <div class="row">
                 <div class="col-2"></div>
@@ -46,8 +46,8 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col-2"></div>
             </div>
         <?php } ?>
+        <!-- Heure incorrete on affiche un message pour preciser le format attendu -->
         <?php if(isset($dateHeureOK) && !$dateHeureOK) { ?>
-            <!-- Heure incorrete on affiche un message pour preciser un format valide -->
             <p class="espace1"></p>
             <div class="row">
                 <div class="col-2"></div>
@@ -60,9 +60,11 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </div>
         <?php } ?>
         <p class="espace1"></p>
+        <!-- Formulaire pour reseigner une humeur -->
         <form action="/?controller=mexprimer&action=exprimer" method="POST">
             <div class="row">
                 <div class="col-2"></div>
+                <!-- Liste déroulante pour choisir les émotions -->
                 <div class="col-5">
                     <label>Votre émotion</label>
                     <select name="newCodeEmotion" class="form-select" required>
@@ -78,13 +80,15 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                         ?>
                     </select>
                 </div>
+                <!-- Partie pour saisir l'heure -->
                 <div class="col-3">
-                    <label>Période (depuis les 2 dernières heures)</label><br>
-                    <input class="form-control" name="newDateHeure" type="datetime-local" required value="<?php echo($dateHeure); ?>">
+                    <label>Moment (depuis les 2 dernières heures)</label><br>
+                    <input class="form-control" name="newDateHeure" type="datetime-local" required value="<?php echo date('Y-m-d\TH:i'); ?>">
                 </div>
                 <div class="col-2"></div>
             </div>
             <p class="espace1"></p>
+            <!-- Partie pour saisir une description -->
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col">
@@ -97,9 +101,11 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col-2"></div>
             </div>
             <p class="espace1"></p>
+            <!-- Input caché pour le code utilisateur -->
             <input type="text" name="newCodeUtilisateur" value="<?php echo ($_SESSION['id']);?>" hidden>
             <div class="row">
                 <div class="col-1"></div>
+                <!-- Bouton pour valider la saisie -->
                 <div class="col">
                     <input type="submit" value="Envoyer" class="btn btn-primary">
                 </div>

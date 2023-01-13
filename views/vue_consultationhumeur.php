@@ -9,16 +9,12 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <!-- Barre de navigation -->
     <?php
         require 'includes/navbar.php';
-        //var_dump($_POST);
-        //var_dump($dateSaisie);
-        //var_dump($codeEmotion);
-        //var_dump($codeUtilisateur);
-        //var_dump($_GET['passeici']);
-        ?>
+    ?>
     <div class="container-fluid text-center">
 
         <h3>Vous pouvez consulter vos humeurs</h3>
         <p class="espace1"></p>
+        <!-- Filtres pour consulter -->
         <div class="row">
             <div class="col-4"></div>
             <div class="col-2">
@@ -28,7 +24,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </div>
             <div class="col-2">
                     <select name="codeEmotion" class="form-select">
-                        <option value="">Saisir une émotion</option>
+                        <option value="">Sélectionnez une émotion</option>
                         <?php 
                         foreach ($tabEmotions as $emotion){
                         ?>
@@ -47,6 +43,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="col-4"></div>
         </div>
         <p class="espace1"></p>
+        <!-- Table presentant les humeurs -->
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
@@ -67,7 +64,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                                 <td><?php echo($humeur['EMOJI'].' - '.$humeur['NOM']) ?></td>
                                 <td><?php echo($humeur['DESCRIPTION']) ?></td>
                                 <td><button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalSuppr">Supprimer</button></td>
-                                <!-- TODO faire les vérifs de pas de suppression si ça fait + de deux heure que l'humeur a été ajoutée--> 
                             </tr>
                         <?php
                         }
@@ -76,8 +72,8 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 </table>
             </div>
 
-            <div class="modal fade" id="modalSuppr">
             <!-- Modal contenant la confirmation de la suppression de l'humeur -->
+            <div class="modal fade" id="modalSuppr">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -99,14 +95,8 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     </div>
                 </div>
             </div>
-
-
-
-
             <div class="col-1"></div>
         </div>
-
-
     </div>
 </body>
 </html>

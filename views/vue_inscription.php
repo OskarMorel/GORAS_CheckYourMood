@@ -3,7 +3,7 @@ require 'includes/header.php';
 ?>
 <body>
     <div class="container-fluid text-center">
-        <p class="espace2"></p>
+        <p class="espace1"></p>
         <div class="row">
             <div class="col">
                 <h1>CheckYourMood</h1>
@@ -19,8 +19,8 @@ require 'includes/header.php';
         <p class="espace2"></p>
         <form action="/?controller=inscription&action=creation" method="POST">
 
-            <?php if($creation) { ?>
             <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
+            <?php if($creation) { ?>
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
@@ -34,8 +34,8 @@ require 'includes/header.php';
             </div>
             <?php } ?>
 
+            <!-- Si l'identifiant est deja utilisé -->
             <?php if(!$creation && $identifiantDejaUtilise) { ?>
-            <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
@@ -49,8 +49,8 @@ require 'includes/header.php';
             </div>
             <?php } ?>
 
+            <!-- Si les 2 mots de passes ne correspondent pas -->
             <?php if($motDePasse1OK && !$motDePasse2OK) { ?>
-            <!-- Les 2 mots de passes ne correspondent pas -->
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
@@ -62,8 +62,8 @@ require 'includes/header.php';
             </div>
             <?php } ?>
 
-            <?php if($mail != null && !$mailOK) { ?>
-            <!-- L'email n'est pas valide -->
+            <!-- Si l'email n'est pas valide -->
+            <?php if($mail != null && !$mailOK) { ?>*
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
@@ -76,32 +76,52 @@ require 'includes/header.php';
             </div>
             <?php } ?>
 
-            <!-- Partie nom, prenom, nom d'utilisateur, adresse mail-->
+            <!-- Partie nom prénom -->
             <div class="row">
                 <div class="col-1"></div>
-                <div class="col gauche">
+                <div class="col-5">
                     <label for="newNom"  class="form-label">Nom</label>
                     <input pattern="\w{2,80}" title="Le nom  ne doit pas depasser 80 caractere" name="newNom" value="<?php if ($nomOK) { echo $nom; } ?>" type="Text" placeholder="Saisissez votre nom" class="form-control <?php if ($nomOK) { echo 'is-valid'; } ?>" required>
                 </div>
-                <div class="col gauche">
+                <div class="col-5">
                     <label for="newPrenom" class="form-label">Prenom</label>
                     <input pattern="\w{2,80}" title="Le prenom ne doit pas depasser 80 caractere" name="newPrenom" value="<?php if ($prenomOK) { echo $prenom; } ?>" type="Text" placeholder="Saisissez votre prenom" class="form-control <?php if ($prenomOK) { echo 'is-valid'; } ?>" required>
                 </div>
-                <div class="col gauche">
+                <div class="col-1"></div>
+            </div>
+            <p class="espace0"></p>
+            <!-- Partie nom d'utilisateur, et adresse mail -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5">
                     <label for="newNomUtilisateur" class="form-label">Nom d'utilisateur</label>
                     <input pattern="\w{2,80}" title="Le nom d'utilisateur ne doit pas depasser 80 caractere" name="newNomUtilisateur" value="<?php if ($nomUtilisateurOK) { echo $nomUtilisateur; } ?>" type="Text" placeholder="Saisissez votre nom d'utilisateur" class="form-control <?php if ($nomUtilisateurOK) { echo 'is-valid'; } ?>" required>
                 </div>
-                <div class="col gauche">
+                <div class="col-5">
                     <label for="newMail" class="form-label">Adresse Mail</label>
                     <input name="newMail" value="<?php if ($mailOK) { echo $mail; } ?>" type="Text" placeholder="Saisissez votre adresse mail" class="form-control <?php if ($mailOK) { echo 'is-valid'; } ?>" required>
                 </div>
                 <div class="col-1"></div>
             </div>
             <p class="espace0"></p>
-             <!-- Partie genre, date de naissance, mot de passe, et confirmation mot de passe -->
             <div class="row">
                 <div class="col-1"></div>
-                <div class="col gauche">
+                <div class="col-5">
+                    <label class="form-label">Mot de passe</label>
+                    <input name="newMotDePasse1" value="<?php if ($motDePasse1OK) { echo $motDePasse1; } ?>" type="password" placeholder="Saisissez votre mot de passe" class="form-control <?php if ($motDePasse1OK) { echo 'is-valid'; } ?>" required>
+                </div>
+                
+                <div class="col-5">
+                    <label class="form-label">Confirmation de mot de passe</label>
+                    <input name="newMotDePasse2" value="<?php if ($motDePasse2OK) { echo $motDePasse2; } ?>" type="password" placeholder="Confirmez votre mot de passe" class="form-control <?php if ($motDePasse2OK) { echo 'is-valid'; } ?>" required>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <p class="espace1"></p>
+            <!-- Partie optionnelle genre, date de naissance -->
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
                     <label class="form-label">Genre <i>(optionnel)</i></label>
                     <select class="form-select <?php if ($genreOK) { echo 'is-valid'; } ?>" name="newGenre">
                         <option value="">Veuillez renseigner un genre</option>
@@ -128,17 +148,9 @@ require 'includes/header.php';
                                 ?> value="Autre">Autre</option>
                     </select>
                 </div>
-                <div class="col gauche">
+                <div class="col">
                     <label class="form-label">Date de naissance <i>(optionnel)</i></label>
                     <input name="newDateNaissance" value="<?php if ($dateNaissanceOK) { echo $dateNaissance; } ?>" type="date" class="form-control <?php if ($dateNaissanceOK) { echo 'is-valid'; } ?>">
-                </div>
-                <div class="col gauche">
-                    <label class="form-label">Mot de passe</label>
-                    <input name="newMotDePasse1" value="<?php if ($motDePasse1OK) { echo $motDePasse1; } ?>" type="password" placeholder="Saisissez votre mot de passe" class="form-control <?php if ($motDePasse1OK) { echo 'is-valid'; } ?>" required>
-                </div>
-                <div class="col gauche">
-                    <label class="form-label">Confirmation de mot de passe</label>
-                    <input name="newMotDePasse2" value="<?php if ($motDePasse2OK) { echo $motDePasse2; } ?>" type="password" placeholder="Confirmez votre mot de passe" class="form-control <?php if ($motDePasse2OK) { echo 'is-valid'; } ?>" required>
                 </div>
                 <div class="col-1"></div>
             </div>
