@@ -1,7 +1,9 @@
 <?php
 
 /**
- * erreur404Controller.php
+ * erreurcontroller.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
 
 namespace controllers;
@@ -13,7 +15,7 @@ use yasmf\httphelper;
 
 /**
  * Class erreurcontroller
- * Page d'accueil de la partie visible
+ * Permet d'indiquer une erreur
  * @package controllers
  */
 class erreurController implements controller

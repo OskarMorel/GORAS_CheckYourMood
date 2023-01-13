@@ -9,18 +9,15 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <!-- Barre de navigation -->
     <?php
         require 'includes/navbar.php';
-        $edition = false;
-        //var_dump($edition);
-        //var_dump($_SESSION);
     ?>
-<!-- Partie modification des données de l'utilisateur -->
+    <!-- Partie modification des données de l'utilisateur -->
     <div class="container-fluid text-center">
         <p class="espace1"></p>
         <h2>Modification de votre profil</h2>
         <p class="espace1"></p>
         <form action="/?controller=modificationprofil&action=modifierProfil" method="POST">
             <?php if($modification) { ?>
-                <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
+                <!-- Si la modification s'est bien déroulée on affiche un message de confirmation -->
                 <div class="row">
                     <div class="col-3"></div>
                     <div class="col">
@@ -31,36 +28,35 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <div class="col-3"></div>
                 </div>
             <?php }?>
-
-                <?php if(!$modification && $identifiantDejaUtilise) { ?>
-                <!-- Si l'identifiant existe déjà dans la base de données -->
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col">
-                        <div class="alert alert-danger" role="alert">
-                            Erreur ! L'identifiant <?php echo ($nomUtilisateur);?> est deja utilisé.
-                        </div>
+            <?php if(!$modification && $identifiantDejaUtilise) { ?>
+            <!-- Si l'identifiant existe déjà dans la base de données -->
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col">
+                    <div class="alert alert-danger" role="alert">
+                        Erreur ! L'identifiant <?php echo ($nomUtilisateur);?> est deja utilisé.
                     </div>
-                    <div class="col-3"></div>
                 </div>
+                <div class="col-3"></div>
+            </div>
             <?php } ?>
-
-                <?php if($mail != null && !$mailOK) { ?>
-                <!-- L'email n'est pas valide -->
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col">
-                        <div class="alert alert-warning" role="alert">
-                            Le format de l'adresse mail n'est pas valide. <br>
-                            Une adresse mail doit avoir le format suivant : <b>xxxxx@xxxxxx.xx</b>
-                        </div>
+            <?php if($mail != null && !$mailOK) { ?>
+            <!-- Si l'email n'est pas valide -->
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        Le format de l'adresse mail n'est pas valide. <br>
+                        Une adresse mail doit avoir le format suivant : <b>xxxxx@xxxxxx.xx</b>
                     </div>
-                    <div class="col-3"></div>
                 </div>
+                <div class="col-3"></div>
+            </div>
             <?php } ?>
-            
+            <!-- Formulaire de modification -->
             <div class="row">
                 <div class="col"></div>
+                <!-- Partie Nom, Prenom, Genre-->
                 <div class="col">
                     <div class="col gauche">
                         <label for="newNom"  class="form-label">Nom</label>
@@ -92,6 +88,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     </div>
                     <p class="espace0"></p>
                 </div>
+                <!-- Partie Adresse Mail, Nom d'utilisateur, date de naissance-->
                 <div class="col">
                     <div class="col gauche">
                         <label for="newMail" class="form-label">Adresse Mail</label>
@@ -112,7 +109,9 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col"></div>
             </div>
             <p class="espace1"></p>
+            <!-- ID de l'utilisateur caché -->
             <input hidden name="idUtilisateur" value="<?php echo($_SESSION['id']); ?>">
+            <!-- Bouton pour valider les modifications -->
             <input type="submit" value="Valider les modifications" class="btn btn-primary">
             <div class="row">
                 <div class="col"></div>
@@ -122,10 +121,8 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </div>
         </form>
         <p class="espace0"></p>
-        <form action="/?controller=profil" method="POST">
-            <input type="submit" value="Annuler" class="btn btn-danger">
-        </form>
-        <!-- TODO lien vers vue de modification du mot de passe -->
+        <!-- Bouton pour annuler les modification et retourner au profil -->
+        <a  class="btn btn-danger" href="/?controller=profil">Annuler</a>
     </div>
 </body>
 </html>

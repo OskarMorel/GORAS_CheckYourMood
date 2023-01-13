@@ -12,9 +12,11 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     ?>
     <div class="container-fluid text-center">
         <p class="espace2"></p>
+        <!-- Formulaire avec les input disabled pour afficher les informations de l'utilisateur -->
         <form action="/?controller=profil&action=modifierProfil" method="POST">
             <div class="row">
                 <div class="col"></div>
+                <!-- Partie Nom, Prenom, Genre -->
                 <div class="col">
                     <div class="gauche">
                         <label class="form-label">Nom</label>
@@ -45,6 +47,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                         </select>
                     </div>
                 </div>
+                <!-- Partie Adresse Mail, Nom d'utilisateur, date de naissance-->
                 <div class="col">
                     <div class="gauche">
                         <label class="form-label">E-Mail</label>
@@ -64,8 +67,11 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col"></div>
             </div>
             <p class="espace1"></p>
+
+            <!-- Id de l'utilisateur caché -->
             <input hidden name="idUtilisateur" value="<?php echo($_SESSION['id']); ?>">
-            <input hidden name="editionProfil" value="true">
+
+            <!-- Boutons pour modifier ses informations ou modifier son mot de passe -->
             <div class="row">
                 <div class="col"></div>
                 <div class="col-2"><a href="/?controller=modificationProfil" class="btn btn-primary">Modifier mes informations</a></div>
@@ -73,16 +79,13 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col"></div>
             </div>
         </form>
-
         <p class="espace0"></p>
-
-        <!-- Partie de la vue pour se deinscrire de CheckYourMood -->
-
-        <!-- Boutton pour afficher le modal contenant le formulaire de deinscription -->
+        
+        <!-- Boutton pour afficher le modal contenant le formulaire de desinscription -->
         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeinscription">Me désinscrire</button>
 
+        <!-- Modal contenant le formulaire de deinscription et qui appelle le controller profil et l'action supprimer profil -->
         <div class="modal fade" id="modalDeinscription">
-            <!-- Modal contenant le formulaire de deinscription et qui appelle le controller profil et l'action supprimer profil -->
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -92,7 +95,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <div class="modal-body">
                         Vous etes sur le point de vous déinscrire de CheckYourMood. <br><br>
                         En cliquant sur <b>me déinscrire de CheckYourMood</b> vous ne pourrez plus acceder au services de CheckYourMood et vos données personnelles seront supprimées.
-
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
@@ -106,6 +108,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </div>
         </div>
 
+        <!-- Notification si l'utilisateur à decider de se désincrire de l'application -->
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div id="confirmationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
@@ -118,6 +121,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </div>
         </div>
 
+        <!-- Script pour appeler la notification si l'utilisateur s'est deinscrit de checkyourmood -->
         <script>
             const toastTrigger = document.getElementById('confirmationSupp');
             const toastConfirmation = document.getElementById('confirmationToast');
@@ -130,7 +134,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             })
             }
         </script>
-        
 
     </div>
 </body>

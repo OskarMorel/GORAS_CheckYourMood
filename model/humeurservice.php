@@ -5,7 +5,7 @@ namespace model;
 class humeurservice
 {
 
-    /* Recupération des humeurs */
+    /* Recupération des humeurs selon un utilisateur et selon l'émotion voulue et selon une date */
     public static function getHumeursUtilisateurFiltres($pdo, $codeUtilisateur, $codeEmotion, $dateHeure)
     {
         $sql = "SELECT DATE_HEURE, DESCRIPTION, emotion.EMOJI, emotion.NOM, humeur.CODE_EMOTION
@@ -27,7 +27,7 @@ class humeurservice
         return $tabHumeurs;
     }
 
-    /* Recupération des humeurs */
+    /* Recupération des humeurs selon un utilisateur et selon une date */
     public static function getHumeursUtilisateurDate($pdo, $codeUtilisateur, $dateHeure)
     {
         $sql = "SELECT DATE_HEURE, DESCRIPTION, emotion.EMOJI, emotion.NOM, humeur.CODE_EMOTION
@@ -49,7 +49,7 @@ class humeurservice
         return $tabHumeurs;
     }
 
-    /* Recupération des humeurs */
+    /* Recupération des humeurs selon un utilisateur et selon l'émotion voulue */
     public static function getHumeursUtilisateurEmotion($pdo, $codeUtilisateur, $codeEmotion)
     {
         $sql = "SELECT DATE_HEURE, DESCRIPTION, emotion.EMOJI, emotion.NOM, humeur.CODE_EMOTION
@@ -71,7 +71,7 @@ class humeurservice
         return $tabHumeurs;
     }
 
-    /* Recupération des humeurs */
+    /* Recupération des humeurs selon un utilisateur */
     public static function getHumeursUtilisateur($pdo, $codeUtilisateur)
     {
         $sql = "SELECT DATE_HEURE, DESCRIPTION, emotion.EMOJI, emotion.NOM, humeur.CODE_EMOTION
@@ -156,12 +156,4 @@ class humeurservice
             $e -> getMessage();
         }
     }
-
-
-    
-
-    public static function intervalleHumeur() {
-        
-    }
-
 }

@@ -9,11 +9,8 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
     <!-- Barre de navigation -->
     <?php
         require 'includes/navbar.php';
-        $edition = false;
-        //var_dump($edition);
-        //var_dump($_SESSION);
     ?>
-<!-- Partie modification des données de l'utilisateur -->
+    <!-- Partie modification des données de l'utilisateur -->
     <div class="container-fluid text-center">
         <p class="espace1"></p>
         <h2>Modification de votre mot de passe</h2>
@@ -24,7 +21,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         <!-- Affichage des erreurs -->
         <div class="row">
             <div class="col-3"></div>
-            
                 <?php
                     $err = htmlspecialchars($_GET['err']);
 
@@ -52,17 +48,19 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     break;     
                     case 'nope':       
                 ?>
-                    <div class="col alert alert-success">
-                        <strong>Modification du mot de passe effectuée</strong>
-                    </div>
+                <div class="col alert alert-success">
+                    <strong>Modification du mot de passe effectuée</strong>
+                </div>
                 <?php break; } ?>
                 <div class="col-3"></div>
             </div>
         <?php } ?>
         <p class="espace1"></p>
+        <!-- Formulaire pour modifier le mot de passe -->
         <form action="/?controller=modificationmotdepasse&action=modifierMotDePasse" method="POST">
             <div class="row">
                 <div class="col-3"></div>
+                <!-- Saisie du mot de passe actuel -->
                 <div class="col gauche">    
                     <label for="motDePasseActuel">Saisissez votre mot de passe actuel</label>
                     <input name="motDePasseActuel" type="password" class="form-control" placeholder="Saisissez votre mot de passe actuel">
@@ -70,10 +68,12 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col-3"></div>
                 <p class="espace1"></p>
                 <div class="col-3"></div>
+                <!-- Saisie du nouveau mot de passe -->
                 <div class="col gauche">
                     <label for="nouveauMotDePasse">Saisissez votre nouveau mot de passe</label>
                     <input name="nouveauMotDePasse" type="password" class="form-control" placeholder="Saisissez votre nouveau mot de passe">
                 </div>
+                <!-- Confirmation du mot de passe -->
                 <div class="col gauche">
                     <label for="confirmerMdp">Confirmer votre nouveau mot de passe</label>
                     <input name="confirmerMdp" type="password" class="form-control" placeholder="Saisissez votre nouveau mot de passe pour confirmer">
@@ -81,20 +81,14 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 <div class="col-3"></div>
             </div>
             <p class="espace1"></p>
+            <!-- ID de l'utilisateur caché -->
             <input hidden name="idUtilisateur" value="<?php echo($_SESSION['id']); ?>">
+            <!-- Bouton pour valider la modification -->
             <input type="submit" value="Valider la modification" class="btn btn-primary">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col">
-                </div>
-                <div class="col"></div>
-            </div>
         </form>
         <p class="espace0"></p>
-        <form action="/?controller=profil" method="POST">
-            <input type="submit" value="Annuler" class="btn btn-danger">
-        </form>
-        <!-- TODO lien vers vue de modification du mot de passe -->
+        <!-- Lien pour annuler et retourner au profil -->
+        <a  class="btn btn-danger" href="/?controller=profil">Annuler</a>
     </div>
 </body>
 </html>

@@ -2,8 +2,9 @@
 
 /**
  * accueilController.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
-
 
 namespace controllers;
 
@@ -12,8 +13,8 @@ use yasmf\controller;
 use yasmf\config;
 
 /**
- * Class homeController
- * Page d'accueil de la partie visible
+ * Class accueilController
+ * Page d'accueil permet d'appeler la vue pour la page d'accueil de l'application
  * @package controllers
  */
 class accueilController implements controller
@@ -28,14 +29,5 @@ class accueilController implements controller
         $view->setVar('RACINE', config::getRacine());
 
         return $view;
-    }
-
-    /**
-     * Déconnecte l'utilisateur
-     */
-    public function deconnexion($pdo)
-    {
-        //TODO gerer les sessions
-        return $this->index($pdo);
     }
 }

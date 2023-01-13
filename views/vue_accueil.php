@@ -9,10 +9,10 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
   <!-- Barre de navigation -->
     <?php
       require 'includes/navbar.php';
-      //var_dump($_SESSION);
     ?>
     <div class="container-fluid text-center">
         <p class="espace1"></p>
+        <!-- Salutation a l'utilisateur -->
         <div class="row">
             <div class="col"></div>
             <div class="col">
@@ -21,15 +21,13 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="col"></div>
         </div>
         <p class="espace2"></p>
-
         <div class="row">
             <div class="col-1"></div>
-            <!-- Lien vers les humeurs de l'utilisateur -->
+            <!-- Lien vers les humeurs de l'utilisateur avec le code utilisateur -->
             <div class="col notDraggable">
               <form action="/?controller=consultationhumeurs&action=consulter" method="POST">
                   <button class="zoom" type="submit">
                     <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id']) ?>">
-                    
                     <p class="icon-accueil">&#128301;</p>
                     <p class="texteBouton">Voir mes humeurs</p>
                   </button>
@@ -56,7 +54,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             <div class="col-1"></div>
         </div>
         <p class="espace2"></p>
-        
     </div>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!-- Barre de navigation -->
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
+        <!-- Boutons pour revenir a l'accueil -->
         <a class="navbar-brand" href="/?controller=accueil">
-            <img src="..\..\images\logo.png" alt="Logo CheckYourMood" width="50%">
+            <img src="..\..\images\logo.png" alt="Logo CheckYourMood" width="35%">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

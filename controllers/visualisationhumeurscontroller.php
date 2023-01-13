@@ -2,6 +2,8 @@
 
 /**
  * visualisationHumeursController.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
 
 namespace controllers;
@@ -15,6 +17,7 @@ use model\stathumeurservice;
 
 /**
  * Class de visualisationHumeursController
+ * Permet a un utilisateur de visualiser ses humeurs dans le temps
  * @package controllers
  */
 class visualisationHumeursController implements controller
