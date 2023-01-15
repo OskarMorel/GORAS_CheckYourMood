@@ -11,6 +11,7 @@
             <directory>testsunitaires/testhumeurservice.php</directory>
             <directory>testsunitaires/teststathumeurservice.php</directory>
             <directory>testsunitaires/testutilisateurservice.php</directory>
+            <directory>testsunitaires/testverificationservice.php</directory>
         </testsuite>
     </testsuites>
 </phpunit>

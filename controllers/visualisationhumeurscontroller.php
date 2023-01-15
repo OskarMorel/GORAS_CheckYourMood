@@ -65,7 +65,6 @@ class visualisationHumeursController implements controller
         $view->setVar('tableau26', stathumeurservice::getNbHumeursParEmotions($pdo, $dateDebut, $dateFin, 26, $codeUtilisateur));
         $view->setVar('tableau27', stathumeurservice::getNbHumeursParEmotions($pdo, $dateDebut, $dateFin, 27, $codeUtilisateur));
 
-        var_dump(stathumeurservice::getNbHumeursParEmotions($pdo, "2023-01-01", "2023-01-11", 1, 70));
         return $view;
     }  
 
