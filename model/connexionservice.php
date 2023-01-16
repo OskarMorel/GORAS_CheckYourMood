@@ -31,13 +31,18 @@ class connexionservice
      */
     public static function motDePasseValide($pdo, $identifiant, $motDePasse)
     {
-        $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE NOM_UTILISATEUR = ? AND MOT_DE_PASSE = ?");
-        $stmt->execute([$identifiant, sha1($motDePasse)]);
-        $user = $stmt->fetch();
-        if ($user == null) {
-            return false;
-        } else {
-            return true;
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE NOM_UTILISATEUR = ? AND MOT_DE_PASSE = ?");
+            $stmt->execute([$identifiant, sha1($motDePasse)]);
+            $user = $stmt->fetch();
+            if ($user == null) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+            exit();
         }
                
     }
@@ -48,10 +53,15 @@ class connexionservice
      */
     public static function getUtilisateur($pdo, $identifiant)
     {
-        $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE NOM_UTILISATEUR = ?");
-        $stmt->execute([$identifiant]);
-        $user = $stmt->fetch();
-        return $user;
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE NOM_UTILISATEUR = ?");
+            $stmt->execute([$identifiant]);
+            $user = $stmt->fetch();
+            return $user;
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+            exit();
+        }
     }
 
     /**
@@ -60,9 +70,14 @@ class connexionservice
      */
     public static function getUtilisateurById($pdo, $id)
     {
-        $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE ID_UTILISATEUR = ?");
-        $stmt->execute([$id]);
-        $user = $stmt->fetch();
-        return $user;
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE ID_UTILISATEUR = ?");
+            $stmt->execute([$id]);
+            $user = $stmt->fetch();
+            return $user;
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+            exit();
+        }
     }
 }

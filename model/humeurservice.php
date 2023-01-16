@@ -8,90 +8,110 @@ class humeurservice
     /* Recupération des humeurs selon un utilisateur et selon l'émotion voulue et selon une date */
     public static function getHumeursUtilisateurFiltres($pdo, $codeUtilisateur, $codeEmotion, $dateHeure)
     {
-        $sql = "SELECT *
-                FROM `humeur`
-                JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
-                WHERE humeur.CODE_UTILISATEUR = ? AND humeur.CODE_EMOTION = ? AND humeur.DATE_HEURE LIKE ? 
-                ORDER BY `DATE_HEURE` DESC
-                ";
+        try{
+            $sql = "SELECT *
+                    FROM `humeur`
+                    JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
+                    WHERE humeur.CODE_UTILISATEUR = ? AND humeur.CODE_EMOTION = ? AND humeur.DATE_HEURE LIKE ? 
+                    ORDER BY `DATE_HEURE` DESC
+                    ";
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$codeUtilisateur, $codeEmotion, $dateHeure."%"]);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$codeUtilisateur, $codeEmotion, $dateHeure."%"]);
 
-        $tabHumeurs = array();
-        while ($row = $stmt->fetch()) {
-            $tabHumeurs[] = array(
-                'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'],
-                'CODE_EMOTION' => $row['CODE_EMOTION'], 'ID_HUMEUR' => $row['ID_HUMEUR']
-            );
+            $tabHumeurs = array();
+            while ($row = $stmt->fetch()) {
+                $tabHumeurs[] = array(
+                    'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'],
+                    'CODE_EMOTION' => $row['CODE_EMOTION'], 'ID_HUMEUR' => $row['ID_HUMEUR']
+                );
+            }
+            return $tabHumeurs;
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+            exit();
         }
-        return $tabHumeurs;
     }
 
     /* Recupération des humeurs selon un utilisateur et selon une date */
     public static function getHumeursUtilisateurDate($pdo, $codeUtilisateur, $dateHeure)
     {
-        $sql = "SELECT *
-                FROM `humeur`
-                JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
-                WHERE humeur.CODE_UTILISATEUR = ? AND humeur.DATE_HEURE LIKE ? 
-                ORDER BY `DATE_HEURE` DESC
-                ";
+        try {
+            $sql = "SELECT *
+                    FROM `humeur`
+                    JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
+                    WHERE humeur.CODE_UTILISATEUR = ? AND humeur.DATE_HEURE LIKE ? 
+                    ORDER BY `DATE_HEURE` DESC
+                    ";
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$codeUtilisateur, $dateHeure."%"]);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$codeUtilisateur, $dateHeure."%"]);
 
-        $tabHumeurs = array();
-        while ($row = $stmt->fetch()) {
-            $tabHumeurs[] = array(
-                'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'], 'CODE_EMOTION' => $row['CODE_EMOTION'], 'ID_HUMEUR' => $row['ID_HUMEUR']
-            );
+            $tabHumeurs = array();
+            while ($row = $stmt->fetch()) {
+                $tabHumeurs[] = array(
+                    'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'], 'CODE_EMOTION' => $row['CODE_EMOTION'], 'ID_HUMEUR' => $row['ID_HUMEUR']
+                );
+            }
+            return $tabHumeurs;
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+            exit();
         }
-        return $tabHumeurs;
     }
 
     /* Recupération des humeurs selon un utilisateur et selon l'émotion voulue */
     public static function getHumeursUtilisateurEmotion($pdo, $codeUtilisateur, $codeEmotion)
     {
-        $sql = "SELECT *
-                FROM `humeur`
-                JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
-                WHERE humeur.CODE_UTILISATEUR = ? AND humeur.CODE_EMOTION = ? 
-                ORDER BY `DATE_HEURE` DESC
-                ";
+        try {
+            $sql = "SELECT *
+                    FROM `humeur`
+                    JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
+                    WHERE humeur.CODE_UTILISATEUR = ? AND humeur.CODE_EMOTION = ? 
+                    ORDER BY `DATE_HEURE` DESC
+                    ";
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$codeUtilisateur, $codeEmotion]);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$codeUtilisateur, $codeEmotion]);
 
-        $tabHumeurs = array();
-        while ($row = $stmt->fetch()) {
-            $tabHumeurs[] = array(
-                'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'], 'CODE_EMOTION' => $row['CODE_EMOTION'], 'ID_HUMEUR' => $row['ID_HUMEUR']
-            );
+            $tabHumeurs = array();
+            while ($row = $stmt->fetch()) {
+                $tabHumeurs[] = array(
+                    'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'], 'CODE_EMOTION' => $row['CODE_EMOTION'], 'ID_HUMEUR' => $row['ID_HUMEUR']
+                );
+            }
+            return $tabHumeurs;
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+            exit();
         }
-        return $tabHumeurs;
     }
 
     /* Recupération des humeurs selon un utilisateur */
     public static function getHumeursUtilisateur($pdo, $codeUtilisateur)
     {
-        $sql = "SELECT *
-                FROM `humeur`
-                JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
-                WHERE humeur.CODE_UTILISATEUR = ? 
-                ORDER BY `DATE_HEURE` DESC
-                ";
+        try {
+            $sql = "SELECT *
+                    FROM `humeur`
+                    JOIN `emotion` ON humeur.CODE_EMOTION = emotion.ID_EMOTION
+                    WHERE humeur.CODE_UTILISATEUR = ? 
+                    ORDER BY `DATE_HEURE` DESC
+                    ";
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$codeUtilisateur]);
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$codeUtilisateur]);
 
-        $tabHumeurs = array();
-        while ($row = $stmt->fetch()) {
-            $tabHumeurs[] = array(
-                'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'], 'CODE_EMOTION' => $row['CODE_EMOTION'], 'ID_HUMEUR' => $row['ID_HUMEUR']
-            );
+            $tabHumeurs = array();
+            while ($row = $stmt->fetch()) {
+                $tabHumeurs[] = array(
+                    'DATE_HEURE' => $row['DATE_HEURE'], 'EMOJI' => $row['EMOJI'], 'NOM' => $row['NOM'], 'DESCRIPTION' => $row['DESCRIPTION'], 'CODE_EMOTION' => $row['CODE_EMOTION'], 'ID_HUMEUR' => $row['ID_HUMEUR']
+                );
+            }
+            return $tabHumeurs;
+        } catch (\Exception $e) {
+            var_dump($e->getMessage());
+            exit();
         }
-        return $tabHumeurs;
     }
 
     /* Ajout d'une humeur */

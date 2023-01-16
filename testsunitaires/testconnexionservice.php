@@ -36,7 +36,6 @@ class ConnexionServiceTest extends TestCase {
         $motDePasseValide = sha1("123");
         $aTester1 = connexionservice::motDePasseValide($pdo, "simon", $motDePasseValide);
         $this->assertNotTrue($aTester1);
-        $this->assertTrue($aTester1);
     }
 
 
