@@ -37,6 +37,7 @@ class consultationHumeursController implements controller
         $view->setVar('dateSaisie', httphelper::getParam('dateSaisie'));
         $view->setVar('codeEmotion', httphelper::getParam('codeEmotion'));
         $view->setVar('codeUtilisateur', httphelper::getParam('codeUtilisateur'));
+        $view->setVar('humeurSupp', httphelper::getParam('humeurSupp'));
 
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
 
@@ -45,16 +46,12 @@ class consultationHumeursController implements controller
         $dateSaisie = httphelper::getParam('dateSaisie');
         if (isset($dateSaisie) && $dateSaisie != "" && isset($codeEmotion) && $codeEmotion != "") {
             $_POST['humeurs'] = humeurservice::getHumeursUtilisateurFiltres($pdo, $codeUtilisateur, $codeEmotion, $dateSaisie);
-            $_GET['passeici'] = "date";
         } else if (isset($codeEmotion) && $codeEmotion != "") {
             $_POST['humeurs'] = humeurservice::getHumeursUtilisateurEmotion($pdo, $codeUtilisateur, $codeEmotion);
-            $_GET['passeici'] = "emotion";
         } else if (isset($dateSaisie) && $dateSaisie != "") {
             $_POST['humeurs'] = humeurservice::getHumeursUtilisateurDate($pdo, $codeUtilisateur, $dateSaisie);
-            $_GET['passeici'] = "tout";
         } else {
             $_POST['humeurs'] = humeurservice::getHumeursUtilisateur($pdo, $codeUtilisateur);
-            $_GET['passeici'] = "justehumeur";
         }
 
         $view->setVar('humeurs', httphelper::getParam('humeurs'));
@@ -81,10 +78,9 @@ class consultationHumeursController implements controller
     public function supprimer($pdo)
     {
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
-        $codeEmotion = httphelper::getParam('codeEmotionASuppr');
-        $dateEmotion = httphelper::getParam('dateEmo');
+        $codeHumeur = httphelper::getParam('codeHumeur');
 
-        humeurservice::suppHumeursUtilisateur($pdo, $codeUtilisateur, $codeEmotion, $dateEmotion);
+        humeurservice::suppHumeursUtilisateur($pdo, $codeUtilisateur, $codeHumeur);
 
         return $this->index($pdo);
     }
