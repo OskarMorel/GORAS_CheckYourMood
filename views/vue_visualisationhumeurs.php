@@ -13,51 +13,38 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         }
     ?>
     <div class="container-fluid text-center">   
+        <!-- Bouton pour choisir comment visualiser ses humeurs -->
         <p class="espace1"></p>
         <h3>Choisissez comment vous visualiser vos humeurs</h3><br>
         <p class="espace0"></p>
         <div class="row">
             <div class="col">
                 <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
-
                     <input hidden name="choixVisualisation" value="graphique" type="text" id="graphique">
-
-                    <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
                     <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
-
                     <input type="submit" value="En ligne" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'graphique') {echo('-outline');}}?>-secondary">
                 </form>
             </div>
             <p class="espace0"></p>
             <div class="col">
                 <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
-
                     <input hidden name="choixVisualisation" value="camembert" type="text" id="camembert">
-
-                    <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
                     <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
-
                     <input type="submit" value="En camembert" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'camembert') {echo('-outline');}}?>-secondary">
-
                 </form>
             </div>
             <p class="espace0"></p>
             <div class="col">
                 <form action="/?controller=visualisationhumeurs&action=afficher" method="POST">
-
                     <input hidden name="choixVisualisation" value="baton" type="text" id="baton">
-
-                    <!-- Id de l'utilisateur pour recuperer seulement ses humeurs -->
                     <input hidden name="codeUtilisateur" value="<?php echo($_SESSION['id'])?>">
-
                     <input type="submit" value="En baton" class="col-2 btn btn<?php if(isset($choixConsultation)) {if($choixConsultation != 'baton') {echo('-outline');}}?>-secondary">
                 </form>
             </div>
             <p class="espace0"></p>
         </div>
         <p class="espace0"></p>
-
-        
+        <!-- On affiche le diagramme en camembert-->
         <?php 
             if ($choixVisualisation == 'camembert') {   
         ?>    
@@ -92,8 +79,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 }
             });
         </script>
-        
-
+        <!-- On affiche le diagramme en baton-->
         <?php 
             } else if ($choixVisualisation == 'baton') {
         ?>
@@ -131,6 +117,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                 }
             });
         </script>
+        <!-- On affiche le diagramme en ligne-->
         <?php
             } else if ($choixVisualisation == 'graphique') {
                 if (isset($_POST['dateDebut']) && isset($_POST['dateFin'])) {
@@ -138,7 +125,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     $dateFin = $_POST['dateFin'];
                 }
         ?>
-
+            <!-- formulaire pour saisir les dates de début et les dates de fins du graphique en lignes -->
             <form action="/?controller=visualisationhumeurs&action=getDatas" method="POST"> 
                 <div class="row">
                     <div class="col"></div>
@@ -171,7 +158,7 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     <div class="col"></div>
                 </div>
             </form>
-
+            <!-- On affiche le diagramme en ligne-->
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
@@ -329,7 +316,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
                     }
                     });
             </script>
-            
         <?php
             }
         ?>

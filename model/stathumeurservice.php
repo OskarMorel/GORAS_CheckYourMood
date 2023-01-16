@@ -61,7 +61,7 @@ class stathumeurservice
     }
 
      /**
-     * Renvoie toutes les emotions presentes dans la base de donnée
+     * Renvoie les humeurs selon une intervalle de date
      */
     public static function getDates($pdo, $dateDebut, $dateFin, $codeUtilisateur)
     {
@@ -85,7 +85,7 @@ class stathumeurservice
     }
 
     /**
-     * Renvoie toutes les emotions presentes dans la base de donnée
+     * Renvoie le nb d'humeurs selon une emotion et selon une intervalle de dates
      */
     public static function getNbHumeursParEmotions($pdo, $dateDebut, $dateFin, $codeEmotion, $codeUtilisateur)
     {

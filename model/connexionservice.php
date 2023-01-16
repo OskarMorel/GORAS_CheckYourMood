@@ -5,8 +5,6 @@ namespace model;
 class connexionservice
 {
 
-    //Faire un objet pdo pour chaque modele ?
-
     /**
      * Chercher si l'identifiant existe dans la bd
      * @return true si trouver sinon false
@@ -26,7 +24,6 @@ class connexionservice
             var_dump($e->getMessage());
             exit();
         }
-        
     }
 
     /**
@@ -68,6 +65,4 @@ class connexionservice
         $user = $stmt->fetch();
         return $user;
     }
-
-
 }

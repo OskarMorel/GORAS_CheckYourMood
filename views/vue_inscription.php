@@ -9,7 +9,6 @@ require 'includes/header.php';
                 <h1>CheckYourMood</h1>
             </div>
         </div>
-        
         <p class="espace0"></p>
         <div class="row">
             <div class="col">
@@ -17,9 +16,9 @@ require 'includes/header.php';
             </div>
         </div>
         <p class="espace2"></p>
+        <!-- Formulaire d'inscription a l'application -->
         <form action="/?controller=inscription&action=creation" method="POST">
-
-            <!-- Si la creartion s'est bien déroulée on affiche un message de validation -->
+            <!-- Si la creation s'est bien déroulée on affiche un message de validation -->
             <?php if($creation) { ?>
             <div class="row">
                 <div class="col-1"></div>
@@ -33,7 +32,6 @@ require 'includes/header.php';
                 <div class="col-1"></div>
             </div>
             <?php } ?>
-
             <!-- Si l'identifiant est deja utilisé -->
             <?php if(!$creation && $identifiantDejaUtilise) { ?>
             <div class="row">
@@ -48,7 +46,6 @@ require 'includes/header.php';
                 <div class="col-1"></div>
             </div>
             <?php } ?>
-
             <!-- Si les 2 mots de passes ne correspondent pas -->
             <?php if($motDePasse1OK && !$motDePasse2OK) { ?>
             <div class="row">
@@ -61,7 +58,6 @@ require 'includes/header.php';
                 <div class="col-1"></div>
             </div>
             <?php } ?>
-
             <!-- Si l'email n'est pas valide -->
             <?php if($mail != null && !$mailOK) { ?>*
             <div class="row">
@@ -75,7 +71,6 @@ require 'includes/header.php';
                 <div class="col-1"></div>
             </div>
             <?php } ?>
-
             <!-- Partie nom prénom -->
             <div class="row">
                 <div class="col-1"></div>
@@ -110,7 +105,6 @@ require 'includes/header.php';
                     <label class="form-label">Mot de passe</label>
                     <input name="newMotDePasse1" value="<?php if ($motDePasse1OK) { echo $motDePasse1; } ?>" type="password" placeholder="Saisissez votre mot de passe" class="form-control <?php if ($motDePasse1OK) { echo 'is-valid'; } ?>" required>
                 </div>
-                
                 <div class="col-5">
                     <label class="form-label">Confirmation de mot de passe</label>
                     <input name="newMotDePasse2" value="<?php if ($motDePasse2OK) { echo $motDePasse2; } ?>" type="password" placeholder="Confirmez votre mot de passe" class="form-control <?php if ($motDePasse2OK) { echo 'is-valid'; } ?>" required>
@@ -154,10 +148,8 @@ require 'includes/header.php';
                 </div>
                 <div class="col-1"></div>
             </div>
-
             <!-- variable caché (affichage) qui a une valeur égal a 0 au début et 1 après les première modifications de l'utilisateur -->
             <input name="affichage" type="hidden" value="1"></input>
-
             <p class="espace2"></p>
             <!-- Bouton s'inscrire -->
             <div class="row">
@@ -173,9 +165,7 @@ require 'includes/header.php';
                 </div>
             </div>
             <p class="espace1"></p>
-            
         </form>
-
     </div>
 </body>
 </html>

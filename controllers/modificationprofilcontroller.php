@@ -2,6 +2,8 @@
 
 /**
  * ModificationProfil.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
 
 namespace controllers;
@@ -17,7 +19,7 @@ use model\utilisateurservice;
 
 /**
  * Class ModificationProfil
- * 
+ * Permet a un utilisateur de modifier ses informations
  * @package controllers
  */
 class ModificationProfilController implements controller
@@ -68,8 +70,6 @@ class ModificationProfilController implements controller
         $dateNaissance = httphelper::getParam('newDateNaissance');
         $codeUtilisateur = httphelper::getParam('idUtilisateur');
 
-        var_dump($dateNaissance);
-
         // Test des variables
         $_POST['nomOK'] = $nomOK = verificationservice::testNom($nom);
         $_POST['prenomOK'] = $prenomOK = verificationservice::testPrenom($prenom);
@@ -101,7 +101,7 @@ class ModificationProfilController implements controller
     }
 
     /**
-     * Modifie le profil de l'utilisateur
+     * Modifie le mot de passe de l'utilisateur
      */
     public function modifierMotDePasse($pdo)
     {

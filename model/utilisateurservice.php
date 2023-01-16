@@ -7,8 +7,8 @@ class utilisateurservice
 {
 
     /**
-     * Ajoute un utlisateur a la base de donnée
-     * @return true si trouvé sinon false
+     * Ajoute un utilisateur a la base de donnée
+     * @return true si trouver sinon false
      */
     public static function ajouterUtilisateur($pdo, $nom, $prenom, $mail, $nomUtilisateur, $genre, $dateNaissance, $motDePasse)
     {
@@ -117,7 +117,6 @@ class utilisateurservice
             $e->getMessage();
             print $e;
             $_GET['modification'] = false;
-        } 
+        }
     }
-
 }

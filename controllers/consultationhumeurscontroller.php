@@ -2,6 +2,8 @@
 
 /**
  * consulterHumeursController.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
 
 namespace controllers;
@@ -14,9 +16,9 @@ use model\verificationservice;
 use model\humeurservice;
 use model\emotionsservice;
 
-
 /**
  * Class de consulterHumeursController
+ * Permet a un utilisateur de pouvoir consulter ses humeurs
  * @package controllers
  */
 class consultationHumeursController implements controller
@@ -68,8 +70,6 @@ class consultationHumeursController implements controller
      */
     public function consulter($pdo)
     {
-        
-
         return $this->index($pdo);
     }  
 

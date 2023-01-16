@@ -2,6 +2,8 @@
 
 /**
  * inscriptioncontroller.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
 
 namespace controllers;
@@ -15,6 +17,7 @@ use model\utilisateurservice;
 
 /**
  * Class inscriptionController
+ * Permet a un utilisateur de s'inscrire sur l'application
  * @package controllers
  */
 class inscriptionController implements controller
@@ -27,8 +30,6 @@ class inscriptionController implements controller
     public function index($pdo)
     {
         $view = new view(config::getRacine() . "views/vue_inscription");
-
-        //$view->setVar('msgRetour', httphelper::getParam('msgRetour'));
 
         $view->setVar('nom', httphelper::getParam('newNom'));
         $view->setVar('prenom', httphelper::getParam('newPrenom'));

@@ -2,6 +2,8 @@
 
 /**
  * profilController.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
 
 namespace controllers;
@@ -15,7 +17,7 @@ use model\utilisateurservice;
 
 /**
  * Class profilController
- * 
+ * Permet a un utilisateur de visualiser ses informations
  * @package controllers
  */
 class profilController implements controller
@@ -34,7 +36,7 @@ class profilController implements controller
     }
 
     /**
-     * Supprime le profil de l'utilisateur le deinscrit de l'application
+     * Supprime le profil de l'utilisateur le désinscrit de l'application
      */
     public function supprimerProfil($pdo)
     {

@@ -2,6 +2,8 @@
 
 /**
  * mexprimercontroller.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
 
 namespace controllers;
@@ -14,8 +16,8 @@ use model\emotionsservice;
 use model\humeurservice;
 
 /**
- * Class connexioncontroller
- * Page d'accueil de la partie visible
+ * Class mexprimerController
+ * Permet a un utilisateur de saisir une humeur
  * @package controllers
  */
 class mexprimerController implements controller

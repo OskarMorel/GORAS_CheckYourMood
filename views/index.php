@@ -92,11 +92,6 @@ require 'includes/header.php';
                                 <div class="col-1"></div>
                             </div>
                             <p class="espace0"></p>
-                            <!-- Lien pour l'oubli du mot de passe -->
-                            <div class="row">
-                                <div class="col">Vous avez oublié votre mot de passe ? <a class="rougeClair" href="../vues/vue_oubliMotDePasse.html">Cliquez ici !</a></div>
-                            </div>
-                            <p class="espace0"></p>
                             <!-- Lien pour s'inscrire sur l'application -->
                             <div class="row">
                                 <div class="col">Pas encore inscrit ? <a class="rougeClair" href="/?controller=inscription">Cliquez ici !</a></div>

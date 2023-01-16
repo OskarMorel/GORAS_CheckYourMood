@@ -11,7 +11,6 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
         require 'includes/navbar.php';
     ?>
     <div class="container-fluid text-center">
-
         <h3>Vous pouvez consulter vos humeurs</h3>
         <p class="espace1"></p>
         <!-- Filtres pour consulter -->

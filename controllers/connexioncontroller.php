@@ -2,6 +2,8 @@
 
 /**
  * connexioncontroller.php
+ * @author Info2 IUT Rodez Oskar Morel, Simon Launay, Rémi Jauzion, Antoine Gouzy, Gauthier Jalbaud
+ * @CheckYourMood 2022-2023
  */
 
 namespace controllers;
@@ -15,7 +17,8 @@ use model\afficher;
 
 /**
  * Class connexioncontroller
- * Page d'accueil de la partie visible
+ * Permet a un utilisateur de se connecter a l'application
+ * et d'acceder a la page d'accueil
  * @package controllers
  */
 class connexionController implements controller

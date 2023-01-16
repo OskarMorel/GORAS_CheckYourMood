@@ -13,7 +13,6 @@ require 'includes/header.php';
                 <img src="https://www.photofunky.net/output/image/c/2/1/2/c21293/photofunky.gif" alt="Gif erreur">
             </div>
             <h4>Oups une erreur est survenue</h4>
-            <p><?php var_dump($err) ?></p>
         </div>
     </div>
 </body>
