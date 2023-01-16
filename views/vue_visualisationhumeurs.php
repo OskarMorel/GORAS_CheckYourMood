@@ -62,11 +62,11 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             if ($choixVisualisation == 'camembert') {   
         ?>    
         <div class="row centrer">
-            <div class="col-2"></div>
+            <div class="col-3"></div>
             <div class="col">
                 <canvas id="camembertChart"></canvas>
             </div>
-            <div class="col-2"></div>
+            <div class="col-3"></div>
         </div>
         <script>
             new Chart(document.getElementById("camembertChart"), {
@@ -98,12 +98,11 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             } else if ($choixVisualisation == 'baton') {
         ?>
         <div class="row">
-
-            <div class="col-2"></div>
+            <div class="col-3"></div>
             <div class="col">
                 <canvas id="barChart"></canvas>
             </div>
-            <div class="col-2"></div>
+            <div class="col-3"></div>
         </div>
         <script>
             new Chart(document.getElementById("barChart"), {
@@ -174,11 +173,11 @@ if (!isset($_SESSION['prenom']) && !isset($_SESSION['nom'])) {
             </form>
 
             <div class="row">
-                <div class="col-2"></div>
+                <div class="col-1"></div>
                 <div class="col">
                     <canvas id="lineChart"></canvas>
                 </div>
-                <div class="col-2"></div>
+                <div class="col-9"></div>
             </div>
             <script>
                 new Chart(document.getElementById("lineChart"), {

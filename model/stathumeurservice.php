@@ -34,6 +34,32 @@ class stathumeurservice
         return $texteFinal;
     }
 
+    public static function getNbEmotionDates($pdo, $codeUtilisateur, $date)
+    {
+
+        $stmt = $pdo->prepare("SELECT * FROM emotion");
+        $stmt->execute();
+
+        $tabNbHumeurs[] = array();
+        $texteFinal = "[";
+
+        while ($rowStmt = $stmt->fetch()) {
+            $recupNbHumeur = $pdo->prepare("SELECT COUNT(CODE_EMOTION) FROM humeur WHERE CODE_EMOTION = :codeEmotion AND CODE_UTILISATEUR = :codeUtilisateur AND DATE_FORMAT(DATE_HEURE, '%Y-%m-%d') = :dateHeure");
+            $recupNbHumeur->bindParam(':codeEmotion', $rowStmt['ID_EMOTION']);
+            $recupNbHumeur->bindParam(':codeUtilisateur', $codeUtilisateur);
+            $recupNbHumeur->bindParam(':dateHeure', $date);
+            $recupNbHumeur->execute();
+            $row = $recupNbHumeur->fetch();
+            
+            $tabNbHumeurs[] = json_encode(array_values($row));
+        }
+        unset($tabNbHumeurs[0]);
+        $texte = implode(',',$tabNbHumeurs);
+        $texteSansCrochets = str_replace(["[", "]"], "",$texte);
+        $texteFinal = $texteFinal.$texteSansCrochets."]";   
+        return $texteFinal;
+    }
+
      /**
      * Renvoie toutes les emotions presentes dans la base de donnée
      */

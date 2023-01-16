@@ -159,9 +159,6 @@ class humeurservice
         }
     }
 
-
-    
-
     public static function intervalleHumeur() {
         
     }

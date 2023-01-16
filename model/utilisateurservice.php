@@ -117,10 +117,7 @@ class utilisateurservice
             $e->getMessage();
             print $e;
             $_GET['modification'] = false;
-        }
-        
-        
-        
+        } 
     }
 
 }
