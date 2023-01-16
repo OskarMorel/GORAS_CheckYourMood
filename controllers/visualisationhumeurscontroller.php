@@ -34,7 +34,9 @@ class visualisationHumeursController implements controller
         $view->setVar('choixVisualisation', httphelper::getParam('choixVisualisation'));
         
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
+
         $view->setVar('humeursStat', stathumeurservice::getNbEmotion($pdo, $codeUtilisateur));
+        
 
         $dateDebut = httphelper::getParam('dateDebut');
         $dateFin = httphelper::getParam('dateFin');
@@ -79,8 +81,7 @@ class visualisationHumeursController implements controller
     {
 
         $codeUtilisateur = httphelper::getParam('codeUtilisateur');
-
-        $humeursStat = stathumeurservice::getNbEmotion($pdo, $codeUtilisateur);
+        $humeurStat = stathumeurservice::getNbEmotion($pdo, $codeUtilisateur);
 
         return $this->index($pdo);
     }

@@ -69,8 +69,6 @@ class ModificationProfilController implements controller
         $genre = httphelper::getParam('newGenre');
         $dateNaissance = httphelper::getParam('newDateNaissance');
         $codeUtilisateur = httphelper::getParam('idUtilisateur');
-        $motDePasse1 = httphelper::getParam('newMotDePasse1');
-        $motDePasse2 = httphelper::getParam('newMotDePasse2');
 
         // Test des variables
         $_POST['nomOK'] = $nomOK = verificationservice::testNom($nom);
@@ -78,15 +76,15 @@ class ModificationProfilController implements controller
         $_POST['mailOK'] = $mailOK = verificationservice::testMail($mail);
         $_POST['nomUtilisateurOK'] = $nomUtilisateurOK = verificationservice::testNomUtilisateur($nomUtilisateur);
         $_POST['genreOK'] = $genreOK = verificationservice::testGenre($genre);
-        $_POST['dateNaissanceOK'] = $dateNaissanceOK = verificationservice::testDateNaissance($dateNaissance);
-
-        $_POST['motDePasse1OK'] = $motDePasse1OK = verificationservice::testMotDePasse($motDePasse1);
-        $_POST['motDePasse2OK'] = $motDePasse2OK = verificationservice::testMdpCorrespond($motDePasse1, $motDePasse2);
-        
         
         // Si toutes les variables sont valides alors on ajoute à la base de donnée
-        if ($nomOK && $prenomOK && $mailOK && $nomUtilisateurOK && $dateNaissanceOK && $genreOK) {
-            utilisateurservice::modifierProfil($pdo, $nom, $prenom, $nomUtilisateur, $mail, $genre, $dateNaissance, $codeUtilisateur);
+        if ($nomOK && $prenomOK && $mailOK && $nomUtilisateurOK && $genreOK) {
+            if ($dateNaissance == "") {
+                utilisateurservice::modifierProfil($pdo, $nom, $prenom, $nomUtilisateur, $mail, $genre, null, $codeUtilisateur);
+            } else {
+                utilisateurservice::modifierProfil($pdo, $nom, $prenom, $nomUtilisateur, $mail, $genre, $dateNaissance, $codeUtilisateur);
+            }
+            
         }
 
         error_reporting(0);

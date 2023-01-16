@@ -135,8 +135,8 @@ class humeurservice
             $stmt = $pdo->prepare("DELETE FROM humeur WHERE CODE_UTILISATEUR = ? AND CODE_EMOTION = ? AND DATE_HEURE = ?");
 
             $stmt->execute([$codeUtilisateur, $codeEmotion, $dateEmotion]);
-            
-        } catch (Exception $e) {
+            $pdo->commit(); 
+        } catch (\Exception $e) {
             $pdo->rollBack();
             $e -> getMessage();
         }
@@ -145,13 +145,15 @@ class humeurservice
     /* Suppression d'une humeur */
     public static function suppToutesHumeursUtilisateur($pdo, $codeUtilisateur)
     {
+        $pdo->beginTransaction(); 
+        
         try {
 
             $stmt = $pdo->prepare("DELETE FROM humeur WHERE CODE_UTILISATEUR = ?");
 
             $stmt->execute([$codeUtilisateur]);
-            
-        } catch (Exception $e) {
+            $pdo->commit();
+        } catch (\Exception $e) {
             $pdo->rollBack();
             $e -> getMessage();
         }

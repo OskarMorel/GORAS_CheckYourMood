@@ -1,6 +1,7 @@
 <?php
 
 namespace model;
+use PDO;
 
 class utilisateurservice
 {
@@ -17,10 +18,12 @@ class utilisateurservice
         $sql ="INSERT INTO `utilisateur` (`NOM`, `PRENOM`, `NOM_UTILISATEUR`, `MOT_DE_PASSE`, `MAIL`, `GENRE`, `DATE_DE_NAISSANCE`) 
         VALUES (?, ?, ?, ?, ?, ?, ?)";
 
+        $pdo->beginTransaction();
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$nom, $prenom, $nomUtilisateur, $mdp, $mail,  $genre, $dateNaissance]);
             $_GET['creation'] = true;
+            $pdo->commit();
         } catch (\PDOException $e) {
             $code = $e -> getCode();
             if ($code == 23000) {
@@ -29,12 +32,13 @@ class utilisateurservice
                 $e->getMessage();
                 $_GET['exception'] = $e;
             }
-
+            $pdo->rollBack();
         } catch (\Exception $e) {
             $_GET['creation'] = false;
             $e->getMessage();
             $_GET['exception'] = $e;
             var_dump($e);
+            $pdo->rollBack();
         }
        
     }
@@ -43,12 +47,12 @@ class utilisateurservice
     public static function suppUtilisateur($pdo, $codeUtilisateur)
     {
         $sql = "DELETE FROM `utilisateur` WHERE ID_UTILISATEUR = ?";
-
+        $pdo->beginTransaction();
         try {
 
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$codeUtilisateur]);
-            
+            $pdo->commit();
         } catch (Exception $e) {
             $pdo->rollBack();
             $e -> getMessage();
