@@ -158,9 +158,4 @@ class humeurservice
             $e -> getMessage();
         }
     }
-
-    public static function intervalleHumeur() {
-        
-    }
-
 }
