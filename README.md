@@ -28,3 +28,6 @@ Jauzion Rémi : Développeur, concepteur<br>
 
 ## Lien vers le plan projet
 [Plan projet](https://drive.google.com/file/d/1laYM2bf5FlJDpuW7Yr6p-y8fgXAp7DjB/view?usp=share_link)
+
+## Lien vers le manuel utilisateur
+[Manuel Utilisateur](https://drive.google.com/file/d/1MtldgomUO-moO6V-go0ACnlXI699asLi/view?usp=share_link)
