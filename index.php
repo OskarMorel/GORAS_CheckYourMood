@@ -10,7 +10,7 @@ $dataSource = new datasource(
     $port = '3306',
     $db = 'checkyourmood',
     $user = 'root',
-    $pass = '',
+    $pass = 'root',
     $charset = 'utf8mb4'
 );
 
