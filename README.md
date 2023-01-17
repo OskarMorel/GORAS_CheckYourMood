@@ -19,3 +19,9 @@ Jauzion Rémi : Développeur, concepteur<br>
 
 ## Lien pour télécharger le Gantt (Il faut Gantt Project)
 [GORAS_GANTT](https://drive.google.com/file/d/1WABgjYscKmtX_rEjYUWp-ElfIObY8NxL/view?usp=share_link)
+
+--------
+# Livrables
+
+## Document technique
+[Document technique]()
