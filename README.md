@@ -26,5 +26,8 @@ Jauzion Rémi : Développeur, concepteur<br>
 --------
 # Livrables
 
-## Dossier des livrables (plan projet et dossier technique)
-[Livrables](https://drive.google.com/drive/folders/11CbIfoubq3iescBVqHDCTa9TZBJuiirT?usp=share_link)
+## Lien vers le dossier technique
+[Dossier technique](https://drive.google.com/file/d/1MZPrCICSnPAqZm0AOtKsioowPKeISy7d/view?usp=share_link)
+
+## Lien vers le plan projet
+[Plan projet](https://drive.google.com/file/d/1laYM2bf5FlJDpuW7Yr6p-y8fgXAp7DjB/view?usp=share_link)
